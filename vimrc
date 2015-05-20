@@ -50,6 +50,7 @@ filetype plugin indent on
 
 " Colourscheme and Font
 colorscheme gruvbox
+set background=dark
 set guifont=Consolas:h8
 
 " Remove Toolbar and Left-Scrollbar
