@@ -23,6 +23,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'chriskempson/base16-vim'
 " Codeschool Colour Theme
 Plugin '29decibel/codeschool-vim-theme'
+Plugin 'morhetz/gruvbox'
 	
 " NERDTree & commenter
 Plugin 'scrooloose/nerdtree'
@@ -48,7 +49,7 @@ call vundle#end()
 filetype plugin indent on
 
 " Colourscheme and Font
-colorscheme codeschool
+colorscheme gruvbox
 set guifont=Consolas:h8
 
 " Remove Toolbar and Left-Scrollbar
