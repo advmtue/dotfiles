@@ -1,4 +1,3 @@
-set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -13,39 +12,39 @@ filetype off
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 
-set rtp+=$VIM\vimfiles\bundle\Vundle.vim
-let path='$VIM\vimfiles\bundle'
+set rtp+=~/.vim/bundle/Vundle.vim
 
 " Everyone loves vundle :)
 call vundle#begin(path)
 	
-	" Might aswell get Vundle to handle itself
-	Plugin 'gmarik/Vundle.vim'
+" Might aswell get Vundle to handle itself
+Plugin 'gmarik/Vundle.vim'
 
-	" Base-16 Theme
-	Plugin 'chriskempson/base16-vim'
-	" Codeschool Colour Theme
-	Plugin '29decibel/codeschool-vim-theme'
+" Base-16 Theme
+Plugin 'chriskempson/base16-vim'
+" Codeschool Colour Theme
+Plugin '29decibel/codeschool-vim-theme'
 	
-	" NERDTree & commenter
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'scrooloose/nerdcommenter'
+" NERDTree & commenter
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 	
-	" JADE highlighter
-	Plugin 'digitaltoad/vim-jade'
+" JADE highlighter
+Plugin 'digitaltoad/vim-jade'
 	
-	" Nodejs plugin, not really sure of the benefits
-	Plugin 'moll/vim-node'
+" Nodejs plugin, not really sure of the benefits
+Plugin 'moll/vim-node'
 	
-	" Javascript syntax
-	Plugin 'pangloss/vim-javascript'
+" Javascript syntax
+Plugin 'pangloss/vim-javascript'
 
-	" Surround
-	Plugin 'tpope/vim-surround'
+" Surround
+Plugin 'tpope/vim-surround'
 
-	" Ctrp - File Finding
-	Plugin 'kien/ctrlp.vim'
+" Ctrp - File Finding
+Plugin 'kien/ctrlp.vim'
 
+" End Vundle Things
 call vundle#end()
 filetype plugin indent on
 
@@ -80,7 +79,7 @@ set textwidth=0
 set wrapmargin=0
 
 " NERDTree Close
-cd F:\GitHub
+cd $HOME/personal/ 
 map <F2> :NERDTreeToggle<CR>
 map <C-o> :NERDTree %<CR>
 
