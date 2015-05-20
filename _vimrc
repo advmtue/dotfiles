@@ -11,7 +11,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 " Everyone loves vundle :)
-call vundle#begin(path)
+call vundle#begin()
 	
 " Might aswell get Vundle to handle itself
 Plugin 'gmarik/Vundle.vim'
