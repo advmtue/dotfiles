@@ -83,8 +83,8 @@ cd $HOME/personal/
 map <F2> :NERDTreeToggle<CR>
 map <C-o> :NERDTree %<CR>
 
-map <F3> :mksession! $VIM\sessions\vim_session <cr> " Quick write session with F2
-map <F4> :source $VIM\sessions\vim_session <cr>     " And load session with F3
+map <F3> :mksession! $VIM\sessions/vim_session <cr> " Quick write session with F2
+map <F4> :source $VIM/sessions/vim_session <cr>     " And load session with F3
 
 au GUIEnter * simalt ~x
 set backupdir=$VIM/vimtmp,.
