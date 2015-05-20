@@ -7,6 +7,9 @@ filetype off
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
+if has('unix')
+    set t_Co=256
+endif
 
 set rtp+=~/.vim/bundle/Vundle.vim
 
