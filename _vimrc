@@ -1,7 +1,3 @@
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
 set nocompatible
 filetype off
 
@@ -79,12 +75,12 @@ set textwidth=0
 set wrapmargin=0
 
 " NERDTree Close
-cd $HOME/personal/ 
+cd ~/ 
 map <F2> :NERDTreeToggle<CR>
 map <C-o> :NERDTree %<CR>
 
-map <F3> :mksession! $VIM\sessions/vim_session <cr> " Quick write session with F2
-map <F4> :source $VIM/sessions/vim_session <cr>     " And load session with F3
+map <F3> :mksession! ~/.vim/sessions/vim_session <cr> " Quick write session with F2
+map <F4> :source ~/.vim/sessions/vim_session <cr>     " And load session with F3
 
 au GUIEnter * simalt ~x
 set backupdir=$VIM/vimtmp,.
