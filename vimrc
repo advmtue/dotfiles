@@ -45,6 +45,9 @@ Plugin 'tpope/vim-surround'
 " Ctrp - File Finding
 Plugin 'kien/ctrlp.vim'
 
+" Vim-Less Highlighting
+Plugin 'groenewege/vim-less'
+
 " End Vundle Things
 call vundle#end()
 filetype plugin indent on
@@ -75,9 +78,14 @@ set mouse=a
 set history=1000
 set undolevels=1000
 set nofoldenable
-:set nowrap
+set nowrap
 set textwidth=0
 set wrapmargin=0
+" Tabbing
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
 
 " NERDTree Close
 cd ~/ 
