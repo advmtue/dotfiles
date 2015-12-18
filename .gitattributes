@@ -1,0 +1,2 @@
+# Dont convert .sh scripts to CRLF
+*.sh text eol=lf
