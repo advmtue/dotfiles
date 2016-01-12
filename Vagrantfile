@@ -6,9 +6,10 @@ echo ==
 echo COMMENCE THE GREAT PROVISIONING!
 echo ==
 
+sudo apt-get install -y git
 sudo apt-get install -y golang
 sudo su -c "gem install sass"
-echo "export GOPATH=/vagrant" >> /home/vagrant/.bashrc
+echo "export GOPATH=/home/vagrant/go" >> /home/vagrant/.bashrc
 echo "export PATH=\\$PATH:\\$GOPATH/bin" >> /home/vagrant/.bashrc
 sudo apt-get install -y tmux
 
@@ -58,7 +59,7 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder ".", "/vagrant"
+  config.vm.synced_folder ".", "/home/vagrant/sync"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
