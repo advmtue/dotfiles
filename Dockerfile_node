@@ -1,0 +1,11 @@
+#One day I will figure out how this all works
+FROM node:latest
+
+#Create the application directory
+RUN mkdir -p /usr/src
+COPY . /usr/src
+
+WORKDIR /usr/src
+
+#Expose a port
+EXPOSE 8080
