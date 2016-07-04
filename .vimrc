@@ -3,10 +3,18 @@
 " Adam Tuechler
 " ----------------
 
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+if has('nvim')
+    let s:editor_root=expand("~/.nvim")
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+else
+    let s:editor_root=expand("~/.vim")
+    set nocompatible
+endif
 
+filetype off
+let &rtp = &rtp . ',' .  s:editor_root . '/bundle/Vundle.vim'
+
+call vundle#rc(s:editor_root . '/bundle/')
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -62,7 +70,6 @@ map <F8> :tabn<CR>
 map <C-h> :nohl<CR>
 
 " NERDTree Stuff
-cd ~/               " Might aswell start in the home dir
 nnoremap <F2> :NERDTreeToggle<CR>
 
 " No bitchboi arrow keys
