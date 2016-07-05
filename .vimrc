@@ -19,7 +19,6 @@ call vundle#rc(s:editor_root . '/bundle/')
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bronson/vim-trailing-whitespace'
 " Airline (Status Bar)
@@ -29,6 +28,9 @@ Plugin 'digitaltoad/vim-pug'
 " Git things
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+" A bunch of themes
+Plugin 'baskerville/bubblegum'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()
 filetype plugin indent on
@@ -38,7 +40,7 @@ filetype plugin indent on
 
 " Colour Scheme
 :set background=dark
-:colorscheme gruvbox
+:colorscheme bubblegum-256-dark
 :let g:gruvbox_contrast = 'hard'
 
 " Tab Settings
