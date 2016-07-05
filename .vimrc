@@ -6,6 +6,7 @@
 if has('nvim')
     let s:editor_root=expand("~/.nvim")
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    nmap <BS> <C-W>h
 else
     let s:editor_root=expand("~/.vim")
     set nocompatible
@@ -21,8 +22,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bronson/vim-trailing-whitespace'
+" Airline (Status Bar)
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'digitaltoad/vim-pug'
+" Git things
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
@@ -31,8 +37,9 @@ filetype plugin indent on
 :syntax on
 
 " Colour Scheme
-:colorscheme gruvbox
 :set background=dark
+:colorscheme gruvbox
+:let g:gruvbox_contrast = 'hard'
 
 " Tab Settings
 " :: DEFAULTS
@@ -66,9 +73,6 @@ set scrolloff=4   " 4 Lines of space above/below cursor
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
 
-" Clear Highlighting
-map <C-h> :nohl<CR>
-
 " NERDTree Stuff
 nnoremap <F2> :NERDTreeToggle<CR>
 
@@ -89,3 +93,10 @@ set splitright      " Split Right
 " Vim-Airline Config
 set laststatus=2                            " Enable vim-airline
 autocmd VimEnter * AirlineTheme bubblegum   " Bubblegum theme
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_powerline_fonts = 0
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline#extensions#branch#enabled = 1
