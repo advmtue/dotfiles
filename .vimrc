@@ -18,19 +18,24 @@ let &rtp = &rtp . ',' .  s:editor_root . '/bundle/Vundle.vim'
 call vundle#rc(s:editor_root . '/bundle/')
 call vundle#begin()
 
+" Utilities
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'danro/rename.vim'
+" Language Highlighting
+Plugin 'digitaltoad/vim-pug'
 " Airline (Status Bar)
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'digitaltoad/vim-pug'
 " Git things
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 " A bunch of themes
 Plugin 'baskerville/bubblegum'
 Plugin 'morhetz/gruvbox'
+Plugin 'romainl/apprentice'
 
 call vundle#end()
 filetype plugin indent on
@@ -40,8 +45,7 @@ filetype plugin indent on
 
 " Colour Scheme
 :set background=dark
-:colorscheme bubblegum-256-dark
-:let g:gruvbox_contrast = 'hard'
+:colorscheme apprentice
 
 " Tab Settings
 " :: DEFAULTS
@@ -71,6 +75,7 @@ set wrapmargin=0    " More wrap disabling
 set colorcolumn=80  " Make it obvious where 80 chars is
 set scrolloff=4   " 4 Lines of space above/below cursor
 
+" Cool-as Button Mapping Configs
 " Window-Tab Navigation
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
@@ -92,6 +97,14 @@ nnoremap <C-L> <C-W><C-L>
 set splitbelow      " Split Down
 set splitright      " Split Right
 
+" Fun as Heck Leader Configs
+let mapleader = " "
+" Buffer-nav
+nnoremap <Leader>j :bprev<CR>
+nnoremap <Leader>k :bnext<CR>
+" Make saving easier
+nnoremap <Leader>w :w<CR>
+
 " Vim-Airline Config
 set laststatus=2                            " Enable vim-airline
 autocmd VimEnter * AirlineTheme bubblegum   " Bubblegum theme
@@ -102,3 +115,9 @@ let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#branch#enabled = 1
+
+" CtrlP Config
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
+  \ 'file': '\v\.(exe|so|dll)$'
+  \ }
