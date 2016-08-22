@@ -5,7 +5,7 @@
 
 if has('nvim')
     let s:editor_root=expand("~/.nvim")
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     nmap <BS> <C-W>h
 else
     let s:editor_root=expand("~/.vim")
@@ -74,6 +74,7 @@ set textwidth=0     " More wrap disabling
 set wrapmargin=0    " More wrap disabling
 set colorcolumn=80  " Make it obvious where 80 chars is
 set scrolloff=4   " 4 Lines of space above/below cursor
+set t_Co=256
 
 " Cool-as Button Mapping Configs
 " Window-Tab Navigation
