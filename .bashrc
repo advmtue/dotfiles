@@ -10,11 +10,13 @@
 alias ls='ls --color=auto'
 alias la='ls -a'
 
+# Check the window size after each command
+shopt -s checkwinsize
 
 #################################################
 # PS1 Colors and Config
-c_pref="\033["
-c_suff="m"
+c_pref="\[\033["
+c_suff="m\]"
 c_dark="0"
 c_light="1"
 c_res=$c_pref"0;0"$c_suff
