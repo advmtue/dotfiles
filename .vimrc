@@ -41,11 +41,11 @@ call vundle#end()
 filetype plugin indent on
 
 " Syntax Highlighting
-:syntax on
+syntax on
 
 " Colour Scheme
-:set background=dark
-:colorscheme apprentice
+set background=dark
+colorscheme apprentice
 
 " Tab Settings
 " :: DEFAULTS
