@@ -7,7 +7,7 @@
 ##################################################
 
 fg="#BDBDBD"
-bg="-"
+fg_sound="#F0C674"
 
 
 # General Getter Functions
@@ -38,8 +38,8 @@ Audioline() {
     sinks="$(pactl list sinks)"
     active="$(echo $sinks | grep -oP 'Active Port: analog-output-\K(headphones|lineout)')"
     case "$active" in
-        "headphones") echo "Headphones";;
-        "lineout") echo "Speakers";;
+        "headphones") echo "H";;
+        "lineout") echo "S";;
     esac
 }
 
@@ -52,6 +52,9 @@ VPNRunning() {
     echo "$(ps -aux | grep openvpn | grep root | wc -l)"
 }
 
+Workspaces() {
+    echo "$(~/.config/lemonbar/workspace.sh)"
+}
 
 # Execution
 ##################################################
@@ -59,16 +62,23 @@ while true; do
     bar=$()
 
     # Left Side:
-    #   Vol Volume() - Audioline()
     if [ "$(AudioEnabled)" == "on" ];
     then
         vol="$(Volume)"
         line="$(Audioline)"
-        bar=$bar"%{l}%{F$fg}%{B$bg} $line:$vol% %{F-}%{B-}"
+        bar=$bar"%{l}%{F$fg_sound} $line:$vol% %{F-}"
     else
-        bar=$bar"%{l}%{F$fg}%{B$bg} Muted %{F-}%{B-}"
+        bar=$bar"%{l}%{F$fg_sound} MUTE %{F-}"
     fi
 
+    # Music Info
+    musicInfo="$(Music)"
+    if [ -n "$musicInfo" ];
+    then
+        bar=$bar"%{F$fg} $musicInfo %{F-}"
+    fi
+
+    # IP and VPN
     ipadd="$(IP)"
     VPN="$(VPNRunning)"
     col="%{F#E0243A}"
@@ -76,18 +86,14 @@ while true; do
     then
         col="%{F#3BCC5D}"
     fi
-    bar=$bar"$col$ipadd"
-
-    # Music Info
-    musicInfo="$(Music)"
-    if [ -n "$musicInfo" ];
-    then
-        bar=$bar"%{c}%{F$fg}%{B$bg} $musicInfo %{F-}%{B-}"
-    fi
+    bar="$bar%{r}$col$ipadd"
 
     # Time and Date
     clock="$(Clock)"
-    bar=$bar"%{r}%{F$fg}%{B$bg} $clock %{F-}%{B-}"
+    bar=$bar"%{F$fg} | $clock %{F-}"
+
+    # Workspaces
+    bar="$bar$(Workspaces)"
 
     # Print that Sucka
     echo "$bar %{S1} $bar"
