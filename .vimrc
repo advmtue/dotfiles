@@ -44,8 +44,17 @@ filetype plugin indent on
 syntax on
 
 " Colour Scheme
+"   Uses apprentice as the base, but with a few mods.
+"   Mainly removing the background color and replaceing it
+"   with the default terminal background.
+"    -- (The .Xresources config on desktop)
 set background=dark
 colorscheme apprentice
+
+" Remove backgrounds
+hi Normal ctermbg=NONE
+hi LineNr ctermbg=NONE
+hi FoldColumn ctermbg=NONE ctermfg=242
 
 " Tab Settings
 " :: DEFAULTS
@@ -108,7 +117,7 @@ nnoremap <Leader>w :w<CR>
 
 " Vim-Airline Config
 set laststatus=2                            " Enable vim-airline
-autocmd VimEnter * AirlineTheme bubblegum   " Bubblegum theme
+autocmd VimEnter * AirlineTheme term        " Term theme
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -122,3 +131,4 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
   \ 'file': '\v\.(exe|so|dll)$'
   \ }
+hi clear Normal
