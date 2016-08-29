@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#OUTPUT="$(amixer sget Headphone | grep -m 1 off)"
+#amixer -q -c 0 sset "Auto-Mute Mode" Disabled
+#
+#if [ -n "$OUTPUT" ]
+#then
+#    amixer -q sset Front mute
+#    amixer -q sset Headphone unmute
+#    amixer -q sset Master 60%,60% unmute
+#    echo "Switched to headphone output"
+#else
+#    amixer -q sset Headphone mute
+#    amixer -q sset Front unmute
+#    amixer -q sset Master 100%,100% unmute
+#    echo "Switched to speaker output"
+#fi
+
+SINKS="$(pactl list sinks)"
+ACTIVE="$(echo $SINKS | grep -oP 'Active Port: analog-output-\K(headphones|lineout)')"
+NEWOUT="lineout"
+
+# Mute the mixer so 100% vol is not sent through
+#   headphones, which could case damage.
+amixer -q sset Master mute
+case $ACTIVE in
+    "lineout")
+        amixer -q sset Master mute
+        pactl set-sink-port 2 analog-output-headphones
+        amixer -q sset Master 30% unmute
+        echo "Set output to Headphones";;
+    "headphones")
+        pactl set-sink-port 2 analog-output-lineout
+        amixer -q sset Master 100% unmute
+        echo "Set output to Lineout";;
+esac
