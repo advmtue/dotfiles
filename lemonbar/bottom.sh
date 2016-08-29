@@ -18,8 +18,8 @@ ws[5]="$ws_unspec"
 ws[6]="$ws_unspec"
 ws[7]="$ws_unspec"
 ws[8]="$ws_unspec"
-ws[9]="CMUS"
-ws[10]="IRC"
+ws[9]="cmus"
+ws[10]="irc"
 
 
 # General Functions
@@ -38,16 +38,16 @@ Tiles() {
 
         if [ "$tileInfo" ];
         then
-            tile="%{F$fg_normal}$i: ${ws[$i]}%{F-}"
+            tile="%{F$fg_normal}$i:${ws[$i]}%{F-}"
 
             if [ "$(echo $tileInfo | grep 'focused:True')" ]
             then
-                tile="%{F$fg_active}$i: ${ws[$i]}%{F-}"
+                tile="%{F$fg_active}${ws[$i]}%{F-}"
             fi
 
             if [ "$tiles" ];
             then
-                tile=" | $tile"
+                tile="   $tile"
             fi
 
             tiles="$tiles$tile"
