@@ -1,5 +1,6 @@
 #!/bin/bash
 
+fg_pause="#5C5C5C"
 info="$(cmus-remote -C status)"
 
 if [[ $(cmus-remote -C status) ]];
@@ -9,13 +10,13 @@ then
 
     if [ "$curStatus" == "stopped" ];
     then
-        echo "- Stopped -"
+        echo "Nothing Playing"
     else
-        prefix=$()
+        suffix=$()
 
         if [ "$curStatus" == "paused" ];
         then
-            prefix="Paused: "
+            suffix=" - Paused"
         fi
 
         raw_title="$(cmus-remote -Q | grep 'tag title')"
@@ -24,6 +25,6 @@ then
         title="$(echo $raw_title | grep -oP 'tag title \K(.*)')"
         artist="$(echo $raw_artist | grep -oP 'tag artist \K(.*)')"
 
-        echo "$prefix'$title' by $artist"
+        echo "'$title' - $artist%{F$fg_pause}$suffix"
     fi
 fi
