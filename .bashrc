@@ -9,6 +9,7 @@
 # A few aliases for good measure
 alias ls='ls --color=auto'
 alias la='ls -a'
+alias lg='ls -lg'
 
 # Check the window size after each command
 shopt -s checkwinsize
@@ -35,8 +36,8 @@ function c_s {
     echo "$c_pref$1;$2$c_suff"
 }
 
-ps1_color="$(c_s $c_dark $c_red)\u$c_res@\h|\w>$ "
-ps1_nocolor="\u@\h|\w>$ "
+ps1_color="$(c_s $c_dark $c_red)\u$c_res@\h \w $"
+ps1_nocolor="\u@\h \w $"
 
 # Only color if we have the right support
 case "$TERM" in
