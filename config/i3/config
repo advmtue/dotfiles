@@ -107,14 +107,14 @@ new_window pixel 3
 new_float 1pixel
 
 # Add some gaps
-gaps inner 5
-gaps outer 0
+gaps inner 10
+gaps outer 15
 
 # Startup some programs
 exec $HOME/.config/lemonbar/run.sh      # Lemonbar
 exec compton -b --backend=glx           # Compton compositing
 exec xrdb -merge ~/.Xresources          # Merge Xresources
-exec feh --bg-scale ~/wallpaper.jpg     # Wallpaper
+exec feh --bg-fill ~/wallpaper.jpg     # Wallpaper
 exec xset m 0/0                         # Mouse accel = 0
 
 # i3lock on mod+p
