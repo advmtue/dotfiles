@@ -17,8 +17,8 @@ amixer -q sset Master mute
 case $ACTIVE in
     "lineout")
         pactl set-sink-port "$SINKNUM" analog-output-headphones
-        amixer -q sset Master 30% unmute
+        amixer -q sset Master 30% unmute;;
     "headphones")
         pactl set-sink-port "$SINKNUM" analog-output-lineout
-        amixer -q sset Master 100% unmute
+        amixer -q sset Master 100% unmute;;
 esac
