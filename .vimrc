@@ -21,6 +21,8 @@ call vundle#begin()
 " Utilities
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'danro/rename.vim'
