@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Things that I need in the lemonbar:
-#   VPN Status TODO
-
 # Global Variables
 ##################################################
 
@@ -44,8 +41,13 @@ Audioline() {
 }
 
 # IP Addresss
+#   This is really quite spammy
 IP() {
     echo "$(dig +short myip.opendns.com @resolver1.opendns.com)"
+}
+
+LocalIP() {
+    echo "$(ip addr list enp3s0 | grep -oP '(?<=inet\s)((?:[0-9]{1,3}\.?){4})')"
 }
 
 VPNRunning() {
@@ -75,18 +77,24 @@ while true; do
     musicInfo="$(Music)"
     if [ -n "$musicInfo" ];
     then
-        bar=$bar"%{F$fg} $musicInfo %{F-}"
+        bar=$bar"%{F$fg} $musicInfo%{F-}"
     fi
 
-    # IP and VPN
-    ipadd="$(IP)"
+    # Local IP
+    localip="$(LocalIP)"
+    bar="$bar%{r}%{F#5e8d87} $localip%{F-} | "
+
+    # External IP
+    #   Not important
+    #   Only need to know if VPN up
+    #ipadd="$(IP)"
     VPN="$(VPNRunning)"
-    col="%{F#E0243A}"
+    vpn_info="%{F#E0243A}Local"
     if [ $VPN == 1 ]
     then
-        col="%{F#3BCC5D}"
+        vpn_info="%{F#3BCC5D}Online"
     fi
-    bar="$bar%{r}$col$ipadd"
+    bar="$bar$vpn_info"
 
     # Time and Date
     clock="$(Clock)"
