@@ -118,7 +118,8 @@ exec feh --bg-fill ~/wallpaper.jpg     # Wallpaper
 exec xset m 0/0                         # Mouse accel = 0
 
 # i3lock on mod+p
-bindsym $mod+p exec i3lock
+#bindsym $mod+p exec i3lock -i ~/.config/i3/lock.png
+bindsym $mod+p exec ~/.config/i3/lock.sh
 
 # XF86 Input Configuration
 ##################################################
