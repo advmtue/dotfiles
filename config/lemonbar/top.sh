@@ -3,8 +3,11 @@
 # Global Variables
 ##################################################
 
-fg="#BDBDBD"
-fg_sound="#F0C674"
+col_text_light="#BDBDBD"
+col_text_dark="#101010"
+
+col_yellow="#F0C674"
+col_yellow_dark="#BE9F63"
 
 
 # General Getter Functions
@@ -68,42 +71,40 @@ while true; do
     then
         vol="$(Volume)"
         line="$(Audioline)"
-        bar=$bar"%{l}%{F$fg_sound} $line:$vol% %{F-}"
+        bar=$bar"%{l}%{B$col_yellow_dark}%{F$col_text_dark} $line:$vol% %{F-}%{B-}"
     else
-        bar=$bar"%{l}%{F$fg_sound} MUTE %{F-}"
+        bar=$bar"%{l}%{B$col_yellow_dark}%{F$col_text_dark} MUTE %{F-}%{B-}"
     fi
 
     # Music Info
     musicInfo="$(Music)"
     if [ -n "$musicInfo" ];
     then
-        bar=$bar"%{F$fg} $musicInfo%{F-}"
+        bar=$bar"%{F$col_text_light} $musicInfo%{F-}"
     fi
 
-    # Local IP
+    # Local IP and VPN Status
+    #   Text = Local IP Address (IPV4)
+    #   Green = VPN Running
+    #   Red = VPN Down
     localip="$(LocalIP)"
-    bar="$bar%{r}%{F#5e8d87} $localip%{F-} | "
+    vpn_status="$(VPNRunning)"
+    vpn_info="%{F#E0243A}"
 
-    # External IP
-    #   Not important
-    #   Only need to know if VPN up
-    #ipadd="$(IP)"
-    VPN="$(VPNRunning)"
-    vpn_info="%{F#E0243A}Local"
-    if [ $VPN == 1 ]
+    if [ $vpn_status == 1 ]
     then
-        vpn_info="%{F#3BCC5D}Online"
+        vpn_info="%{F#3BCC5D}"
     fi
-    bar="$bar$vpn_info"
+
+    bar="$bar%{r}$vpn_info$localip%{F-}%{B-}"
 
     # Time and Date
     clock="$(Clock)"
-    bar=$bar"%{F$fg} | $clock %{F-}"
+    bar=$bar"%{F$col_text_light} | $clock %{F-}"
 
     # Workspaces
-    bar="$bar$(Workspaces)"
+    ws="$(Workspaces)"
 
     # Print that Sucka
-    echo "$bar %{S1} $bar"
-    sleep 1
+    echo "$bar%{S1}$bar$ws"
 done

@@ -1,57 +1,64 @@
 #!/bin/bash
 
-# Lemonbar workspaces configuration
+# Lemonbar workspaces aggregation
 
 # Global variables
 ##################################################
 
-fg_active="#5F819D"
-fg_normal="#FFFFFF"
-
-ws_unspec="Unspecified"
-
-ws[1]="</>"
-ws[2]="Firefox"
-ws[3]="$ws_unspec"
-ws[4]="$ws_unspec"
-ws[5]="$ws_unspec"
-ws[6]="$ws_unspec"
-ws[7]="$ws_unspec"
-ws[8]="$ws_unspec"
-ws[9]="cmus"
-ws[10]="irc"
+col_tile_focused="#5F819D"
+col_tile_active="#FFFFFF"
+col_tile_inactive="#3A3A3A"
 
 
 # General Functions
 ##################################################
 
+# Function used to grab workspaces from one screen
+#   $1 = Bunch of workspaces
+#   $2 = Name of output device to grep
 Screen() {
     echo "$(echo "$2" | grep "$1")"
 }
 
+# Function used to create workspace string for a given screen
+#   $1 = Workspaces on screen
 Tiles() {
     tiles="$()"
 
     for i in {1..10};
     do
+        # Get info for i-th workspace
         tileInfo="$(echo "$1" | grep '|num:'$i'|')"
 
+        # Empty instantiation
+        tile="$()"
+
+        # If #workspace is active
         if [ "$tileInfo" ];
         then
-            tile="%{F$fg_normal}$i:${ws[$i]}%{F-}"
+            # Create a normal active number
+            tile="%{F$col_tile_active}$i"
 
+            # Check if focused
             if [ "$(echo $tileInfo | grep 'focused:True')" ]
             then
-                tile="%{F$fg_active}${ws[$i]}%{F-}"
+                # Change to focused active number
+                #   and underline it
+                tile="%{+u}%{F$col_tile_focused}$i"
             fi
-
-            if [ "$tiles" ];
-            then
-                tile="   $tile"
-            fi
-
-            tiles="$tiles$tile"
+        else
+            # Inactive workspace
+            tile="%{F$col_tile_inactive}$i"
         fi
+
+        # If not first tile (tiles not empty)
+        if [ "$tiles" ];
+        then
+            # Pad it
+            tile="  $tile"
+        fi
+
+        tiles="$tiles$tile%{F-}%{B-}%{-u}"
     done
 
     echo "$tiles"
