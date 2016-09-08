@@ -3,7 +3,7 @@
 *.background:   #101010
 
 ! black
-*.color0:       #282a2e
+*.color0:       #101010
 *.color8:       #373b41
 
 ! red
