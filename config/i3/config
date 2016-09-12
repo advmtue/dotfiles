@@ -111,11 +111,11 @@ gaps inner 30
 gaps outer 0
 
 # Startup some programs
-exec $HOME/.config/lemonbar/run.sh      # Lemonbar
-exec feh --bg-fill ~/wallpaper.jpg     # Wallpaper
-exec compton -b --backend=glx           # Compton compositing
-exec xrdb -merge ~/.Xresources          # Merge Xresources
-exec xset m 0/0                         # Mouse accel = 0
+exec $HOME/.config/lemonbar/run.sh              # Lemonbar
+exec feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg   # Wallpaper
+exec compton -b --backend=glx                   # Compton compositing
+exec xrdb -merge ~/.Xresources                  # Merge Xresources
+exec xset m 0/0                                 # Mouse accel = 0
 
 # i3lock on mod+p
 #bindsym $mod+p exec i3lock -i ~/.config/i3/lock.png
@@ -136,3 +136,6 @@ bindsym XF86AudioPrev exec --no-startup-id cmus-remote -r
 
 # Custom audio line switcher
 bindsym $mod+o exec --no-startup-id aline
+
+# Make all windows float rather than tile
+for_window [class=".*"] floating enable
