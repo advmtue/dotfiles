@@ -20,7 +20,8 @@ Clock() {
 
 # Current playing track info
 Music() {
-    echo "$($HOME'/.config/lemonbar/cmus.sh')"
+    #echo "$($HOME'/.config/lemonbar/cmus.sh')"
+    echo "$($HOME'/.config/lemonbar/mpc.sh')"
 }
 
 # Volume of amixer Master
