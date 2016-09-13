@@ -130,9 +130,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer sset Master togglemute
 
 # Music Start/Stop
-bindsym XF86AudioPlay exec --no-startup-id cmus-remote -u
-bindsym XF86AudioNext exec --no-startup-id cmus-remote -n
-bindsym XF86AudioPrev exec --no-startup-id cmus-remote -r
+bindsym XF86AudioPlay exec --no-startup-id mpc -q toggle
+bindsym XF86AudioNext exec --no-startup-id mpc -q next
+bindsym XF86AudioPrev exec --no-startup-id mpc -q prev
 
 # Custom audio line switcher
 bindsym $mod+o exec --no-startup-id aline
