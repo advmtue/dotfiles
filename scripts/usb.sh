@@ -144,12 +144,28 @@ elif [[ "$ARG1" && "$ARG1" == "-u" ]]; then
         $(badUsage)
     fi
 elif [[ "$ARG1" && "$ARG1" == "-l" ]]; then
-    echo "Currently mounted usb devices:"
+    mounted=()
+    unmounted=()
     while read line; do
-        device="$(echo $line | grep -oP "sd([$dstart-z][0-9])")"
-        point="$(echo $line | grep -oP "mnt/usb([0-9])")"
-        echo "  $device mounted @ $point"
-    done < <(cat /proc/mounts | grep /mnt/usb)
+        disk=`echo $line | grep -oP "(sd[$dstart-z][1-9])"`
+        size=`echo $line | grep -oP "([0-9]*\.[0-9]*[A-Z])"`
+        mountpoint=`echo $line | grep -oP "mnt/usb([1-$usbCount])"`
+        if [[ "$mountpoint" ]]; then
+            mounted+=("$disk ($size) @ $mountpoint")
+        else
+            unmounted+=("$disk ($size)")
+        fi
+    done < <(lsblk -no NAME,SIZE,MOUNTPOINT | grep -P "sd[$dstart-z][1-9]")
+
+    echo "Mounted USB disks:"
+    for ix in ${!mounted[*]}; do
+        printf "\t%s\n" "${mounted[$ix]}"
+    done
+
+    printf "\nUnmounted USB disks:\n"
+    for ix in ${!unmounted[*]}; do
+        printf "\t%s\n" "${unmounted[$ix]}"
+    done
 else
     $(badUsage)
 fi
