@@ -15,7 +15,7 @@ col_yellow_dark="#BE9F63"
 
 # Time and Date
 Clock() {
-    echo "$(date '+%a %d-%m-%Y %I:%M %p')"
+    date '+%a %d-%m-%Y %I:%M %p'
 }
 
 # Current playing track info
@@ -26,18 +26,18 @@ Music() {
 
 # Volume of amixer Master
 Volume() {
-    echo "$(amixer sget Master | grep -oPm 1 '\[\K([0-9]{0,3})')"
+    amixer sget Master | grep -oPm 1 '\[\K([0-9]{0,3})'
 }
 
 # Mute status of amixer Master
 AudioEnabled() {
-    echo "$(amixer sget Master | grep -oPm 1 '\[\K(on|off)')"
+    amixer sget Master | grep -oPm 1 '\[\K(on|off)'
 }
 
 # Active sink port
 Audioline() {
-    sinks="$(pactl list sinks)"
-    active="$(echo $sinks | grep -oP 'Active Port: analog-output-\K(headphones|lineout)')"
+    sinks=`pactl list sinks`
+    active=`echo $sinks | grep -oP 'Active Port: analog-output-\K(headphones|lineout)'`
     case "$active" in
         "headphones") echo "H";;
         "lineout") echo "S";;
@@ -47,15 +47,15 @@ Audioline() {
 # IP Addresss
 #   This is really quite spammy
 IP() {
-    echo "$(dig +short myip.opendns.com @resolver1.opendns.com)"
+    dig +short myip.opendns.com @resolver1.opendns.com
 }
 
 LocalIP() {
-    echo "$(ip addr list enp3s0 | grep -oP '(?<=inet\s)((?:[0-9]{1,3}\.?){4})')"
+    ip addr list enp3s0 | grep -oP '(?<=inet\s)((?:[0-9]{1,3}\.?){4})'
 }
 
 VPNRunning() {
-    echo "$(ps -aux | grep openvpn | grep root | wc -l)"
+    ps -aux | grep openvpn | grep root | wc -l
 }
 
 Workspaces() {
@@ -108,4 +108,7 @@ while true; do
 
     # Print that Sucka
     echo "$bar%{S1}$bar$ws"
+
+    # Sleep for 200ms
+    usleep 200000
 done
