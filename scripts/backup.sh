@@ -40,4 +40,7 @@ if [[ "$1" && -d "$1" ]]; then
         echo "Backing up ($SOURCE) ==> ($nextName)"
         tar -czf "$DEST/$nextName" -C "$SOURCE" -g "$DEST/$SNAPSHOT_NAME" .
     fi
+else
+    echo "Incorrect usage:"
+    echo "  Try: backup (source) (dest)"
 fi
