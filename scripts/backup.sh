@@ -37,8 +37,18 @@ if [[ "$1" && -d "$1" ]]; then
     if [[ "$2" && -d "$2" ]]; then
         DEST="$2"
         nextName=$(getNextBackupName)
-        echo "Backing up ($SOURCE) ==> ($nextName)"
-        tar -czf "$DEST/$nextName" -C "$SOURCE" -g "$DEST/$SNAPSHOT_NAME" .
+        echo "BACKUP INFORMATION:"
+        echo "  SOURCE DIR: $SOURCE"
+        echo "  BACKUP DIR: $DEST"
+        echo "  BACKUP NAME: $nextName"
+        echo "  SNAPSHOT: $DEST/$SNAPSHOT_NAME"
+        printf "\nProceed with backup?[y/N]: "
+        read -n 1 selection
+        if [[ "$selection" == "y" ]]; then
+            tar -cvzf "$DEST/$nextName" -C "$SOURCE" -g "$DEST/$SNAPSHOT_NAME" .
+        else
+            printf "\nBackup aborted, no changes have been made\n"
+        fi
     fi
 else
     echo "Incorrect usage:"
