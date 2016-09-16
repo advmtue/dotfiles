@@ -3,7 +3,7 @@
 # Global Vars
 ##################################################
 ACTIVE="$(pactl list sinks | grep -oP 'Active Port: analog-output-\K(headphones|lineout)')"
-SINKNUM="$(pactl list short sinks | grep 'analog-stereo' | grep -oP '(^.)')"
+SINKNUM="$(pactl list short sinks | grep 'analog-stereo' | grep 'pci' | grep -oP '(^.)')"
 
 
 # Execute
