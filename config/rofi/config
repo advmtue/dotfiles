@@ -1,0 +1,14 @@
+! Colors
+rofi.color-window:  #101010, #000000
+rofi.color-normal:  #101010, #444444, #101010, #202020, #FFFFFF
+
+! Font
+rofi.font: Roboto Mono Regular 10
+
+! Size
+rofi.lines: 10
+rofi.width: 30
+
+! Appearance
+rofi.hide-scrollbar: True
+rofi.separator-style: none
