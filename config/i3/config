@@ -117,6 +117,8 @@ exec hsetroot -solid '#101010'                       # Solid dark background
 exec compton -cCzG -l-10 -t0 -r3 --config /dev/null --backend xrender # Compton compositing
 exec xrdb -merge ~/.Xresources                  # Merge Xresources
 exec xset m 0/0                                 # Mouse accel = 0
+exec mpd
+exec mpdscribbler
 
 # i3lock on mod+p
 #bindsym $mod+p exec i3lock -i ~/.config/i3/lock.png
