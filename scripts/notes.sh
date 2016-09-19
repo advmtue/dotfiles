@@ -9,6 +9,7 @@
 #   notes new (name)            # Create new note with (name) and nvim
 #   notes delete (name)         # Delete a note with given name
 #   notes list                  # List all notes
+#   notes edit (name)           # Edit a note
 
 # Important:
 #   notes delete moves note to .bin folder
@@ -48,9 +49,7 @@ deleteNote () {
 }
 
 newNote () {
-    if [[ "$1" && ! -e "$HOME/.notes/$1" ]]; then
-        nvim $HOME/.notes/"$1"
-    fi
+    nvim $HOME/.notes/"$1"
 }
 
 badUsage () {
@@ -61,17 +60,27 @@ badUsage () {
     echo "  notes list"
     echo "  notes delete (name)"
     echo "  notes new (name)"
+    echo "  notes edit (name)"
 }
 
 ##################################################
 #   Execute
 
 if [[ $1 && "$1" == "save" ]]; then
-    saveNotes
+    printf "Saving notes will delete unmatched serverside files!\n"
+    printf "Are you sure you want to save?[y/N]: "
+    read -n 1 selection
+    printf "\n"
+    if [[ "$selection" && "$selection" == "y" ]]; then
+        saveNotes
+    else
+        echo "Abort."
+    fi
 elif [[ $1 && "$1" == "get" ]]; then
     printf "Getting notes will delete all local changes!\n"
     printf "Continue?[y/N]: "
     read -n 1 selection
+    printf "\n"
     if [[ "$selection" == "y" ]]; then
         getNotes
     else
@@ -82,16 +91,43 @@ elif [[ $1 && "$1" == "list" ]]; then
 elif [[ $1 && "$1" == "delete" ]]; then
     if [[ "$2" && -e "$HOME/.notes/$2" ]]; then
         deleteNote "$2"
-    else
+    elif [[ $2 ]]; then
         echo "Error: deleteNote bad argument"
         echo "  Note does not exist"
+    else
+        badUsage
     fi
 elif [[ $1 && "$1" == "new" ]]; then
     if [[ $2 && ! -e "$HOME/.notes/$2" ]]; then
         newNote "$2"
+    elif [[ $2 ]]; then
+        printf "Error: Note already exists\n"
+        printf "Edit note instead?[y/N]: "
+        read -n 1 selection
+        printf "\n"
+        if [[ "$selection" == "y" ]]; then
+            newNote "$2"
+        else
+            echo "Abort"
+        fi
     else
-        echo "Error: newNote bad argument"
-        echo "  Note '$2' already exists"
+        badUsage
+    fi
+elif [[ $1 && "$1" == "edit" ]]; then
+    if [[ $2 && -e "$HOME/.notes/$2" ]]; then
+        newNote "$2"
+    elif [[ $2 ]]; then
+        printf "Error: Note ($2) doesn't exist\n"
+        printf "Create new note?[y/N]: "
+        read -n 1 selection
+        printf "\n"
+        if [[ "$selection" == "y" ]]; then
+            newNote "$2"
+        else
+            echo "Abort."
+        fi
+    else
+        badUsage
     fi
 else
     badUsage
