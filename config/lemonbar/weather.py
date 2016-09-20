@@ -16,7 +16,7 @@ LONG = '144.3617'
 KEY = 'SomeAPIKeyWouldGoHereButImNotSillyEnoughToPutItInAGitRepo'
 
 # Get the forecast API key
-f = open('.secret_weatherapi', 'r')
+f = open('/home/aclaivi/.config/lemonbar/.secret_weatherapi', 'r')
 KEY = f.read().split('\n')[0]
 f.close()
 
