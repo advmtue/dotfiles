@@ -40,7 +40,7 @@ getNotes() {
 }
 
 listNotes() {
-    ls "$HOME/.notes"
+    ls --format single-column "$HOME/.notes"
 }
 
 deleteNote () {
