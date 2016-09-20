@@ -9,6 +9,11 @@ col_text_dark="#101010"
 col_yellow="#F0C674"
 col_yellow_dark="#BE9F63"
 
+wait_time=200000    # Sleep time
+
+weather_cache=0
+weather_count=4500
+weather_max=4500    # 15 minutes @ 200ms intervals
 
 # General Getter Functions
 ##################################################
@@ -62,6 +67,10 @@ Workspaces() {
     echo "$(~/.config/lemonbar/workspace.sh)"
 }
 
+Weather() {
+    echo "$(~/.config/lemonbar/weather.py)"
+}
+
 # Execution
 ##################################################
 while true; do
@@ -84,6 +93,16 @@ while true; do
         bar=$bar"%{F$col_text_light} $musicInfo%{F-}"
     fi
 
+    # Weather Info
+    weatherInfo=$weather_cache
+    if [[ $weather_count -gt $weather_max ]]; then
+        weather_cache=$(Weather)
+        weather_count=0
+    fi
+    ((weather_count=weather_count+1))
+    bar="$bar%{r}%{F$col_text_light} $test $weatherInfo°C |%{F-}"
+
+
     # Local IP and VPN Status
     #   Text = Local IP Address (IPV4)
     #   Green = VPN Running
@@ -97,7 +116,7 @@ while true; do
         vpn_info="%{F#3BCC5D}"
     fi
 
-    bar="$bar%{r}$vpn_info$localip%{F-}%{B-}"
+    bar="$bar$vpn_info$localip%{F-}%{B-}"
 
     # Time and Date
     clock="$(Clock)"
