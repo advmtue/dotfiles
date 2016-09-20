@@ -28,6 +28,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'danro/rename.vim'
 " Language Highlighting
 Plugin 'digitaltoad/vim-pug'
+Plugin 'moll/vim-node'
 " Airline (Status Bar)
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
