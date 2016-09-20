@@ -11,6 +11,8 @@ alias ls='ls --color=auto'
 alias la='ls -A'
 alias ll='ls -lh'
 alias lal='ls -Alh'
+alias lc='ls --format single-column'
+alias music="ncmpcpp"
 
 # Check the window size after each command
 shopt -s checkwinsize
