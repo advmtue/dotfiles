@@ -12,7 +12,7 @@ col_yellow_dark="#BE9F63"
 wait_time=200000    # Sleep time
 
 weather_cache=0
-weather_count=4500
+weather_count=4475  # First pull 5s after loading (wait for net)
 weather_max=4500    # 15 minutes @ 200ms intervals
 
 # General Getter Functions
