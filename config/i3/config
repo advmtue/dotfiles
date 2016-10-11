@@ -104,7 +104,7 @@ mode "resize" {
 #   Windows have 3px borders
 #   Floats have 1px borders
 new_window pixel 3
-new_float 1pixel
+new_float pixel 1
 
 # Add some gaps
 gaps inner 30
@@ -141,4 +141,4 @@ bindsym XF86AudioPrev exec --no-startup-id mpc -q prev
 bindsym $mod+o exec --no-startup-id aline
 
 # Make all windows float rather than tile
-for_window [class=".*"] floating enable
+# for_window [class=".*"] floating enable
