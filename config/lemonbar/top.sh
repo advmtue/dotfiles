@@ -9,10 +9,12 @@ col_text_dark="#101010"
 col_yellow="#F0C674"
 col_yellow_dark="#BE9F63"
 
+col_underline="#ADADAD"
+
 wait_time=200000    # Sleep time
 
 weather_cache=0
-weather_count=4475  # First pull 5s after loading (wait for net)
+weather_count=4490  # First pull 2s after loading (wait for net)
 weather_max=4500    # 15 minutes @ 200ms intervals
 
 # General Getter Functions
@@ -100,7 +102,7 @@ while true; do
         weather_count=0
     fi
     ((weather_count=weather_count+1))
-    bar="$bar%{r}%{F$col_text_light} $test $weatherInfo°C |%{F-}"
+    bar="$bar%{r}%{U#787878}%{F$col_text_light}$weatherInfo°C  %{F-}"
 
 
     # Local IP and VPN Status
@@ -116,11 +118,11 @@ while true; do
         vpn_info="%{F#3BCC5D}"
     fi
 
-    bar="$bar$vpn_info$localip%{F-}%{B-}"
+    bar="$bar$vpn_info$localip%{F-}  %{B-}"
 
     # Time and Date
     clock="$(Clock)"
-    bar=$bar"%{F$col_text_light} | $clock %{F-}"
+    bar=$bar"%{F$col_text_light}$clock %{F-}"
 
     # Workspaces
     ws="$(Workspaces)"
