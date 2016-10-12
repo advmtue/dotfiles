@@ -5,7 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
 # A few aliases for good measure
 alias ls='ls --color=auto'
 alias la='ls -A'
@@ -13,7 +12,7 @@ alias ll='ls -lh'
 alias lal='ls -Alh'
 alias lc='ls --format single-column'
 alias music="ncmpcpp"
-alias memes="for i in {1..4}; do echo memes | figlet | lolcat; done"
+alias memes="for i in {1..5}; do echo memes | figlet | lolcat; done"
 
 # Check the window size after each command
 shopt -s checkwinsize
