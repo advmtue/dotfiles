@@ -1,8 +1,5 @@
-" ----------------
-" .vimrc
-" Adam Tuechler
-" ----------------
-
+" -- This thing
+"   Honestly have no idea what it is
 if has('nvim')
     let s:editor_root=expand("~/.nvim")
     nmap <BS> <C-W>h
@@ -17,7 +14,6 @@ let &rtp = &rtp . ',' .  s:editor_root . '/bundle/Vundle.vim'
 call vundle#rc(s:editor_root . '/bundle/')
 call vundle#begin()
 
-" Util
 Plugin 'VundleVim/Vundle.vim'             " Package Management
 Plugin 'scrooloose/nerdtree'              " NERDTree filesystem explorer
 Plugin 'scrooloose/nerdcommenter'         " Commenting
@@ -26,26 +22,21 @@ Plugin 'bronson/vim-trailing-whitespace'  " Trailing whitespace helper
 Plugin 'ctrlpvim/ctrlp.vim'               " Ctrl-P
 Plugin 'danro/rename.vim'                 " Rename active file
 
-" Language Highlighting
 Plugin 'digitaltoad/vim-pug'              " Pug (Jade) highlighting
 Plugin 'moll/vim-node'                    " Node highlighting
 
-" Status bar
 Plugin 'bling/vim-airline'                " Airline (Status bar)
 Plugin 'vim-airline/vim-airline-themes'   " Airline themes pack
 
-" Git
 Plugin 'airblade/vim-gitgutter'           " Git gutter
 Plugin 'tpope/vim-fugitive'               " Fugitive
 
-" Theme
 Plugin 'baskerville/bubblegum'
 Plugin 'morhetz/gruvbox'
 Plugin 'romainl/apprentice'
 
 call vundle#end()
 filetype plugin indent on
-" !- Vundle
 
 " Syntax Highlighting
 syntax on
@@ -56,24 +47,18 @@ syntax on
 "   with the default terminal background.
 set background=dark
 colorscheme apprentice
-
-" Remove backgrounds
-hi Normal ctermbg=NONE
+hi Normal ctermbg=NONE                    " Remove Backgrounds
 hi LineNr ctermbg=NONE
 hi FoldColumn ctermbg=NONE ctermfg=242
-" !- Colour Scheme
 
-
-" Tab Settings
-"   Don't use tabs :~)
-"   Default tab expands to 2 spaces
+" -- General Settings
+" Tabs = 2 spaces
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=4 " Jscript gets 4w tab
 
-" More Options
 set nu              " Show line numbers
 set hidden          " Don't close hidden buffers
 set ignorecase      " Ignore the case when / searching
@@ -92,10 +77,10 @@ set wrapmargin=0    " More wrap disabling
 set colorcolumn=80  " Make it obvious where 80 chars is
 set scrolloff=4     " 4 Lines of space above/below cursor
 set lazyredraw      " Don't redraw during automated tasks
-set t_Co=256
+set t_Co=256        " 256 Colors
 
-" NERDTree Stuff
-nnoremap <F2> :NERDTreeToggle<CR>
+" -- Maps and Remaps
+nnoremap <F2> :NERDTreeToggle<CR>       " NERDTree
 
 " No bitchboi arrow keys
 nnoremap <Left> :echoe "HEY YOU, USE H INSTEAD"<CR>
@@ -111,17 +96,16 @@ nnoremap <C-L> <C-W><C-L>
 set splitbelow      " Split Down
 set splitright      " Split Right
 
-" Fun as Heck Leader Configs
+" Leader maps
 let mapleader = " "             " Use space as the leader
 nnoremap <Leader>j :bprev<CR>   " Leader-j previous buffer
 nnoremap <Leader>k :bnext<CR>   " Leader-k next buffer
 nnoremap <Leader>w :w<CR>       " Leader-w save
 nnoremap <Leader>q :bw<CR>      " Leader-q close buffer
 
-" Vim-Airline Config
+" -- Airline
 set laststatus=2                            " Enable vim-airline
 autocmd VimEnter * AirlineTheme term        " Term theme
-" Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 0
@@ -129,7 +113,7 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#branch#enabled = 1
 
-" CtrlP Config
+" -- Ctrl-P
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
   \ 'file': '\v\.(exe|so|dll)$'
