@@ -35,7 +35,7 @@
 *.color15:      #c5c8c6
 
 URxvt.scrollBar: false
-URxvt.font: xft:Roboto Mono:size=9:style=Regular
+URxvt.font: xft:Roboto Mono:size=9:style=Light
 URxvt.dynamicColors: true
 URxvt.internalBorder: 8
 
