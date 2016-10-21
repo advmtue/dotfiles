@@ -3,7 +3,7 @@ rofi.color-window:  #101010, #000000
 rofi.color-normal:  #101010, #444444, #101010, #202020, #FFFFFF
 
 ! Font
-rofi.font: Roboto Mono Regular 12
+rofi.font: Mono 12
 
 ! Size
 rofi.lines: 10
