@@ -5,7 +5,7 @@
 # Global variables
 ##################################################
 
-col_tile_focused="#5F819D"
+col_tile_focused="#41627D"
 col_tile_active="#FFFFFF"
 col_tile_inactive="#3A3A3A"
 
@@ -31,31 +31,24 @@ Tiles() {
         tileInfo="$(echo "$1" | grep '|num:'$i'|')"
 
         # Empty instantiation
-        tile="$()"
+        tile=" $i "
 
         # If #workspace is active
         if [ "$tileInfo" ];
         then
             # Create a normal active number
-            tile="%{F$col_tile_active}$i"
+            tile="%{F$col_tile_active}$tile"
 
             # Check if focused
             if [ "$(echo $tileInfo | grep 'focused:True')" ]
             then
                 # Change to focused active number
                 #   and underline it
-                tile="%{+u}%{F$col_tile_focused}$i"
+                tile="%{B$col_tile_focused}%{F$col_tile_active}$tile"
             fi
         else
             # Inactive workspace
-            tile="%{F$col_tile_inactive}$i"
-        fi
-
-        # If not first tile (tiles not empty)
-        if [ "$tiles" ];
-        then
-            # Pad it
-            tile="  $tile"
+            tile="%{F$col_tile_inactive}$tile"
         fi
 
         tiles="$tiles$tile%{F-}%{B-}%{-u}"
