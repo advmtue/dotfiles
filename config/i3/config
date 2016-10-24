@@ -125,6 +125,9 @@ exec mpdscribble                                # Lastfm Scrobbler
 #   Uses fancy blur script
 bindsym $mod+p exec ~/.config/i3/lock.sh
 
+# Set Steam windows to always float
+for_window [class="Steam"] floating enable
+
 # XF86 Input Configuration
 ##################################################
 
