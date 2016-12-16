@@ -16,7 +16,7 @@ printf "\nAnalyze and apply? [y/N]: "
 read -n 1 selection
 if [[ "$selection" == "y" ]]; then
   printf "\nAlright boss, doin' shit...\n"
-  find . -name "*.mp3" -exec mp3gain -a -k -s r {} \;
+  find . -name "*.mp3" -exec mp3gain -d 6 -k -r -s r {} \;
 else
   printf "\nAborted.\n"
 fi
