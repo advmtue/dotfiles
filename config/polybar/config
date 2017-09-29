@@ -90,8 +90,7 @@ format-padding = 3
 type = internal/date
 interval = 5
 
-date = %d-%m-%Y
-time = %H:%M
+date = %I:%M    %d-%m-%Y
 
 format-padding = 4
 format-underline = ${xrdb:color10}
