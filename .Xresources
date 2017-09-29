@@ -35,8 +35,8 @@
 *.color15:      #c5c8c6
 
 URxvt.scrollBar: false
-URxvt.font: xft:Andale Mono:size=9:style=Regular
+URxvt.font: xft:Andale Mono:size=8.5:style=Regular
 URxvt.dynamicColors: true
-URxvt.internalBorder: 8
+URxvt.internalBorder: 15
 
 Xcursor.size: 8
