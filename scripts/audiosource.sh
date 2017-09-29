@@ -15,11 +15,14 @@ output_device="none"
 IFS='
 '
 
-# Check if the audio device is muted
-# TODO
 
 # Find the active sink (either RUNNING or IDLE)
 ACTIVE_SINK=$(pactl list short sinks | gawk '/RUNNING|IDLE/ {print $1}')
+
+if [ -z "$ACTIVE_SINK" ]; then
+  echo "NONE"
+  exit 1
+fi
 
 # Get the active port
 all_sinks=$(pactl list sinks | gawk '/Sink|Active Port/')
