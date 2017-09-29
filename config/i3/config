@@ -116,7 +116,7 @@ mode "resize" {
 # Basic window styling:
 #   No title bars on any windows
 #   Windows have 2px borders
-#   Floats have 1px borders
+#   Floats have 2px borders
 new_window pixel 2
 new_float pixel 2
 
@@ -128,6 +128,7 @@ smart_borders on
 
 # Startup some programs
 #exec $HOME/.config/lemonbar/run.sh              # Lemonbar
+exec_always --no-startup-id ~/.config/polybar/launch.sh # Polybar
 exec feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg   # Wallpaper
 exec compton -cCzG -l-10 -t0 -r3 --config /dev/null --backend xrender # Compton compositing
 exec xrdb -merge ~/.Xresources                  # Merge Xresources
