@@ -155,7 +155,7 @@ bindsym XF86AudioNext exec --no-startup-id mpc -q next
 bindsym XF86AudioPrev exec --no-startup-id mpc -q prev
 
 # Line switching
-bindsym $mod+o exec --no-startup-id aline
+bindsym $mod+o exec --no-startup-id audioline
 
 # Make all windows float rather than tile
 for_window [class=".*"] floating enable

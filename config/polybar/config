@@ -78,7 +78,7 @@ label-offline = "MPD OFFLINE"
 [module/audiosource]
 type = custom/script
 
-exec = audiosource
+exec = audiosource | audiolist
 interval = 1
 
 format = <label>

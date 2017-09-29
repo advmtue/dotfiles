@@ -4,12 +4,7 @@
 # Outputs simple text naming the audio source
 
 
-# Declare the names of the output list
-declare -A output_list
-output_list["hdmi-output-1"]="HDMI"
-output_list["analog-output-lineout"]="SPEAKER"
-output_list["analog-output-headphones"]="HEADPHONE"
-output_list["none"]="UNKNOWN"
+# Global variables
 select_sink=0
 output_device="none"
 IFS='
@@ -44,4 +39,4 @@ for line in $all_sinks; do
 done
 
 # Output a translated version to make it nice
-echo ${output_list["$output_device"]}
+echo $output_device
