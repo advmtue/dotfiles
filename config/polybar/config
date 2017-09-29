@@ -78,7 +78,8 @@ label-offline = "MPD OFFLINE"
 [module/audiosource]
 type = custom/script
 
-exec = audiosource | audiolist
+;TODO - Make this less hideous
+exec = echo $(audiosource | audiolist) $(amixer sget Master | gawk '/(%)/ {print $5}' | grep -m 1 "%")
 interval = 1
 
 format = <label>
