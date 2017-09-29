@@ -6,7 +6,7 @@
 
 # Declare the names of the output list
 declare -A output_list
-output_list["hdmi-output-1"]="MONITOR"
+output_list["hdmi-output-1"]="HDMI"
 output_list["analog-output-lineout"]="SPEAKER"
 output_list["analog-output-headphones"]="HEADPHONE"
 output_list["none"]="UNKNOWN"
