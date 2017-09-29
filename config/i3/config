@@ -1,76 +1,51 @@
-# Use the windows key as the modifier
-set $mod Mod4
-
-# Set font, not really useful
-#font pango:monospace 8
-#for_window [class=".*"] title_format "> %title"
-
-# Use Mouse+$mod to drag floating windows to their wanted position
+set $mod mod4
 floating_modifier $mod
-
-# start a terminal
 bindsym $mod+Return exec urxvt
-
-# kill focused window
 bindsym $mod+Shift+q kill
 
-# Use rofi as the program runner
-bindsym $mod+d exec "rofi -show run"
+
+# Window Movement
+##################################################
 
 # Change window focus
-#   Uses vim style instead of the weird j->semi version
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # Move focused window
-#   Also uses vim style movements
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# Define how windows split
-bindsym $mod+semicolon split h
-bindsym $mod+v split v
 
-# Enable Fullscreen
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
-# Workspace Naming and Assigning
+# Window Manipulation
 ##################################################
 
-set $ws1 1:Steam
-set $ws2 2:Discord
-set $ws3 3:Music
-set $ws4 4:Dev
+bindsym $mod+semicolon split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
 
-assign [class="Steam"] $ws1
-assign [class="Discord"] $ws2
-assign [class="ncmpcpp"] $ws3
+bindsym $mod+r mode "resize"
+mode "resize" {
+  bindsym h resize shrink width 5 px or 5 ppt
+  bindsym j resize grow height 5 px or 5 ppt
+  bindsym k resize shrink height 5 px or 5 ppt
+  bindsym l resize grow width 5 px or 5 ppt
 
-# Workspace switches
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+
+# Workspace Navigation
+##################################################
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -79,10 +54,9 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
-# Move container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
@@ -91,73 +65,50 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# reload the configuration file
+
+# i3 Reload + Restart + Close
+##################################################
+
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'Kill me pls' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'EXIT' 'i3-msg exit'"
 
-# Resize window with the keyboard
-#   Uses vim-style movement controls
-#   Adjusts window size in 5px increments/decrements
-bindsym $mod+r mode "resize"
-mode "resize" {
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym j resize grow height 5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+# Window Styling
+##################################################
 
-# Basic window styling:
-#   No title bars on any windows
-#   Windows have 2px borders
-#   Floats have 2px borders
 new_window pixel 2
 new_float pixel 2
+for_window [class=".*"] floating enable   # All windows float
 
-# Add some gaps
 gaps inner 20
 gaps outer 0
 smart_gaps on
 smart_borders on
 
-# Startup some programs
-#exec $HOME/.config/lemonbar/run.sh              # Lemonbar
-exec_always --no-startup-id ~/.config/polybar/launch.sh # Polybar
-exec feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg   # Wallpaper
-exec compton -cCzG -l-10 -t0 -r3 --config /dev/null --backend xrender # Compton compositing
-exec xrdb -merge ~/.Xresources                  # Merge Xresources
-exec xset m 0/0                                 # Mouse accel = 0
-exec mpd                                        # Music player Daemon
-exec mpdscribble                                # Lastfm Scrobbler
 
-# i3lock
-#   Uses fancy blur script
+# Custom Programs and Auto-init
+##################################################
+
+bindsym $mod+d exec "rofi -show run"
 bindsym $mod+p exec ~/.config/i3/lock.sh
+bindsym $mod+o exec --no-startup-id audioline
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg
+exec compton -cCzG -l-10 -t0 -r3 --config /dev/null --backend xrender
+exec xrdb -merge ~/.Xresources
+exec xset m 0/0
+exec mpd
+exec mpdscribble
 
 
 # XF86 Input Configuration
 ##################################################
 
-# Volume Up/Down/Mute
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer sset Master togglemute
-
-# Media Controls (Play/Pause + Next/Prev)
 bindsym XF86AudioPlay exec --no-startup-id mpc -q toggle
 bindsym XF86AudioNext exec --no-startup-id mpc -q next
 bindsym XF86AudioPrev exec --no-startup-id mpc -q prev
-
-# Line switching
-bindsym $mod+o exec --no-startup-id audioline
-
-# Make all windows float rather than tile
-for_window [class=".*"] floating enable
-
 
