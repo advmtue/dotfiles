@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 # Aliases
-alias ls='ls --color=auto'
+alias ls='ls -G'
 alias la='ls -A'
 alias ll='ls -lh'
 alias lal='ls -Alh'
@@ -51,7 +51,6 @@ ps1_nocolor="\u@\h \w $"
 
 # Export depending on TERM
 case "$TERM" in
-    rxvt-unicode-256color) export PS1=$ps1_color;;
-    screen-256color) export PS1=$ps1_color;;
+    *-256color) export PS1=$ps1_color;;
     *) export PS1=$ps1_nocolor;;
 esac
