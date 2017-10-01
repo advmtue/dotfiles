@@ -35,7 +35,7 @@
 *.color15:      #c5c8c6
 
 URxvt.scrollBar: false
-URxvt.font: xft:Roboto Mono:size=8.5:style=Regular
+URxvt.font: xft:Roboto Mono for Powerline:size=8.5:style=Regular
 URxvt.dynamicColors: true
 URxvt.internalBorder: 20
 

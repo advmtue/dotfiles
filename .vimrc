@@ -74,7 +74,7 @@ set nofoldenable    " Don't fold functions (it looks ugly!)
 set nowrap          " Don't wrap text horizontall (Map to new line)
 set textwidth=0     " More wrap disabling
 set wrapmargin=0    " More wrap disabling
-set colorcolumn=80  " Make it obvious where 80 chars is
+"set colorcolumn=80  " Make it obvious where 80 chars is
 set scrolloff=4     " 4 Lines of space above/below cursor
 set lazyredraw      " Don't redraw during automated tasks
 set t_Co=256        " 256 Colors
@@ -108,10 +108,10 @@ set laststatus=2                            " Enable vim-airline
 autocmd VimEnter * AirlineTheme term        " Term theme
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_powerline_fonts = 0
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#branch#enabled = 1
+let g:airline_powerline_fonts = 1
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+"let g:airline#extensions#branch#enabled = 1
 
 " -- Ctrl-P
 let g:ctrlp_custom_ignore = {
