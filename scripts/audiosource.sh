@@ -31,7 +31,7 @@ for line in $all_sinks; do
     select_sink=$(echo $line | gawk 'match($0, /([0-9])/, a) {print a[0]}')
   else
     # If it's the port and check if the sink is the active one
-    if [ $select_sink == $ACTIVE_SINK ]; then
+    if [ "$select_sink" == "$ACTIVE_SINK" ]; then
       # If so, get the output port on the sink
       output_device=$(echo $line | awk '{print $3}')
     fi
