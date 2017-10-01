@@ -5,6 +5,7 @@ fg = ${xrdb:color15}
 bg = ${xrdb:color0}
 
 [bar/top]
+monitor = DP-0
 width = 100%
 height = 28
 offset-x = 0%
@@ -14,6 +15,7 @@ background = ${colors.bg}
 foreground = ${colors.fg}
 
 font-0 = "Roboto Mono:style=Regular:size=10"
+font-1 = "FontAwesome:size=10"
 
 line-size = 4
 
@@ -22,15 +24,10 @@ modules-center = i3
 modules-right = date
 
 ;TODO tray
-;tray-position = right
-;tray-padding = 2
-;tray-background = ${xrdb.color0}
-;tray-transparent = false
-;tray-detached = false
+tray-position = right
+tray-padding = 8
 
-spacing = 1
 padding-left = 2
-padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
@@ -43,17 +40,23 @@ format = <label-state> <label-mode>
 
 ;unfocused workspace
 label-unfocused = "%index%"
-;label-unfocused-foreground = ${colors.fg}
-;label-unfocused-background = ${colors.bg}
 label-unfocused-padding = 2
 label-unfocused-underline = ${xrdb:color8}
 
+;visible workspace
+label-visible = "%index%"
+label-visible-padding = 2
+label-visible-underline = ${xrdb:color8}
+
 ;focused workspace
 label-focused = "%index%"
-;label-focused-foreground = ${colors.fg}
-;label-focused-background = ${colors.bg}
 label-focused-padding = 2
 label-focused-underline = ${colors.fg}
+
+;urgent workspace
+label-urgent = "%index%"
+label-urgent-padding = 2
+label-urgent-underline = ${xrdb:color9}
 
 
 [module/mpd]
@@ -63,12 +66,11 @@ host = 0.0.0.0
 port = 6600
 interval = 2
 
-format-online = <label-time> <label-song>
+format-online =   <label-time> <label-song>
 format-online-underline = ${xrdb:color1}
-format-online-padding = 2
 
 label-song = "%artist% - %title%"
-label-offline = "MPD OFFLINE"
+label-time = "%elapsed%/%total%"
 
 ;bar-progress-width = 30
 ;bar-progress-indicator = o
@@ -85,7 +87,6 @@ interval = 1
 
 format = <label>
 format-underline = ${xrdb:color4}
-format-padding = 2
 
 click-left = audiorefresh
 
@@ -94,7 +95,6 @@ click-left = audiorefresh
 type = internal/date
 interval = 5
 
-date = %I:%M    %d-%m-%Y
+date = " %I:%M     %d-%m-%Y"
 
-format-padding = 2
 format-underline = ${xrdb:color10}
