@@ -79,7 +79,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'EXIT' 'i3-msg 
 
 new_window pixel 2
 new_float pixel 2
-for_window [class=".*"] floating enable   # All windows float
+#for_window [class=".*"] floating enable   # All windows float
+for_window [class=".*Steam"] floating enable
 
 gaps inner 20
 gaps outer 0
