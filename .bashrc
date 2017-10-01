@@ -46,7 +46,7 @@ function color_set {
 }
 
 # Potential Exports
-ps1_color="[$(color_set 0 31)\u$color_reset \w] $"
+ps1_color="$(color_set 0 31)\u$color_reset \w $"
 ps1_nocolor="\u@\h \w $"
 
 # Export depending on TERM
