@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 # Aliases
-alias ls='ls -G'
+alias ls='ls -G --color=auto --group-directories-first'
 alias la='ls -A'
 alias ll='ls -lh'
 alias lal='ls -Alh'
