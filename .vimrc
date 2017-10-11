@@ -89,6 +89,8 @@ nnoremap <Up> :echoe "HEY YOU, USE K INSTEAD"<CR>
 nnoremap <Down> :echoe "HEY YOU, USE J INSTEAD"<CR>
 
 " Various Window Splitting Magic
+nnoremap \ <C-W>v
+nnoremap - <C-W>n
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-K> <C-W><C-K>
