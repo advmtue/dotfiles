@@ -2,11 +2,8 @@
 [[ $- != *i* ]] && return
 
 # Aliases
-alias ls='ls -G --color=auto --group-directories-first'
-alias la='ls -A'
-alias ll='ls -lh'
-alias lal='ls -Alh'
-alias lc='ls --format single-column'
+alias ls='ls -l --color=auto --group-directories-first'
+alias lsah='ls -Alh'
 alias music="ncmpcpp"
 alias memes="for i in {1..5}; do echo memes | figlet | lolcat; done"
 
