@@ -1,5 +1,4 @@
-" -- This thing
-"   Honestly have no idea what it is
+"   Set editor root depending on the version of vim
 if has('nvim')
     let s:editor_root=expand("~/.nvim")
     nmap <BS> <C-W>h
@@ -8,32 +7,34 @@ else
     set nocompatible
 endif
 
-" -- Vundle
+"   Vundle Package Management
 filetype off
 let &rtp = &rtp . ',' .  s:editor_root . '/bundle/Vundle.vim'
 call vundle#rc(s:editor_root . '/bundle/')
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'             " Package Management
-Plugin 'scrooloose/nerdtree'              " NERDTree filesystem explorer
-Plugin 'scrooloose/nerdcommenter'         " Commenting
-Plugin 'tpope/vim-surround'               " Surround
-Plugin 'bronson/vim-trailing-whitespace'  " Trailing whitespace helper
-Plugin 'ctrlpvim/ctrlp.vim'               " Ctrl-P
-Plugin 'danro/rename.vim'                 " Rename active file
+Plugin 'VundleVim/Vundle.vim'               " Package Management
+Plugin 'scrooloose/nerdtree'                " NERDTree filesystem explorer
+Plugin 'scrooloose/nerdcommenter'           " Commenting
+Plugin 'tpope/vim-surround'                 " Surround
+Plugin 'bronson/vim-trailing-whitespace'    " Trailing whitespace helper
+Plugin 'ctrlpvim/ctrlp.vim'                 " Ctrl-P
+Plugin 'danro/rename.vim'                   " Rename active file
 
-Plugin 'digitaltoad/vim-pug'              " Pug (Jade) highlighting
-Plugin 'moll/vim-node'                    " Node highlighting
+Plugin 'digitaltoad/vim-pug'                " Pug (Jade) highlighting
+Plugin 'moll/vim-node'                      " Node highlighting
 
-Plugin 'bling/vim-airline'                " Airline (Status bar)
-Plugin 'vim-airline/vim-airline-themes'   " Airline themes pack
+Plugin 'bling/vim-airline'                  " Airline (Status bar)
+Plugin 'vim-airline/vim-airline-themes'     " Airline themes pack
 
-Plugin 'airblade/vim-gitgutter'           " Git gutter
-Plugin 'tpope/vim-fugitive'               " Fugitive
+Plugin 'airblade/vim-gitgutter'             " Git gutter
+Plugin 'tpope/vim-fugitive'                 " Fugitive
 
 Plugin 'baskerville/bubblegum'
 Plugin 'morhetz/gruvbox'
 Plugin 'romainl/apprentice'
+
+Plugin 'mhinz/vim-startify'                 " Start Screen
 
 call vundle#end()
 filetype plugin indent on
@@ -120,3 +121,18 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
   \ 'file': '\v\.(exe|so|dll)$'
   \ }
+
+"   Startify Nonsense
+let g:startify_custom_header = [
+            \ '                               ___     ',
+            \ '      ___        ___          /__/\    ',
+            \ '     /__/\      /  /\        |  |::\   ',
+            \ '     \  \:\    /  /:/        |  |:|:\  ',
+            \ '      \  \:\  /__/::\      __|__|:|\:\ ',
+            \ '  ___  \__\:\ \__\/\:\__  /__/::::| \:\',
+            \ ' /__/\ |  |:|    \  \:\/\ \  \:\~~\__\/',
+            \ ' \  \:\|  |:|     \__\::/  \  \:\      ',
+            \ '  \  \:\__|:|     /__/:/    \  \:\     ',
+            \ '   \__\::::/      \__\/      \  \:\    ',
+            \ '       ~~~~                   \__\/',
+            \ ]
