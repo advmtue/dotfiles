@@ -52,10 +52,10 @@ hi LineNr ctermbg=NONE
 hi FoldColumn ctermbg=NONE ctermfg=242
 
 " -- General Settings
-" Tabs = 2 spaces
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+" Tabs = 4 spaces
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=4 " Jscript gets 4w tab
 
