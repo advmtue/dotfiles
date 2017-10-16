@@ -136,3 +136,11 @@ let g:startify_custom_header = [
             \ '   \__\::::/      \__\/      \  \:\    ',
             \ '       ~~~~                   \__\/',
             \ ]
+let g:startify_files_number=5
+highlight StartifyBracket ctermfg=7
+highlight StartifyNumber ctermfg=7 "Or 9
+highlight StartifyPath ctermfg=7
+highlight StartifySlash ctermfg=7
+highlight StartifyFile ctermfg=15
+highlight StartifySection ctermfg=1
+highlight StartifyHeader ctermfg=10
