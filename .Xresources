@@ -1,46 +1,51 @@
-! special
+!   Colours
+!   - special
 *.foreground:   #c5c8c6
 *.background:   #101010
-! black
+!   - black
 *.color0:       #101010
 *.color8:       #373b41
-! red
-*.color1:       #a54242
-*.color9:       #cc6666
-! green
-*.color2:       #8c9440
-*.color10:      #b5bd68
-! yellow
-*.color3:       #de935f
-*.color11:      #f0c674
-! blue
-*.color4:       #5f819d
-*.color12:      #81a2be
-! magenta
-*.color5:       #85678f
-*.color13:      #b294bb
-! cyan
-*.color6:       #5e8d87
-*.color14:      #8abeb7
-! white
+!   - white
 *.color7:       #707880
 *.color15:      #c5c8c6
+!   - red
+*.color1:       #a54242
+*.color9:       #cc6666
+!   - yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+!   - green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+!   - blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+!   - magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+!   - cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
 
+
+!   Terminal
 URxvt.scrollBar: false
 URxvt.font: xft:Roboto Mono for Powerline:size=10:style=Regular
 URxvt.dynamicColors: true
 URxvt.internalBorder: 20
 Xcursor.size: 8
 
-! Rofi
+
+!   Rofi
+rofi.font: RobotoMono 12
 rofi.location: 0
-rofi.font: Mono 12
-rofi.lines: 10
-rofi.width: 30
+rofi.lines: 9
+rofi.width: 20
+rofi.padding: 15
+rofi.bw: 4
 rofi.hide-scrollbar: True
 rofi.separator-style: none
-rofi.color-enabled: true
-!                   bg      fg
-rofi.color-window:  #101010, #000000
-!                   bg          fg          bgalt       hlbg        hlfg
+!   main window     bg          fg
+rofi.color-window:  #101010,    #797880
+!   rows            bg          fg          bgalt       hlbg        hlfg
 rofi.color-normal:  #101010,    #444444,    #101010,    #202020,    #FFFFFF
