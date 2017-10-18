@@ -20,6 +20,24 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 
+#   Window Colours
+##################################################
+
+set $cHighl #707880
+set $cBackg #101010
+set $cTextw #c5c8c6
+set $cInact #101010
+set $cActiv #c5c8c6
+set $cUrgen #cc6666
+
+# Class                     border  backgr. text    indica. child border
+client.focused              $cActiv $cActiv $cBackg $cActiv $cActiv
+client.focused_inactive     $cHighl $cHighl $cBackg $cHighl $cHighl
+client.unfocused            $cHighl $cHighl $cBackg $cHighl $cHighl
+client.urgent               $cUrgen $cUrgen $cBackg $cUrgen $cUrgen
+client.placeholder          $cActiv $cActiv $cBackg $cHighl $cHighl
+
+
 #   Window Manipulation
 ##################################################
 
@@ -77,8 +95,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'EXIT' 'i3-msg 
 #   Window Styling
 ##################################################
 
-new_window pixel 2
-new_float pixel 2
+new_window pixel 3
+new_float pixel 3
 for_window [class=".*"] floating enable   # All windows float
 for_window [class=".*Steam"] floating enable
 
