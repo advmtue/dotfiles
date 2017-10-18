@@ -112,6 +112,7 @@ smart_borders on
 bindsym $mod+d exec "rofi -show run"
 bindsym $mod+p exec ~/.config/i3/lock.sh
 bindsym $mod+o exec --no-startup-id audioline
+bindsym $mod+i exec scrot ~/tmp/screenshot.png
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg
