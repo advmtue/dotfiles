@@ -99,6 +99,7 @@ new_window pixel 3
 new_float pixel 3
 for_window [class=".*"] floating enable   # All windows float
 for_window [class=".*Steam"] floating enable
+focus_follows_mouse no
 
 gaps inner 20
 gaps outer 0
@@ -115,8 +116,9 @@ bindsym $mod+o exec --no-startup-id audioline
 bindsym $mod+i exec scrot ~/tmp/screenshot.png
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id compton -cCzG -o 0.5 -l -1 -t -1 -r 5 --config /dev/null --backend xrender
+exec_always --no-startup-id mouse-settings
 exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg
-exec_always --no-startup-id compton -cCzG -o 0.5 -l 1 -t 0 -r 9 --config /dev/null --backend xrender
 exec --no-startup-id mpd
 exec --no-startup-id mpdscribble
 exec xrdb -merge ~/.Xresources
