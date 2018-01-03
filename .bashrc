@@ -6,6 +6,7 @@ alias ls='ls -l --color=auto --group-directories-first'
 alias lsah='ls -Alh'
 alias music="ncmpcpp"
 alias memes="for i in {1..5}; do echo memes | figlet | lolcat; done"
+alias feh="feh -g 900x700"
 
 # Check the window size after each command
 shopt -s checkwinsize
