@@ -23,6 +23,7 @@ Plugin 'danro/rename.vim'                   " Rename active file
 
 Plugin 'digitaltoad/vim-pug'                " Pug (Jade) highlighting
 Plugin 'moll/vim-node'                      " Node highlighting
+Plugin 'mxw/vim-jsx'
 
 Plugin 'bling/vim-airline'                  " Airline (Status bar)
 Plugin 'vim-airline/vim-airline-themes'     " Airline themes pack
