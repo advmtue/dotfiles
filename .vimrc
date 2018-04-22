@@ -23,10 +23,12 @@ Plugin 'danro/rename.vim'                   " Rename active file
 
 Plugin 'digitaltoad/vim-pug'                " Pug (Jade) highlighting
 Plugin 'moll/vim-node'                      " Node highlighting
-Plugin 'mxw/vim-jsx'
+Plugin 'mxw/vim-jsx'                        " JSX Syntax
+Plugin 'lervag/vimtex'                      " TeX support
 
-Plugin 'bling/vim-airline'                  " Airline (Status bar)
-Plugin 'vim-airline/vim-airline-themes'     " Airline themes pack
+" Plugin 'bling/vim-airline'                  " Airline (Status bar)
+" Plugin 'vim-airline/vim-airline-themes'     " Airline themes pack
+Plugin 'itchyny/lightline.vim'              " LightLine (Status bar)
 
 Plugin 'airblade/vim-gitgutter'             " Git gutter
 Plugin 'tpope/vim-fugitive'                 " Fugitive
@@ -47,11 +49,12 @@ syntax on
 "   Uses apprentice as the base, but with a few mods.
 "   Mainly removing the background color and replacing it
 "   with the default terminal background.
-set background=dark
+set background=light
 colorscheme apprentice
-hi Normal ctermbg=NONE                    " Remove Backgrounds
+hi Normal ctermbg=NONE
 hi LineNr ctermbg=NONE
 hi FoldColumn ctermbg=NONE ctermfg=242
+hi Visual ctermbg=NONE
 
 " -- General Settings
 " Tabs = 4 spaces
@@ -107,15 +110,16 @@ nnoremap <Leader>k :bnext<CR>   " Leader-k next buffer
 nnoremap <Leader>w :w<CR>       " Leader-w save
 nnoremap <Leader>q :bw<CR>      " Leader-q close buffer
 
-" -- Airline
-set laststatus=2                            " Enable vim-airline
-autocmd VimEnter * AirlineTheme term        " Term theme
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_powerline_fonts = 1
+" -- Status Bar
+set laststatus=2                            " Enable Status Bar
+" autocmd VimEnter * AirlineTheme term        " Term theme
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline_powerline_fonts = 1
 " let g:airline_left_sep = ''
 " let g:airline_right_sep = ''
-"let g:airline#extensions#branch#enabled = 1
+" let g:airline#extensions#branch#enabled = 1
+set noshowmode      " Hide the -- INSERT -- line since it's not needed
 
 " -- Ctrl-P
 let g:ctrlp_custom_ignore = {
