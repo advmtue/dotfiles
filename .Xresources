@@ -30,7 +30,7 @@
 
 !   Terminal
 URxvt.scrollBar: false
-URxvt.font: xft:Roboto Mono for Powerline:size=10:style=Regular
+URxvt.font: xft:Roboto Mono for Powerline:size=11:style=Regular
 URxvt.dynamicColors: true
 URxvt.internalBorder: 20
 Xcursor.size: 8
