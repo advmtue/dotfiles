@@ -111,7 +111,7 @@ smart_borders on
 ##################################################
 
 bindsym $mod+d exec "rofi -show run"
-bindsym $mod+p exec ~/.config/i3/lock.sh
+bindsym $mod+p exec "systemctl suspend && ~/.config/i3/lock.sh"
 bindsym $mod+o exec --no-startup-id audioline
 bindsym $mod+i exec scrot ~/tmp/screenshot.png
 
