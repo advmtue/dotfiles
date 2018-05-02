@@ -122,6 +122,7 @@ exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg
 exec --no-startup-id mpd
 exec --no-startup-id mpdscribble
 exec xrdb -merge ~/.Xresources
+exec xsetwacom --set 16 MapToOutput "2304x1440+0+0"
 exec xset m 0/0
 
 
