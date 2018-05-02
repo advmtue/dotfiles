@@ -87,6 +87,9 @@ set t_Co=256        " 256 Colors
 " -- Maps and Remaps
 nnoremap <F2> :NERDTreeToggle<CR>       " NERDTree
 
+" F9 To Run Python Script
+autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+
 " No bitchboi arrow keys
 nnoremap <Left> :echoe "HEY YOU, USE H INSTEAD"<CR>
 nnoremap <Right> :echoe "HEY YOU, USE L INSTEAD"<CR>
