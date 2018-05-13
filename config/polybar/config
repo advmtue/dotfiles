@@ -4,8 +4,8 @@
 fg = ${xrdb:color15}
 bg = ${xrdb:color0}
 
-[bar/top]
-monitor = DP-0
+[bar/main]
+monitor = DP-1
 width = 100%
 height = 28
 offset-x = 0%
@@ -33,7 +33,31 @@ padding-left = 2
 module-margin-left = 1
 module-margin-right = 1
 
+[bar/extra]
+monitor = HDMI-0
+width = 100%
+height = 28
+offset-x = 0%
+offset-y = 0%
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+font-0 = "Roboto Mono:style=Regular:size=10"
+font-1 = "Font Awesome 5 Free:size=10:style=Regular"
+font-2 = "Font Awesome 5 Brands:size=10"
+font-3 = "Font Awesome 5 Free:size=10:style=Solid"
+
+line-size = 4
+
+modules-center = i3
+
+padding-left = 2
+module-margin-left = 1
+module-margin-right = 1
+
 [module/i3]
+pin-workspaces = true
 type = internal/i3
 strip-wsnumbers = true
 enable-click = false
@@ -42,13 +66,15 @@ format = <label-state> <label-mode>
 
 ;unfocused workspace
 label-unfocused = "%index%"
+label-unfocused-foreground = ${xrdb:color8}
 label-unfocused-padding = 2
 label-unfocused-underline = ${xrdb:color8}
 
 ;visible workspace
 label-visible = "%index%"
+label-visible-foreground = ${xrdb:color8}
 label-visible-padding = 2
-label-visible-underline = ${xrdb:color8}
+label-visible-underline = ${colors.fg}
 
 ;focused workspace
 label-focused = "%index%"
