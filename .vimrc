@@ -57,12 +57,12 @@ hi FoldColumn ctermbg=NONE ctermfg=242
 hi Visual ctermbg=NONE
 
 " -- General Settings
-" Tabs = 4 spaces
+" Tabs = Tabs
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
-set expandtab
-autocmd Filetype javascript setlocal ts=4 sw=4 sts=4 " Jscript gets 4w tab
+"set softtabstop=4
+set noexpandtab
+"autocmd Filetype javascript setlocal ts=4 sw=4 sts=4 " Jscript gets 4w tab
 
 set nu              " Show line numbers
 set hidden          " Don't close hidden buffers
@@ -89,6 +89,7 @@ nnoremap <F2> :NERDTreeToggle<CR>       " NERDTree
 
 " F9 To Run Python Script
 autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+autocmd FileType javascript nnoremap <buffer> <F9> :exec '!node' shellescape(@%, 1)<cr>
 
 " No bitchboi arrow keys
 nnoremap <Left> :echoe "HEY YOU, USE H INSTEAD"<CR>
@@ -107,11 +108,11 @@ set splitbelow      " Split Down
 set splitright      " Split Right
 
 " Leader maps
-let mapleader = " "             " Use space as the leader
-nnoremap <Leader>j :bprev<CR>   " Leader-j previous buffer
-nnoremap <Leader>k :bnext<CR>   " Leader-k next buffer
-nnoremap <Leader>w :w<CR>       " Leader-w save
-nnoremap <Leader>q :bw<CR>      " Leader-q close buffer
+noremap <Space> <Nop>
+let mapleader = "\<Space>"      " Use space as the leader
+noremap <Leader>j :bprev<cr>    " Leader-j previous buffer
+noremap <Leader>k :bnext<cr>    " Leader-k next buffer
+noremap <Leader>q :bw<cr>       " Leader-q close buffer
 
 " -- Status Bar
 set laststatus=2                            " Enable Status Bar
