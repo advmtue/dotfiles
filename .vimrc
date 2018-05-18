@@ -57,13 +57,17 @@ hi FoldColumn ctermbg=NONE ctermfg=242
 hi Visual ctermbg=NONE
 
 " -- General Settings
-" Tabs = Tabs
+"   Tabs = 4 Space
+"   Who gives a fuck? Stop changing this shit
 set tabstop=4
 set shiftwidth=4
-"set softtabstop=4
-set noexpandtab
+set softtabstop=0
+set expandtab
+set smarttab
 "autocmd Filetype javascript setlocal ts=4 sw=4 sts=4 " Jscript gets 4w tab
 
+set nobackup        " Meh
+set noswapfile      " Meh
 set nu              " Show line numbers
 set hidden          " Don't close hidden buffers
 set ignorecase      " Ignore the case when / searching
