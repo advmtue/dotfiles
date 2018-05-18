@@ -37,12 +37,12 @@ Xcursor.size: 8
 
 
 !   Rofi
-rofi.font: RobotoMono 12
+rofi.font: RobotoMono 10
 rofi.location: 0
 rofi.lines: 9
-rofi.width: 20
+rofi.width: 25
 rofi.padding: 15
-rofi.bw: 4
+rofi.bw: 2
 rofi.hide-scrollbar: True
 rofi.separator-style: none
 !   main window     bg          fg
