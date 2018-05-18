@@ -108,11 +108,11 @@ set splitbelow      " Split Down
 set splitright      " Split Right
 
 " Leader maps
-noremap <Space> <Nop>
-let mapleader = "\<Space>"      " Use space as the leader
+let mapleader = "," 			" Use comma as the leader
 noremap <Leader>j :bprev<cr>    " Leader-j previous buffer
 noremap <Leader>k :bnext<cr>    " Leader-k next buffer
 noremap <Leader>q :bw<cr>       " Leader-q close buffer
+noremap <Leader>w :w<cr>		" Leader-w saves buffer
 
 " -- Status Bar
 set laststatus=2                            " Enable Status Bar
