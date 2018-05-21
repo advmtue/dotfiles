@@ -2,8 +2,7 @@
 [[ $- != *i* ]] && return
 
 # Aliases
-alias ls='ls -l --color=auto --group-directories-first'
-alias lsah='ls -Alh'
+alias ls='ls --color=auto --group-directories-first'
 alias music="ncmpcpp"
 alias feh="feh -g 900x700"
 
