@@ -1,9 +1,9 @@
 "   Set editor root depending on the version of vim
 if has('nvim')
-    let s:editor_root=expand("~/.nvim")
+    let s:editor_root=expand("~/.config/nvim")
     nmap <BS> <C-W>h
 else
-    let s:editor_root=expand("~/.vim")
+    let s:editor_root=expand("~/.config/vim")
     set nocompatible
 endif
 
