@@ -34,7 +34,7 @@ module-margin-left = 1
 module-margin-right = 1
 
 [bar/extra]
-monitor = HDMI-0
+monitor = HDMI-1
 width = 100%
 height = 28
 offset-x = 0%
