@@ -16,39 +16,41 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # -- Colors
-# General Color Format:
-#   \[\033[(dark|light);(code)m\]
-#
-# Dark / Light codes:
-#   0 = dark
-#   1 = light
-#
-# Colors codes
-#   30 = black    Light = Dark Gray
-#   31 = red
-#   32 = green
-#   33 = brown
-#   34 = blue
-#   35 = purple
-#   36 = cyan
-#   37 = gray     Light = White
+#   0   = black
+#   1   = red
+#   2   = green
+#   3   = brown
+#   4   = blue
+#   5   = purple
+#   6   = cyan
+#   7   = gray
+#   8   = dark gray
+#   9   = light red
+#   10  = light green
+#   11  = light brown
+#   12  = light blue
+#   13  = light purple
+#   14  = light cyan
+#   15  = white
 
-# Default color
-color_reset="\[\033[0;0m\]"
+function saf {
+    echo "\[$(tput setaf $1)\]"
+}
 
-# Function: color_set
-#   Concatenator func
-#   Returns color string
-function color_set {
-    echo "\[\033[$1;$2m\]"
+function res {
+    echo "\[$(tput sgr0)\]"
 }
 
 # Potential Exports
-ps1_color="$(color_set 0 31)\u$color_reset \w $ "
-ps1_nocolor="\u@\h \w $ "
+p_c="$(saf 1)\u $(saf 7)\w $(res)$ "
+p_nc="\u@\h \w $ "
 
 # Export depending on TERM
 case "$TERM" in
-    *-256color) export PS1=$ps1_color;;
-    *) export PS1=$ps1_nocolor;;
+    *-256color) export PS1=$p_c;;
+    *) export PS1=$p_nc;;
 esac
+
+# Clear local functions
+unset -f saf
+unset -f res
