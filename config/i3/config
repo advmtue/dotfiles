@@ -116,7 +116,7 @@ bindsym $mod+o exec --no-startup-id audioline
 bindsym $mod+i exec scrot ~/tmp/screenshot.png
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id compton -cCzG -o 0.5 -l -1 -t -1 -r 5 --config /dev/null --backend xrender
+exec_always --no-startup-id compton -cCzG -o 0.5 -l -1 -t -1 -r 5 --config /dev/null --backend xr_glx_hybrid
 exec_always --no-startup-id mouse-settings
 exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg
 exec --no-startup-id mpd
