@@ -1,7 +1,7 @@
+#   Global Vals
+##################################################
 set $mod mod4
 floating_modifier $mod
-bindsym $mod+Return exec urxvt
-bindsym $mod+Shift+q kill
 
 
 #   Window Movement
@@ -23,17 +23,17 @@ bindsym $mod+Shift+l move right
 #   Window Colours
 ##################################################
 
-set $cHighl #707880
+set $cHighl #a4a4a4
 set $cBackg #101010
 set $cTextw #c5c8c6
-set $cInact #101010
-set $cActiv #c5c8c6
+set $cInact #2d2d2d
+set $cActiv #d6dbd8
 set $cUrgen #cc6666
 
 # Class                     border  backgr. text    indica. child border
 client.focused              $cActiv $cActiv $cBackg $cActiv $cActiv
-client.focused_inactive     $cHighl $cHighl $cBackg $cHighl $cHighl
-client.unfocused            $cHighl $cHighl $cBackg $cHighl $cHighl
+client.focused_inactive     $cInact $cInact $cHighl $cHighl $cHighl
+client.unfocused            $cInact $cInact $cHighl $cHighl $cHighl
 client.urgent               $cUrgen $cUrgen $cBackg $cUrgen $cUrgen
 client.placeholder          $cActiv $cActiv $cBackg $cHighl $cHighl
 
@@ -48,10 +48,10 @@ bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+r mode "resize"
 mode "resize" {
-  bindsym h resize shrink width 5 px or 5 ppt
-  bindsym j resize grow height 5 px or 5 ppt
-  bindsym k resize shrink height 5 px or 5 ppt
-  bindsym l resize grow width 5 px or 5 ppt
+  bindsym h resize shrink width 50 px
+  bindsym j resize grow height 50 px
+  bindsym k resize shrink height 25 px
+  bindsym l resize grow width 50 px
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -95,30 +95,36 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'EXIT' 'i3-msg 
 #   Window Styling
 ##################################################
 
-new_window pixel 0
-new_float pixel 0
-# for_window [class=".*"] floating enable   # All windows float
-for_window [class=".*Steam"] floating enable
-focus_follows_mouse no
+new_window normal 0 px
+new_float normal 0 px
+font pango:Roboto Mono for Powerline Bold 12px
 
-gaps inner 10
-gaps outer 5
+for_window [class=".*"] title_format " -- [%instance] %title"
+for_window [class="Firefox"] border pixel 0
+for_window [class=".*"] floating enable
+
+#gaps inner 10
+#gaps outer 5
 #smart_gaps on
 #smart_borders on
 
+focus_follows_mouse no
 
-#   Custom Programs and Auto-init
+#   Custom Binds and Auto-init
 ##################################################
 
 bindsym $mod+d exec "rofi -show run"
 bindsym $mod+p exec "systemctl suspend && ~/.config/i3/lock.sh"
 bindsym $mod+o exec --no-startup-id audioline
-bindsym $mod+i exec scrot ~/tmp/screenshot.png
+bindsym $mod+i exec scrot /tmp/screenshot.png
+bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+q kill
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id compton -cCzG -o 0.5 -l -1 -t -1 -r 5 --config /dev/null --backend xr_glx_hybrid
+exec_always --no-startup-id compton
 exec_always --no-startup-id mouse-settings
-exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg
+#exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg
+exec_always --no-startup-id hsetroot -solid "#3a3a3a"
 exec --no-startup-id mpd
 exec --no-startup-id mpdscribble
 exec xrdb -merge ~/.Xresources
