@@ -99,7 +99,7 @@ new_window normal 0 px
 new_float normal 0 px
 font pango:Roboto Mono for Powerline Bold 12px
 
-for_window [class=".*"] title_format " -- [%instance] %title"
+for_window [class=".*"] title_format "   %title"
 for_window [class="Firefox"] border pixel 0
 for_window [class=".*"] floating enable
 
@@ -125,6 +125,7 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id mouse-settings
 #exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg
 exec_always --no-startup-id hsetroot -solid "#3a3a3a"
+exec --no-startup-id plank
 exec --no-startup-id mpd
 exec --no-startup-id mpdscribble
 exec xrdb -merge ~/.Xresources
