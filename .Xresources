@@ -33,6 +33,11 @@ URxvt.scrollBar: false
 URxvt.font: xft:Hack:size=11:style=Regular
 URxvt.dynamicColors: true
 URxvt.internalBorder: 20
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: fg9
+URxvt.geometry: 91x24
 Xcursor.size: 8
 
 
