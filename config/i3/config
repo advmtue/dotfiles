@@ -1,27 +1,27 @@
-#   Global Vals
-##################################################
+#       Global Vals
+#-------------------------------------------------------------------------------
+
+#   Modifier: Windows/Command
 set $mod mod4
 floating_modifier $mod
 
+#       Window Movement
+#-------------------------------------------------------------------------------
 
-#   Window Movement
-##################################################
-
-# Change window focus
+#   Chaning Window Focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# Move focused window
+#   Moving Focused Window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-
-#   Window Colours
-##################################################
+#       Window Colours
+#-------------------------------------------------------------------------------
 
 set $cHighl #a4a4a4
 set $cBackg #101010
@@ -37,16 +37,25 @@ client.unfocused            $cInact $cInact $cHighl $cHighl $cHighl
 client.urgent               $cUrgen $cUrgen $cBackg $cUrgen $cUrgen
 client.placeholder          $cActiv $cActiv $cBackg $cHighl $cHighl
 
+#       Window Manipulation
+#-------------------------------------------------------------------------------
 
-#   Window Manipulation
-##################################################
-
+#   Horizontal Split: semicolon
 bindsym $mod+semicolon split h
+
+#   Vertical Split: v
 bindsym $mod+v split v
+
+#   Fullscreen Toggle: f
 bindsym $mod+f fullscreen toggle
+
+#   Floating Toggle: space
 bindsym $mod+Shift+space floating toggle
 
+#   Resize Mode: r
 bindsym $mod+r mode "resize"
+
+#   Resizing Amounts
 mode "resize" {
   bindsym h resize shrink width 50 px
   bindsym j resize grow height 50 px
@@ -57,10 +66,10 @@ mode "resize" {
   bindsym Escape mode "default"
 }
 
+#       Workspace Navigation
+#-------------------------------------------------------------------------------
 
-#   Workspace Navigation
-##################################################
-
+#   Move to Workspace x: Mod + x
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -72,6 +81,7 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+#   Move Window to Workspace x: Mod + Shift + x
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -83,58 +93,79 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+#       Reload + Restart + Close
+#-------------------------------------------------------------------------------
 
-#   Reload + Restart + Close
-##################################################
-
+#   Reload Config: Mod + Shift + c
 bindsym $mod+Shift+c reload
+
+#   Restart i3: Mod + Shift + r
 bindsym $mod+Shift+r restart
+
+#   Prompt Exit: Mod + Shift + e
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'EXIT' 'i3-msg exit'"
 
+#       Window Styling
+#-------------------------------------------------------------------------------
 
-#   Window Styling
-##################################################
-
+#   Window Type: Title, No Border
 new_window normal 0 px
 new_float normal 0 px
+
+#   Font: Roboto Mono for Powerline
 font pango:Roboto Mono for Powerline Bold 12px
 
+#   Window Title
 for_window [class=".*"] title_format "   %title"
+
+#   No Title on Firefox
 for_window [class="Firefox"] border pixel 0
+
+#   All Windows Float
 for_window [class=".*"] floating enable
 
-#gaps inner 10
-#gaps outer 5
-#smart_gaps on
-#smart_borders on
+#   Can't currently use gaps as non-floating is broken with titlebars
+#       gaps inner 10
+#       gaps outer 5
+#       smart_gaps on
+#       smart_borders on
 
+#   Windows Don't Focus on Hover
 focus_follows_mouse no
 
-#   Custom Binds and Auto-init
-##################################################
+#       Custom Binds and Auto-init
+#-------------------------------------------------------------------------------
 
+#   Launcher: Rofi
 bindsym $mod+d exec "rofi -show run"
-bindsym $mod+p exec "systemctl suspend && ~/.config/i3/lock.sh"
-bindsym $mod+o exec --no-startup-id audioline
-bindsym $mod+i exec scrot /tmp/screenshot.png
+
+#   Lock: i3lock
+bindsym $mod+p exec "~/.config/i3/lock.sh"
+
+#   Screenshot: scrot
+bindsym $mod+i exec snap
+
+#   Console: URxvt
 bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
+#   Bar: Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+#   Compositor: Compton
 exec_always --no-startup-id compton
-exec_always --no-startup-id mouse-settings
-#exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg --no-fehbg
+
+#   Background: hsetroot (Solid Color)
 exec_always --no-startup-id hsetroot -solid "#3a3a3a"
+
+#   Dock: Plank
 exec --no-startup-id plank
-exec --no-startup-id mpd
-exec --no-startup-id mpdscribble
+
+#   Merge Xresources
 exec xrdb -merge ~/.Xresources
-exec xsetwacom --set 16 MapToOutput "2304x1440+0+0"
-exec xset m 0/0
 
-
-#   XF86 Input Configuration
-##################################################
+#       XF86 Input Configuration
+#-------------------------------------------------------------------------------
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
