@@ -1,128 +1,134 @@
-; polybar config
-
 [colors]
+bar_fg = #{xrdb:fg}
+bar_bg = #00000000
+
 fg = ${xrdb:color15}
 bg = ${xrdb:color0}
+darkgray = ${xrdb:color8}
+lightgray = #989898
+i3_active_bg = ${xrdb:color1}
+i3_active_fg = ${xrdb:color15}
+
+[settings]
+gap = 7
 
 [bar/main]
 monitor = DP-1
 width = 100%
-height = 28
+height = 26
 offset-x = 0%
 offset-y = 0%
 
-background = ${colors.bg}
-foreground = ${colors.fg}
+foreground = ${colors.bar_fg}
+background = ${colors.bar_bg}
 
-font-0 = "Roboto Mono:style=Regular:size=10"
-font-1 = "Font Awesome 5 Free:size=10:style=Regular"
-font-2 = "Font Awesome 5 Brands:size=10"
-font-3 = "Font Awesome 5 Free:size=10:style=Solid"
+font-0 = "Roboto Mono for Powerline:style=Bold:size=10;2"
+font-1 = "Font Awesome 5 Free:size=10:style=Regular;2"
+font-2 = "Font Awesome 5 Brands:size=10;2"
+font-3 = "Font Awesome 5 Free:size=10:style=Solid;2"
 
-line-size = 4
-
-modules-left = audiosource mpd
 modules-center = i3
-modules-right = date
+modules-right = vpn date
 
 ;TODO tray
 tray-position = right
 tray-padding = 8
 
-padding-left = 2
-module-margin-left = 1
-module-margin-right = 1
+padding-left = 1
+padding-right = 1
+border-top-size = ${settings.gap}
+border-left-size = ${settings.gap}
+border-right-size = ${settings.gap}
 
 [bar/extra]
 monitor = HDMI-1
 width = 100%
-height = 28
+height = 26
 offset-x = 0%
 offset-y = 0%
 
-background = ${colors.bg}
-foreground = ${colors.fg}
+background = ${colors.bar_fg}
+foreground = ${colors.bar_bg}
 
-font-0 = "Roboto Mono:style=Regular:size=10"
-font-1 = "Font Awesome 5 Free:size=10:style=Regular"
-font-2 = "Font Awesome 5 Brands:size=10"
-font-3 = "Font Awesome 5 Free:size=10:style=Solid"
+font-0 = "Roboto Mono for Powerline:style=Bold:size=10;2"
+font-1 = "Font Awesome 5 Free:size=10:style=Regular;2"
+font-2 = "Font Awesome 5 Brands:size=10;2"
+font-3 = "Font Awesome 5 Free:size=10:style=Solid;2"
 
-line-size = 4
-
+modules-left = cpu memory
 modules-center = i3
 
-padding-left = 2
-module-margin-left = 1
-module-margin-right = 1
+padding-left = 1
+padding-right = 1
+border-top-size = ${settings.gap}
+border-left-size = ${settings.gap}
+border-right-size = ${settings.gap}
 
 [module/i3]
-pin-workspaces = true
 type = internal/i3
+pin-workspaces = true
 strip-wsnumbers = true
-enable-click = false
+enable-click = true
 index-sort = true
 format = <label-state> <label-mode>
 
+;mode (Such as resize)
+label-mode = %mode%
+label-mode-padding = 3
+label-mode-foreground = ${colors.i3_active_fg}
+label-mode-background = ${colors.i3_active_bg}
+
 ;unfocused workspace
 label-unfocused = "%index%"
-label-unfocused-foreground = ${xrdb:color8}
-label-unfocused-padding = 2
-label-unfocused-underline = ${xrdb:color8}
+label-unfocused-foreground = ${colors.fg}
+label-unfocused-background = ${colors.bg}
+label-unfocused-padding = 3
 
 ;visible workspace
 label-visible = "%index%"
-label-visible-foreground = ${xrdb:color8}
-label-visible-padding = 2
-label-visible-underline = ${colors.fg}
+label-visible-foreground = ${colors.darkgray}
+label-visible-background = ${colors.lightgray}
+label-visible-padding = 3
 
 ;focused workspace
 label-focused = "%index%"
-label-focused-padding = 2
-label-focused-underline = ${colors.fg}
+label-focused-foreground = ${colors.i3_active_fg}
+label-focused-background = ${colors.i3_active_bg}
+label-focused-padding = 3
 
 ;urgent workspace
 label-urgent = "%index%"
-label-urgent-padding = 2
-label-urgent-underline = ${xrdb:color9}
-
-
-[module/mpd]
-type = internal/mpd
-
-host = 0.0.0.0
-port = 6600
-interval = 2
-
-format-online =   <label-time> <label-song>
-format-online-underline = ${xrdb:color1}
-
-label-song = "%artist% - %title%"
-label-time = "%elapsed%/%total%"
-
-;bar-progress-width = 30
-;bar-progress-indicator = o
-;bar-progress-fill = -
-;bar-progress-empty = -
-
-
-[module/audiosource]
-type = custom/script
-
-;TODO - Make this less hideous
-exec = echo $(audiosource | audiolist) $(amixer sget Master | gawk '/(%)/ {print $5}' | grep -m 1 "%")
-interval = 1
-
-format = <label>
-format-underline = ${xrdb:color4}
-
-click-left = audiorefresh
-
+label-urgent-padding = 3
 
 [module/date]
 type = internal/date
 interval = 5
-
 date = " %I:%M     %d-%m-%Y"
+format-background = ${xrdb:color4}
+format-foreground = ${colors.bg}
+label-padding = 2
 
-format-underline = ${xrdb:color10}
+[module/vpn]
+type = custom/script
+exec = wanip
+exec-if = systemctl is-active openvpn-client@client.service
+interval = 3
+format-foreground = ${colors.bg}
+format-background = ${xrdb:color10}
+label-padding = 2
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+label = CPU %percentage%%
+format-foreground = ${colors.bg}
+format-background = ${xrdb:color6}
+label-padding = 2
+
+[module/memory]
+type = internal/memory
+interval = 3
+label = RAM %percentage_used%%
+format-foreground = ${colors.fg}
+format-background = ${xrdb:color6}
+label-padding = 2
