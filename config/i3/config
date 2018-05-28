@@ -142,7 +142,7 @@ bindsym $mod+d exec "rofi -show run"
 #   Lock: i3lock
 bindsym $mod+p exec "~/.config/i3/lock.sh"
 
-#   Screenshot: scrot
+#   Screenshot Desktop
 bindsym $mod+i exec snap
 
 #   Console: URxvt
@@ -160,6 +160,9 @@ exec_always --no-startup-id hsetroot -solid "#3a3a3a"
 
 #   Dock: Plank
 exec --no-startup-id plank
+
+#   Notifications: dunst
+exec --no-startup-id dunst
 
 #   Merge Xresources
 exec xrdb -merge ~/.Xresources
