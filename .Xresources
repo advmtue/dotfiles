@@ -33,24 +33,20 @@ URxvt.scrollBar: false
 URxvt.font: xft:Hack:size=11:style=Regular
 URxvt.dynamicColors: true
 URxvt.internalBorder: 20
-URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
-URxvt.matcher.rend.0: fg9
 URxvt.geometry: 91x24
 Xcursor.size: 8
 
 
 !   Rofi
-rofi.font: Hack 10
+rofi.font: Hack 12
 rofi.location: 0
 rofi.lines: 9
 rofi.width: 25
 rofi.padding: 15
-rofi.bw: 2
+rofi.bw: 0
 rofi.hide-scrollbar: True
 rofi.separator-style: none
 !   main window     bg          fg
-rofi.color-window:  #101010,    #797880
+rofi.color-window:  #202020,    #797880
 !   rows            bg          fg          bgalt       hlbg        hlfg
-rofi.color-normal:  #101010,    #444444,    #101010,    #202020,    #FFFFFF
+rofi.color-normal:  #202020,    #444444,    #202020,    #a54242,    #101010
