@@ -39,6 +39,7 @@ padding-right = 1
 border-top-size = ${settings.gap}
 border-left-size = ${settings.gap}
 border-right-size = ${settings.gap}
+border-bottom-size = ${settings.gap}
 
 [bar/extra]
 monitor = HDMI-1
@@ -63,6 +64,7 @@ padding-right = 1
 border-top-size = ${settings.gap}
 border-left-size = ${settings.gap}
 border-right-size = ${settings.gap}
+border-bottom-size = ${settings.gap}
 
 [module/i3]
 type = internal/i3
