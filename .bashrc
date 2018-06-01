@@ -47,8 +47,14 @@ function res {
     echo "\[$(tput sgr0)\]"
 }
 
+function shost {
+    if [ "$HOSTNAME" != "box" ]; then
+        echo "$(saf 11)@$HOSTNAME"
+    fi
+}
+
 #   Potential Exports
-p_c="$(saf 1)\u $(saf 7)\w $(res)$ "
+p_c="$(saf 1)\u$(shost) $(saf 7)\w $(res)$ "
 p_nc="\u@\h \w $ "
 
 #   Export depending on TERM
