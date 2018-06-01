@@ -120,9 +120,10 @@ for_window [class=".*"] title_format "   %title"
 
 #   No Title on Firefox
 for_window [class="Firefox"] border pixel 0
+for_window [class=".*VirtualBox"] floating enable
 
 #   All Windows Float
-for_window [class=".*"] floating enable
+#for_window [class=".*"] floating enable
 
 #   Can't currently use gaps as non-floating is broken with titlebars
 #       gaps inner 10
@@ -159,7 +160,7 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id hsetroot -solid "#3a3a3a"
 
 #   Dock: Plank
-exec --no-startup-id plank
+#exec --no-startup-id plank
 
 #   Notifications: dunst
 exec --no-startup-id dunst
