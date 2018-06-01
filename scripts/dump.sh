@@ -11,17 +11,17 @@ mounted=`mount | grep /mnt/dump > /dev/null`
 
 case $1 in
     "mount")
-        if $mounted; then
+        if mount | grep /mnt/dump > /dev/null; then
             echo "/mnt/dump is already mounted"
             exit 0
         fi
         sshfs adam:/home/adamtuechler/src/dumpster/public /mnt/dump
         ;;
     "unmount")
-        if $mounted; then
-            echo "/mnt/dump is not mounted"
-        else
+        if mount | grep /mnt/dump > /dev/null; then
             fusermount -u /mnt/dump
+            exit 0
         fi
+        echo "/mnt/dump is not mounted"
         ;;
 esac
