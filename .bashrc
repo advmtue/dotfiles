@@ -19,6 +19,9 @@ export EDITOR="$VISUAL"
 #   u=rwx,g=,o=
 umask 077
 
+#   No bash_history
+unset HISTFILE
+
 #   Colors
 #   0   = black
 #   1   = red
