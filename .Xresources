@@ -34,6 +34,7 @@ URxvt.font: xft:Hack:size=11:style=Regular
 URxvt.dynamicColors: true
 URxvt.internalBorder: 20
 URxvt.geometry: 91x24
+URxvt.perl-ext-common: selection-to-clipboard
 Xcursor.size: 8
 
 
