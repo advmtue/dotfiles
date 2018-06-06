@@ -7,6 +7,7 @@ alias ll='ls -l'
 alias mkt='cd $(mktemp -d)'
 alias music="ncmpcpp"
 alias feh="feh -g 900x700"
+alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 
 #   Check the window size after each command
 shopt -s checkwinsize
