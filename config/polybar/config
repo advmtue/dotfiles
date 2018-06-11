@@ -28,7 +28,7 @@ font-2 = "Font Awesome 5 Brands:size=10;2"
 font-3 = "Font Awesome 5 Free:size=10:style=Solid;2"
 
 modules-center = i3
-modules-right = vpn date
+modules-right = vpn wanip date
 
 ;TODO tray
 tray-position = right
@@ -112,8 +112,16 @@ label-padding = 2
 
 [module/vpn]
 type = custom/script
-exec = wanip
+exec = echo ""
 exec-if = systemctl is-active openvpn-client@client.service
+interval = 1
+format-foreground = ${colors.bg}
+format-background = ${xrdb:color10}
+label-padding-left = 2
+
+[module/wanip]
+type = custom/script
+exec = wanip
 interval = 3
 format-foreground = ${colors.bg}
 format-background = ${xrdb:color10}

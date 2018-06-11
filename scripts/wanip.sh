@@ -4,7 +4,7 @@
 
 #   Using DIG
 #       Works quite well as dnscrypt-proxy caches
-dig +short myip.opendns.com @resolver1.opendns.com
+#dig +short myip.opendns.com @resolver1.opendns.com
 
 #   Using CURL
-#curl -s http://whatismyip.akamai.com/
+curl -s --connect-timeout 1 ip.adamtue.ch
