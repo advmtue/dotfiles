@@ -15,7 +15,7 @@ case $1 in
             echo "/mnt/dump is already mounted"
             exit 0
         fi
-        sshfs adam:/home/adamtuechler/src/dumpster/public /mnt/dump
+        sshfs dump:/home/dump/src/dumpster/public /mnt/dump
         ;;
     "unmount")
         if mount | grep /mnt/dump > /dev/null; then
