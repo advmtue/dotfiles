@@ -38,6 +38,9 @@ Plugin 'morhetz/gruvbox'
 Plugin 'romainl/apprentice'
 
 Plugin 'mhinz/vim-startify'                 " Start Screen
+"Plugin 'Valloric/YouCompleteMe'             " Autocomplete
+Plugin 'w0rp/ale'
+Plugin 'tmhedberg/SimpylFold'               " Function Folding
 
 call vundle#end()
 filetype plugin indent on
@@ -49,7 +52,7 @@ syntax on
 "   Uses apprentice as the base, but with a few mods.
 "   Mainly removing the background color and replacing it
 "   with the default terminal background.
-set background=light
+"set background=light
 colorscheme apprentice
 hi Normal ctermbg=NONE
 hi LineNr ctermbg=NONE
@@ -79,7 +82,7 @@ set showcmd         " Retains the last command in the bottom of screen
 set mouse=a         " Allow mouse use in all edit types
 set history=1000    " Heaps of history
 set undolevels=1000 " Heaps of undo-ability
-set nofoldenable    " Don't fold functions (it looks ugly!)
+"set nofoldenable    " Don't fold functions (it looks ugly!)
 set nowrap          " Don't wrap text horizontall (Map to new line)
 set textwidth=0     " More wrap disabling
 set wrapmargin=0    " More wrap disabling
@@ -87,9 +90,12 @@ set wrapmargin=0    " More wrap disabling
 set scrolloff=4     " 4 Lines of space above/below cursor
 set lazyredraw      " Don't redraw during automated tasks
 set t_Co=256        " 256 Colors
+set foldmethod=indent
+set foldlevel=99
 
 " -- Maps and Remaps
 nnoremap <F2> :NERDTreeToggle<CR>       " NERDTree
+nnoremap <space> za
 
 " F9 To Run Python Script
 autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
@@ -151,7 +157,7 @@ let g:startify_custom_header = [
             \ ]
 let g:startify_files_number=5
 highlight StartifyBracket ctermfg=7
-highlight StartifyNumber ctermfg=7 "Or 9
+highlight StartifyNumber ctermfg=7
 highlight StartifyPath ctermfg=7
 highlight StartifySlash ctermfg=7
 highlight StartifyFile ctermfg=15
