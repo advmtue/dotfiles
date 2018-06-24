@@ -52,7 +52,7 @@ function res {
 }
 
 function shost {
-    if [ "$HOSTNAME" != "box" ]; then
+    if [ "$HOSTNAME" != "groundhog" ]; then
         echo "$(saf 11)@$HOSTNAME"
     fi
 }
