@@ -10,7 +10,8 @@ i3_active_bg = ${xrdb:color1}
 i3_active_fg = ${xrdb:color15}
 
 [settings]
-gap = 7
+gap = 0
+padding = 0
 
 [bar/main]
 monitor = DP-1
@@ -28,14 +29,14 @@ font-2 = "Font Awesome 5 Brands:size=10;2"
 font-3 = "Font Awesome 5 Free:size=10:style=Solid;2"
 
 modules-center = i3
-modules-right = vpn date
+modules-right = vpn wanip date
 
 ;TODO tray
 tray-position = right
 tray-padding = 8
 
-padding-left = 1
-padding-right = 1
+padding-left = ${settings.padding}
+padding-right = ${settings.padding}
 border-top-size = ${settings.gap}
 border-left-size = ${settings.gap}
 border-right-size = ${settings.gap}
@@ -59,8 +60,8 @@ font-3 = "Font Awesome 5 Free:size=10:style=Solid;2"
 modules-left = cpu memory
 modules-center = i3
 
-padding-left = 1
-padding-right = 1
+padding-left = ${settings.padding}
+padding-right = ${settings.padding}
 border-top-size = ${settings.gap}
 border-left-size = ${settings.gap}
 border-right-size = ${settings.gap}
@@ -112,8 +113,16 @@ label-padding = 2
 
 [module/vpn]
 type = custom/script
-exec = wanip
+exec = echo ""
 exec-if = systemctl is-active openvpn-client@client.service
+interval = 1
+format-foreground = ${colors.bg}
+format-background = ${xrdb:color10}
+label-padding-left = 2
+
+[module/wanip]
+type = custom/script
+exec = wanip
 interval = 3
 format-foreground = ${colors.bg}
 format-background = ${xrdb:color10}
