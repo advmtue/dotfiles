@@ -1,8 +1,8 @@
 [colors]
-bar_fg = #{xrdb:fg}
+bar_fg = #FFFFFFFF
 bar_bg = #00000000
 
-fg = ${xrdb:color15}
+fg = #FFCCCCCC
 bg = ${xrdb:color0}
 darkgray = ${xrdb:color8}
 lightgray = #989898
@@ -49,8 +49,8 @@ height = 26
 offset-x = 0%
 offset-y = 0%
 
-background = ${colors.bar_fg}
-foreground = ${colors.bar_bg}
+foreground = ${colors.bar_fg}
+background = ${colors.bar_bg}
 
 font-0 = "Roboto Mono for Powerline:style=Bold:size=10;2"
 font-1 = "Font Awesome 5 Free:size=10:style=Regular;2"
@@ -107,8 +107,8 @@ label-urgent-padding = 3
 type = internal/date
 interval = 5
 date = " %I:%M     %d-%m-%Y"
-format-background = ${xrdb:color4}
-format-foreground = ${colors.bg}
+;format-background = ${xrdb:color4}
+format-foreground = ${colors.fg}
 label-padding = 2
 
 [module/vpn]
@@ -116,24 +116,24 @@ type = custom/script
 exec = echo ""
 exec-if = systemctl is-active openvpn-client@client.service
 interval = 1
-format-foreground = ${colors.bg}
-format-background = ${xrdb:color10}
+format-foreground = ${colors.fg}
+;format-background = ${xrdb:color10}
 label-padding-left = 2
 
 [module/wanip]
 type = custom/script
 exec = wanip
 interval = 3
-format-foreground = ${colors.bg}
-format-background = ${xrdb:color10}
+format-foreground = ${colors.fg}
+;format-background = ${xrdb:color10}
 label-padding = 2
 
 [module/cpu]
 type = internal/cpu
 interval = 1
 label = CPU %percentage%%
-format-foreground = ${colors.bg}
-format-background = ${xrdb:color6}
+format-foreground = ${colors.fg}
+;format-background = ${xrdb:color6}
 label-padding = 2
 
 [module/memory]
@@ -141,5 +141,5 @@ type = internal/memory
 interval = 3
 label = RAM %percentage_used%%
 format-foreground = ${colors.fg}
-format-background = ${xrdb:color6}
+;format-background = ${xrdb:color6}
 label-padding = 2
