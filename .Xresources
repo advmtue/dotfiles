@@ -1,13 +1,13 @@
 !   Colours
 !   - special
-*.foreground:   #a3a3a3
+*.foreground:   #a4a4a4
 *.background:   #101010
 !   - black
 *.color0:       #101010
 *.color8:       #373b41
 !   - white
 *.color7:       #707880
-*.color15:      #c5c8c6
+*.color15:      #a0a0a0
 !   - red
 *.color1:       #a54242
 *.color9:       #cc6666
