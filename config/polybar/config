@@ -6,8 +6,10 @@ fg = #FFCCCCCC
 bg = ${xrdb:color0}
 darkgray = ${xrdb:color8}
 lightgray = #989898
-i3_active_bg = ${xrdb:color1}
 i3_active_fg = ${xrdb:color15}
+i3_active_bg = ${xrdb:color1}
+i3_urgent_fg = ${xrdb:color1}
+i3_urgent_bg = ${xrdb:color3}
 
 [settings]
 gap = 0
@@ -102,6 +104,8 @@ label-focused-padding = 3
 ;urgent workspace
 label-urgent = "%index%"
 label-urgent-padding = 3
+label-urgent-foreground = ${colors.i3_urgent_fg}
+label-urgent-background = ${colors.i3_urgent_bg}
 
 [module/date]
 type = internal/date
