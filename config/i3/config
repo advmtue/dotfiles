@@ -173,6 +173,14 @@ exec --no-startup-id dunst
 #   Merge Xresources
 exec xrdb -merge ~/.Xresources
 
+#   Startup Applications and Assignment
+assign [class="Thunderbird"] 8
+assign [class="Firefox"] 9
+
+exec --no-startup-id firefox
+exec --no-startup-id thunderbird
+exec --no-startup-id ~/.config/i3/load_layout.sh
+
 #       XF86 Input Configuration
 #-------------------------------------------------------------------------------
 
