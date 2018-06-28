@@ -31,11 +31,11 @@ set $cActiv #d6dbd8
 set $cUrgen #cc6666
 
 # Class                     border  backgr. text    indica. child border
-client.focused              $cInact $cActiv $cBackg $cActiv $cInact
-client.focused_inactive     $cInact $cInact $cHighl $cHighl $cInact
-client.unfocused            $cInact $cInact $cHighl $cHighl $cInact
-client.urgent               $cUrgen $cUrgen $cBackg $cUrgen $cUrgen
-client.placeholder          $cInact $cActiv $cBackg $cHighl $cInact
+client.focused              $cHighl $cHighl $cHighl $cActiv $cHighl
+client.focused_inactive     $cInact $cInact $cInact $cHighl $cInact
+client.unfocused            $cInact $cInact $cInact $cHighl $cInact
+client.urgent               $cUrgen $cUrgen $cUrgen $cUrgen $cUrgen
+client.placeholder          $cInact $cActiv $cActiv $cHighl $cInact
 
 #       Window Manipulation
 #-------------------------------------------------------------------------------
@@ -109,19 +109,20 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'EXIT' 'i3-msg 
 #-------------------------------------------------------------------------------
 
 #   Window Type: No Title, Pixel Border
-new_window pixel 1 px
+new_window normal 1 px
 new_float normal 1 px
 
 hide_edge_borders both
 
 #   Font: Roboto Mono for Powerline
-font pango:Roboto Mono for Powerline Bold 12px
+font pango:Roboto Mono for Powerline Bold 2px
 
 #   Window Title
 # for_window [class=".*"] title_format "   %title"
 
 #   No Title on Firefox
-#for_window [class="Firefox"] border pixel 0
+for_window [class="Firefox"] border pixel 0
+for_window [class="Thunderbird"] border pixel 0
 
 #   VBox Windows Float by Default
 for_window [class=".*VirtualBox"] floating enable
