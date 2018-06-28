@@ -57,7 +57,7 @@ font-1 = "Font Awesome 5 Free:size=10:style=Regular;2"
 font-2 = "Font Awesome 5 Brands:size=10;2"
 font-3 = "Font Awesome 5 Free:size=10:style=Solid;2"
 
-modules-left = cpu memory
+modules-left = cpu memory volume
 modules-center = i3
 
 padding-left = ${settings.padding}
@@ -133,13 +133,20 @@ type = internal/cpu
 interval = 1
 label = CPU %percentage%%
 format-foreground = ${colors.fg}
-;format-background = ${xrdb:color6}
 label-padding = 2
 
 [module/memory]
 type = internal/memory
 interval = 3
 label = RAM %percentage_used%%
-format-foreground = ${colors.fg}
-;format-background = ${xrdb:color6}
 label-padding = 2
+format-foreground = ${colors.fg}
+
+[module/volume]
+type = internal/volume
+label-volume-padding = 2
+label-volume = VOL %percentage%%
+format-volume-foreground = ${colors.fg}
+label-muted-padding = 2
+label-muted = MUTED
+format-muted-foreground = ${colors.fg}
