@@ -163,3 +163,6 @@ highlight StartifySlash ctermfg=7
 highlight StartifyFile ctermfg=15
 highlight StartifySection ctermfg=1
 highlight StartifyHeader ctermfg=10
+
+"   Ale
+let g:ale_sign_column_always = 1
