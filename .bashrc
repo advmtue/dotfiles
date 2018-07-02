@@ -72,6 +72,6 @@ unset -f saf
 unset -f res
 
 #   Execute any supplementary files
-if [ -f ".bash_extras" ]; then
-    source ".bash_extras"
+if [ -f "~/.bash_extras" ]; then
+    source "~/.bash_extras"
 fi
