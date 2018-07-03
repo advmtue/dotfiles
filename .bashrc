@@ -58,8 +58,8 @@ function shost {
 }
 
 #   Potential Exports
-p_c="$(saf 1)\u$(shost) $(saf 7)\w $(res)$ "
-p_nc="\u@\h \w $ "
+p_c="$(saf 1)\u$(shost) $(saf 7)\w $(res)\$ "
+p_nc="\u@\h \w \$ "
 
 #   Export depending on TERM
 case "$TERM" in
