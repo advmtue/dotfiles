@@ -18,7 +18,7 @@ export EDITOR="$VISUAL"
 
 #   Default File Permissions
 #   u=rwx,g=,o=
-umask 077
+umask 0022
 
 #   No bash_history
 unset HISTFILE
