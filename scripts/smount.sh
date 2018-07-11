@@ -50,13 +50,13 @@ function get_mount_point {
 function get_mount_cmd {
     case "$1" in
         "bin")
-            echo "dump:/home/dump/src/dumpster/public/ /mnt/bin"
+            echo "bin:src/dumpster/public/ /mnt/bin"
             ;;
         "moose")
             echo "moose:/ /mnt/moose"
             ;;
         "vps")
-            echo "adam:/home/adamtuechler/private /mnt/vps"
+            echo "adam:private /mnt/vps"
             ;;
         *)
             echo "ERROR"
