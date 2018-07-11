@@ -11,6 +11,10 @@
 #   bin     = bin.adamtue.ch        -> /mnt/bin
 #   moose   = 10.1.1.65             -> /mnt/moose
 #   vps     = adamtue.ch [private]  -> /mnt/vps
+#   deakin  = interactive.deakin... -> /mnt/deakin
+
+#   Script assumes these directories already exist
+#   TODO: Create and delete directories as needed
 
 OSVERSION=`uname`
 USER=`whoami`
@@ -38,6 +42,9 @@ function get_mount_point {
         "vps")
             echo "/mnt/vps"
             ;;
+        "deakin")
+            echo "/mnt/deakin"
+            ;;
         *)
             echo "ERROR"
     esac
@@ -57,6 +64,9 @@ function get_mount_cmd {
             ;;
         "vps")
             echo "adam:private /mnt/vps"
+            ;;
+        "deakin")
+            echo "deakin: /mnt/deakin"
             ;;
         *)
             echo "ERROR"
