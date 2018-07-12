@@ -8,6 +8,7 @@ alias mkt='cd $(mktemp -d)'
 alias music="ncmpcpp"
 alias feh="feh -g 900x700"
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
+alias musb="sudo mount -o gid=users,fmask=113,dmask=002"
 
 #   Check the window size after each command
 shopt -s checkwinsize
