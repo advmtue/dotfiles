@@ -12,10 +12,10 @@ if [[ "$1" == "on" ]];
 then
     systemctl start openvpn-client@client.service
     ufw enable
-    systemctl start transmission.service
+    ##systemctl start transmission.service
 elif [[ "$1" == "off" ]];
 then
-    systemctl stop transmission.service
+    ##systemctl stop transmission.service
     systemctl stop openvpn-client@client.service
     ufw disable
 else
