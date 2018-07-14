@@ -60,13 +60,13 @@
                "x": 0,
                "y": 0
             },
-            "name": "cava",
+            "name": "bluetoothcl",
             "percent": 0.5,
             "swallows": [
                {
                 "class": "^URxvt$",
                 "instance": "^urxvt$",
-                "title": "^cava$",
+                "title": "^bluetoothctl$",
                 "transient_for": "^$"
                }
             ],
