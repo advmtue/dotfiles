@@ -4,6 +4,7 @@
 #   Aliases
 alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -l'
+alias lla='ls -la'
 alias mkt='cd $(mktemp -d)'
 alias music="ncmpcpp"
 alias feh='feh -g 900x700'
