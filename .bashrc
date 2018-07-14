@@ -6,9 +6,13 @@ alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -l'
 alias mkt='cd $(mktemp -d)'
 alias music="ncmpcpp"
-alias feh="feh -g 900x700"
+alias feh='feh -g 900x700'
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias musb="sudo mount -o gid=users,fmask=113,dmask=002"
+
+alias cdw_dummy='cdrecord -dummy -v -pad speed=1 dev=/dev/sr0 -dao -swab *.wav'
+alias cdw='cdrecord -v -pad speed=1 dev=/dev/sr0 -dao -swab *.wav'
+alias cdw_wav='for i in *.mp3; do lame --decode "$i" "$(basename "$i" .mp3)".wav; done'
 
 #   Check the window size after each command
 shopt -s checkwinsize
