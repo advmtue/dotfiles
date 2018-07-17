@@ -1,7 +1,6 @@
 " Set editor root depending on the version of vim
 if has('nvim')
     let s:editor_root=expand("~/.config/nvim")
-    nmap <BS> <C-W>h
 else
     let s:editor_root=expand("~/.config/vim")
     set nocompatible
@@ -32,6 +31,8 @@ Plugin 'tmhedberg/SimpylFold'               " Function Folding
 " Things I really need to learn how to use
 Plugin 'scrooloose/nerdcommenter'           " Commenting
 Plugin 'tpope/vim-surround'                 " Surround
+
+Plugin 'vim-scripts/Smart-Tabs'
 call vundle#end()
 
 " - Colour Scheme
@@ -49,20 +50,11 @@ hi Visual ctermbg=NONE
 
 " - TAB/SPACE Settings I should NEVER MESS WITH AGAIN
 "   17-07-18 - I changed this shit again and fucked things lmao
-"
+"   Most of this is taken care of by the Smart-Tabs plugin
 set tabstop=4
 "   How many spaces a tab appears to be
 set shiftwidth=4
 "   Width of an indent (eg. using >>)
-set softtabstop=-1
-"   What distance does backspacing over spaces go?
-"    -1 makes it =shiftwidth
-set expandtab
-"   Expand tabs into spaces
-set smarttab
-"   Backspace removes a shiftwidth of spaces
-
-" - FileType based tab settings
 autocmd Filetype html setlocal ts=2 sw=2
 
 " - Basic Settings
@@ -87,6 +79,7 @@ set lazyredraw          " Don't redraw during automated tasks
 set t_Co=256            " 256 Colors
 set foldmethod=indent
 set foldlevel=99
+set list
 
 " - Cemetery of past settings
 "set nofoldenable       " Don't fold functions (it looks ugly!)
