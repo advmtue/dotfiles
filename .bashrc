@@ -10,6 +10,7 @@ alias music="ncmpcpp"
 alias feh='feh -g 900x700'
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias musb="sudo mount -o gid=users,fmask=113,dmask=002"
+alias glog='git log --oneline --graph'
 
 alias cdw_dummy='cdrecord -dummy -v -pad speed=1 dev=/dev/sr0 -dao -swab *.wav'
 alias cdw='cdrecord -v -pad speed=1 dev=/dev/sr0 -dao -swab *.wav'
