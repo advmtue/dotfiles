@@ -3,7 +3,7 @@ if has('nvim')
     let s:editor_root=expand("~/.config/nvim")
 else
     let s:editor_root=expand("~/.config/vim")
-    set nocompatible
+    "set nocompatible
 endif
 
 " - V U N D L E
@@ -28,6 +28,9 @@ Plugin 'mhinz/vim-startify'                 " Start Screen
 Plugin 'w0rp/ale'                           " Linting
 Plugin 'tmhedberg/SimpylFold'               " Function Folding
 Plugin 'vim-scripts/Smart-Tabs'             " Tabs for indentation, spaces for alignment
+
+" Plugin 'godlygeek/tabular'
+" Plugin 'plasticboy/vim-markdown'
 
 " Things I really need to learn how to use
 Plugin 'scrooloose/nerdcommenter'           " Commenting
@@ -79,11 +82,11 @@ set lazyredraw          " Don't redraw during automated tasks
 set t_Co=256            " 256 Colors
 set foldmethod=indent
 set foldlevel=99
-set list
 
 " - Cemetery of past settings
 "set nofoldenable       " Don't fold functions (it looks ugly!)
 "set colorcolumn=80     " Make it obvious where 80 chars is
+"set list
 
 " - Maps and Remaps
 nnoremap <F2> :NERDTreeToggle<CR>
@@ -92,6 +95,8 @@ nnoremap <space> za
 " - F9 To Run Python Script
 autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 autocmd FileType javascript nnoremap <buffer> <F9> :exec '!node' shellescape(@%, 1)<cr>
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " - No bitchboi arrow keys
 nnoremap <Left> :echoe "HEY YOU, USE H INSTEAD"<CR>
@@ -115,6 +120,12 @@ noremap <Leader>j :bprev<cr>    " Leader-j previous buffer
 noremap <Leader>k :bnext<cr>    " Leader-k next buffer
 noremap <Leader>q :bw<cr>       " Leader-q close buffer
 noremap <Leader>w :w<cr>        " Leader-w saves buffer
+
+" - kj to Escape Insert Mode
+imap kj <Esc>
+imap kJ <Esc>
+imap Kj <Esc>
+imap KJ <Esc>
 
 " - Status Bar
 set laststatus=2                                    " Enable Status Bar
@@ -157,6 +168,10 @@ highlight StartifySlash ctermfg=7
 highlight StartifyFile ctermfg=15
 highlight StartifySection ctermfg=1
 highlight StartifyHeader ctermfg=10
+
+" - Wrapping Toggle
+nnoremap <F5> :set list!<CR>
+nnoremap <F6> :set wrap!<CR>
 
 " - Ale
 let g:ale_sign_column_always = 1
