@@ -13,7 +13,6 @@ call vundle#rc(s:editor_root . '/bundle/')
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'               " Package Management
-Plugin 'scrooloose/nerdtree'                " NERDTree filesystem explorer
 Plugin 'bronson/vim-trailing-whitespace'    " Trailing whitespace helper
 Plugin 'ctrlpvim/ctrlp.vim'                 " Ctrl-P
 Plugin 'danro/rename.vim'                   " Rename active file
