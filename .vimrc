@@ -27,12 +27,12 @@ Plugin 'romainl/apprentice'                 " ColorScheme
 Plugin 'mhinz/vim-startify'                 " Start Screen
 Plugin 'w0rp/ale'                           " Linting
 Plugin 'tmhedberg/SimpylFold'               " Function Folding
+Plugin 'vim-scripts/Smart-Tabs'             " Tabs for indentation, spaces for alignment
 
 " Things I really need to learn how to use
 Plugin 'scrooloose/nerdcommenter'           " Commenting
 Plugin 'tpope/vim-surround'                 " Surround
 
-Plugin 'vim-scripts/Smart-Tabs'
 call vundle#end()
 
 " - Colour Scheme
