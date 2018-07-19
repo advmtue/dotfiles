@@ -88,8 +88,23 @@ set foldlevel=99
 "set list
 
 " - Maps and Remaps
-nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <space> za
+
+" - Wrapping Toggle
+nnoremap <F5> :set list!<CR>
+nnoremap <F6> :set wrap!<CR>
+
+" - NetRW Config
+"   Mapping
+nnoremap <F2> :Vex<CR>
+"   Remove Banner
+let g:netrw_banner = 0
+"   Width = 25
+let g:netrw_winsize = 25
+"   Open in previous window
+let g:netrw_browse_split = 4
+"   Open in tree mode
+let g:netrw_liststyle = 3
 
 " - F9 To Run Python Script
 autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
@@ -168,9 +183,6 @@ highlight StartifyFile ctermfg=15
 highlight StartifySection ctermfg=1
 highlight StartifyHeader ctermfg=10
 
-" - Wrapping Toggle
-nnoremap <F5> :set list!<CR>
-nnoremap <F6> :set wrap!<CR>
 
 " - Ale
 let g:ale_sign_column_always = 1
