@@ -20,8 +20,9 @@ alias cdw_wav='for i in *.mp3; do lame --decode "$i" "$(basename "$i" .mp3)".wav
 shopt -s checkwinsize
 
 #   Use nvim as editor
-export VISUAL=nvim
+export VISUAL=vim
 export EDITOR="$VISUAL"
+alias e="$EDITOR"
 
 #   Default File Permissions
 #   u=rwx,g=,o=
