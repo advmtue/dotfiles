@@ -76,6 +76,7 @@ set lazyredraw          " Don't redraw during automated tasks
 set t_Co=256            " 256 Colors
 set foldmethod=indent
 set foldlevel=99
+set autoindent
 
 " - Cemetery of past settings
 "set nofoldenable       " Don't fold functions (it looks ugly!)
