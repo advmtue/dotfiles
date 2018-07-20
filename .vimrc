@@ -11,27 +11,25 @@ let &rtp = &rtp . ',' .  s:editor_root . '/bundle/Vundle.vim'
 call vundle#rc(s:editor_root . '/bundle/')
 
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'               " Package Management
-Plugin 'bronson/vim-trailing-whitespace'    " Trailing whitespace helper
-Plugin 'ctrlpvim/ctrlp.vim'                 " Ctrl-P
-Plugin 'danro/rename.vim'                   " Rename active file
-Plugin 'digitaltoad/vim-pug'                " Pug (Jade) highlighting
-Plugin 'moll/vim-node'                      " Node highlighting
-Plugin 'mxw/vim-jsx'                        " JSX Syntax
-Plugin 'lervag/vimtex'                      " TeX support
-Plugin 'itchyny/lightline.vim'              " LightLine (Status bar)
-Plugin 'airblade/vim-gitgutter'             " Git gutter
-Plugin 'romainl/apprentice'                 " ColorScheme
-Plugin 'mhinz/vim-startify'                 " Start Screen
-Plugin 'w0rp/ale'                           " Linting
-Plugin 'tmhedberg/SimpylFold'               " Function Folding
-
-" Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
+Plugin 'VundleVim/Vundle.vim'            " Package Management
+Plugin 'bronson/vim-trailing-whitespace' " Trailing whitespace helper
+Plugin 'ctrlpvim/ctrlp.vim'              " Ctrl-P
+Plugin 'danro/rename.vim'                " Rename active file
+Plugin 'digitaltoad/vim-pug'             " Pug (Jade) highlighting
+Plugin 'moll/vim-node'                   " Node highlighting
+Plugin 'mxw/vim-jsx'                     " JSX Syntax
+Plugin 'lervag/vimtex'                   " TeX support
+Plugin 'itchyny/lightline.vim'           " LightLine (Status bar)
+Plugin 'airblade/vim-gitgutter'          " Git gutter
+Plugin 'romainl/apprentice'              " ColorScheme
+Plugin 'mhinz/vim-startify'              " Start Screen
+Plugin 'w0rp/ale'                        " Linting
+Plugin 'tmhedberg/SimpylFold'            " Function Folding
+Plugin 'godlygeek/tabular'               " Since Smart Tabs hates
 
 " Things I really need to learn how to use
-Plugin 'scrooloose/nerdcommenter'           " Commenting
-Plugin 'tpope/vim-surround'                 " Surround
+Plugin 'scrooloose/nerdcommenter' " Commenting
+Plugin 'tpope/vim-surround'       " Surround
 
 call vundle#end()
 
@@ -58,37 +56,35 @@ set shiftwidth=4
 autocmd Filetype html setlocal ts=2 sw=2
 
 " - Basic Settings
-"set nobackup            " Meh #MadLAdZ
-set noswapfile          " Meh #MadLAdZ
-set nu                  " Show line numbers
-set hidden              " Don't close hidden buffers
-set ignorecase          " Ignore the case when / searching
-set smartcase           " Ignore nocase if the search term has capitals in it
-set incsearch           " Highlight items in the search as you type
-set ruler               " Show the Line + Position of the cursor
-set showcmd             " Retains the last command in the bottom of screen
-set mouse=a             " Allow mouse use in all edit types
-set history=1000        " Heaps of history
-set undolevels=1000     " Heaps of undo-ability
-set nowrap              " Don't wrap text horizontall (Map to new line)
-set scrolloff=4         " 4 Lines of space above/below cursor
-set lazyredraw          " Don't redraw during automated tasks
-set t_Co=256            " 256 Colors
+set nobackup          " Meh #MadLAdZ
+set noswapfile        " Meh #MadLAdZ
+set nu                " Show line numbers
+set hidden            " Don't close hidden buffers
+set ignorecase        " Ignore the case when / searching
+set smartcase         " Ignore nocase if the search term has capitals in it
+set incsearch         " Highlight items in the search as you type
+set ruler             " Show the Line + Position of the cursor
+set showcmd           " Retains the last command in the bottom of screen
+set mouse=a           " Allow mouse use in all edit types
+set history=1000      " Heaps of history
+set undolevels=1000   " Heaps of undo-ability
+set nowrap            " Don't wrap text horizontall (Map to new line)
+set scrolloff=4       " 4 Lines of space above/below cursor
+set lazyredraw        " Don't redraw during automated tasks
+set t_Co=256          " 256 Colors
 set foldmethod=indent
 set foldlevel=99
 set autoindent
 
 " - Cemetery of past settings
-"set nofoldenable       " Don't fold functions (it looks ugly!)
-"set colorcolumn=80     " Make it obvious where 80 chars is
+"set nofoldenable     " Don't fold functions (it looks ugly!)
+"set colorcolumn=80   " Make it obvious where 80 chars is
 "set list
 
 " - Maps and Remaps
-nnoremap <space> za
-
 " - Wrapping Toggle
 nnoremap <F5> :set list!<CR>
-nnoremap <F6> :set wrap!<CR>
+nnoremap <space> za
 
 " - NetRW Config
 "   Mapping
@@ -108,12 +104,6 @@ autocmd FileType javascript nnoremap <buffer> <F9> :exec '!node' shellescape(@%,
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" - No bitchboi arrow keys
-nnoremap <Left> :echoe "HEY YOU, USE H INSTEAD"<CR>
-nnoremap <Right> :echoe "HEY YOU, USE L INSTEAD"<CR>
-nnoremap <Up> :echoe "HEY YOU, USE K INSTEAD"<CR>
-nnoremap <Down> :echoe "HEY YOU, USE J INSTEAD"<CR>
-
 " - Various Window Splitting Magic
 nnoremap \ <C-W>v
 nnoremap - <C-W>n
@@ -121,8 +111,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-set splitbelow    " Split Down
-set splitright    " Split Right
+set splitbelow        " Split Down
+set splitright        " Split Right
 
 " - Leader maps
 let mapleader = ","             " Use comma as the leader
@@ -138,14 +128,7 @@ imap Kj <Esc>
 imap KJ <Esc>
 
 " - Status Bar
-set laststatus=2                                    " Enable Status Bar
-" autocmd VimEnter * AirlineTheme term              " Term theme
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline_powerline_fonts = 1
-" let g:airline_left_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline#extensions#branch#enabled = 1
+set laststatus=2 " Enable Status Bar
 
 " Hide the -- INSERT -- line since it's not needed
 set noshowmode
@@ -158,18 +141,18 @@ let g:ctrlp_custom_ignore = {
 
 " - Startify Nonsense
 let g:startify_custom_header = [
-            \ '                               ___     ',
-            \ '      ___        ___          /__/\    ',
-            \ '     /__/\      /  /\        |  |::\   ',
-            \ '     \  \:\    /  /:/        |  |:|:\  ',
-            \ '      \  \:\  /__/::\      __|__|:|\:\ ',
-            \ '  ___  \__\:\ \__\/\:\__  /__/::::| \:\',
-            \ ' /__/\ |  |:|    \  \:\/\ \  \:\~~\__\/',
-            \ ' \  \:\|  |:|     \__\::/  \  \:\      ',
-            \ '  \  \:\__|:|     /__/:/    \  \:\     ',
-            \ '   \__\::::/      \__\/      \  \:\    ',
-            \ '       ~~~~                   \__\/',
-            \ ]
+			\ '                               ___     ',
+			\ '      ___        ___          /__/\    ',
+			\ '     /__/\      /  /\        |  |::\   ',
+			\ '     \  \:\    /  /:/        |  |:|:\  ',
+			\ '      \  \:\  /__/::\      __|__|:|\:\ ',
+			\ '  ___  \__\:\ \__\/\:\__  /__/::::| \:\',
+			\ ' /__/\ |  |:|    \  \:\/\ \  \:\~~\__\/',
+			\ ' \  \:\|  |:|     \__\::/  \  \:\      ',
+			\ '  \  \:\__|:|     /__/:/    \  \:\     ',
+			\ '   \__\::::/      \__\/      \  \:\    ',
+			\ '       ~~~~                   \__\/',
+			\ ]
 let g:startify_files_number=5
 highlight StartifyBracket ctermfg=7
 highlight StartifyNumber ctermfg=7
@@ -179,8 +162,13 @@ highlight StartifyFile ctermfg=15
 highlight StartifySection ctermfg=1
 highlight StartifyHeader ctermfg=10
 
-
 " - Ale
 let g:ale_sign_column_always = 1
 nnoremap <F7> :ALENext<CR>
 nnoremap <F8> :ALEPrevious<CR>
+
+" - Tabularize
+nmap <leader>a :Tabularize /=<CR>
+vmap <leader>a :Tabularize /=<CR>
+nmap <leader>s :Tabularize /:\za<CR>
+vmap <leader>s :Tabularize /:\za<CR>
