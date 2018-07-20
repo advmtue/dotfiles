@@ -3,7 +3,6 @@ if has('nvim')
     let s:editor_root=expand("~/.config/nvim")
 else
     let s:editor_root=expand("~/.config/vim")
-    "set nocompatible
 endif
 
 " - V U N D L E
@@ -26,7 +25,6 @@ Plugin 'romainl/apprentice'                 " ColorScheme
 Plugin 'mhinz/vim-startify'                 " Start Screen
 Plugin 'w0rp/ale'                           " Linting
 Plugin 'tmhedberg/SimpylFold'               " Function Folding
-Plugin 'vim-scripts/Smart-Tabs'             " Tabs for indentation, spaces for alignment
 
 " Plugin 'godlygeek/tabular'
 " Plugin 'plasticboy/vim-markdown'
@@ -60,22 +58,19 @@ set shiftwidth=4
 autocmd Filetype html setlocal ts=2 sw=2
 
 " - Basic Settings
-set nobackup            " Meh #MadLAdZ
+"set nobackup            " Meh #MadLAdZ
 set noswapfile          " Meh #MadLAdZ
 set nu                  " Show line numbers
 set hidden              " Don't close hidden buffers
 set ignorecase          " Ignore the case when / searching
 set smartcase           " Ignore nocase if the search term has capitals in it
 set incsearch           " Highlight items in the search as you type
-set autoindent          " Auto indent braces
 set ruler               " Show the Line + Position of the cursor
 set showcmd             " Retains the last command in the bottom of screen
 set mouse=a             " Allow mouse use in all edit types
 set history=1000        " Heaps of history
 set undolevels=1000     " Heaps of undo-ability
 set nowrap              " Don't wrap text horizontall (Map to new line)
-set textwidth=0         " More wrap disabling
-set wrapmargin=0        " More wrap disabling
 set scrolloff=4         " 4 Lines of space above/below cursor
 set lazyredraw          " Don't redraw during automated tasks
 set t_Co=256            " 256 Colors
