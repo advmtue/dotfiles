@@ -164,6 +164,7 @@ highlight StartifyHeader ctermfg=10
 
 " - Ale
 let g:ale_sign_column_always = 1
+let g:ale_linters = {'javascript': ['xo']}
 nnoremap <F7> :ALENext<CR>
 nnoremap <F8> :ALEPrevious<CR>
 
