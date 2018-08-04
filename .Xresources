@@ -27,7 +27,6 @@
 *.color6:       #5e8d87
 *.color14:      #8abeb7
 
-
 !   Terminal
 URxvt.scrollBar: false
 URxvt.font: xft:Hack:size=11:style=Regular
@@ -37,6 +36,11 @@ URxvt.geometry: 91x24
 URxvt.perl-ext-common: selection-to-clipboard
 Xcursor.size: 8
 
+!	DPI Things
+*.dpi: 144
+Xft.autohint: 0
+Xft.hinting: 1
+Xft.antialias: 1
 
 !   Rofi
 rofi.font: Hack 12

@@ -2,8 +2,10 @@
 bar_fg = #FFFFFFFF
 bar_bg = #00000000
 
+prefix = #FF808080
 fg = #FFCCCCCC
 bg = ${xrdb:color0}
+
 darkgray = ${xrdb:color8}
 lightgray = #989898
 i3_active_fg = ${xrdb:color15}
@@ -11,16 +13,19 @@ i3_active_bg = ${xrdb:color1}
 i3_urgent_fg = ${xrdb:color1}
 i3_urgent_bg = ${xrdb:color3}
 
+
 [settings]
 gap = 0
-padding = 0
+padding = 5
 
-[bar/main]
-monitor = DP-1
+
+[bar/laptop]
+monitor = eDP1
 width = 100%
-height = 26
+height = 40
 offset-x = 0%
 offset-y = 0%
+dpi = 144
 
 foreground = ${colors.bar_fg}
 background = ${colors.bar_bg}
@@ -30,12 +35,13 @@ font-1 = "Font Awesome 5 Free:size=10:style=Regular;2"
 font-2 = "Font Awesome 5 Brands:size=10;2"
 font-3 = "Font Awesome 5 Free:size=10:style=Solid;2"
 
+modules-left = cpu memory pulseaudio backlight battery
 modules-center = i3
-modules-right = vpn wanip date
+modules-right = vpn wanip date time
 
 ;TODO tray
-tray-position = right
-tray-padding = 8
+;tray-position = right
+;tray-padding = 8
 
 padding-left = ${settings.padding}
 padding-right = ${settings.padding}
@@ -44,30 +50,6 @@ border-left-size = ${settings.gap}
 border-right-size = ${settings.gap}
 border-bottom-size = ${settings.gap}
 
-[bar/extra]
-monitor = HDMI-1
-width = 100%
-height = 26
-offset-x = 0%
-offset-y = 0%
-
-foreground = ${colors.bar_fg}
-background = ${colors.bar_bg}
-
-font-0 = "Roboto Mono for Powerline:style=Bold:size=10;2"
-font-1 = "Font Awesome 5 Free:size=10:style=Regular;2"
-font-2 = "Font Awesome 5 Brands:size=10;2"
-font-3 = "Font Awesome 5 Free:size=10:style=Solid;2"
-
-modules-left = cpu memory volume
-modules-center = i3
-
-padding-left = ${settings.padding}
-padding-right = ${settings.padding}
-border-top-size = ${settings.gap}
-border-left-size = ${settings.gap}
-border-right-size = ${settings.gap}
-border-bottom-size = ${settings.gap}
 
 [module/i3]
 type = internal/i3
@@ -107,50 +89,101 @@ label-urgent-padding = 3
 label-urgent-foreground = ${colors.i3_urgent_fg}
 label-urgent-background = ${colors.i3_urgent_bg}
 
+
 [module/date]
 type = internal/date
 interval = 5
-date = " %I:%M     %d-%m-%Y"
-;format-background = ${xrdb:color4}
+date = "%d-%m-%Y"
+format-prefix = ""
+format-prefix-foreground = ${colors.prefix}
 format-foreground = ${colors.fg}
 label-padding = 2
+
+
+[module/time]
+type = internal/date
+interval = 5
+date = "%I:%M %p"
+format-prefix = ""
+format-prefix-foreground = ${colors.prefix}
+format-foreground = ${colors.fg}
+label-padding = 2
+
 
 [module/vpn]
 type = custom/script
 exec = echo ""
-exec-if = systemctl is-active openvpn-client@client.service
+exec-if = systemctl is-active openvpn-client@expr-aus-syd.service
 interval = 1
-format-foreground = ${colors.fg}
-;format-background = ${xrdb:color10}
-label-padding-left = 2
+format-foreground = ${colors.prefix}
+
 
 [module/wanip]
 type = custom/script
 exec = wanip
 interval = 3
 format-foreground = ${colors.fg}
-;format-background = ${xrdb:color10}
 label-padding = 2
+
 
 [module/cpu]
 type = internal/cpu
-interval = 1
-label = CPU %percentage%%
-format-foreground = ${colors.fg}
+label = %percentage:2%%
 label-padding = 2
+format-prefix = ""
+format-prefix-foreground = ${colors.prefix}
+format-foreground = ${colors.fg}
+
+
+[module/battery]
+type = internal/battery
+interval = 10
+
+label-charging = "%percentage:2%%"
+format-charging-foreground = ${colors.fg}
+format-charging-prefix = ""
+format-charging-prefix-foreground = ${colors.prefix}
+label-charging-padding = 2
+
+label-discharging = "%percentage:2%%"
+format-discharging-foreground = ${colors.fg}
+format-discharging-prefix = ""
+format-discharging-prefix-foreground = ${colors.prefix}
+label-discharging-padding = 2
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+use-ui-max = false
+
+format-volume-foreground = ${colors.fg}
+label-volume = "%percentage:2%%"
+label-volume-padding = 2
+format-volume-prefix = ""
+format-volume-prefix-foreground = ${colors.prefix}
+
+label-muted = MUTE
+label-muted-padding = 1
+label-muted-padding-right = 2
+format-muted-foreground = ${colors.i3_active_bg}
+
+
+[module/backlight]
+type = internal/xbacklight
+enable-scroll = false
+
+label = "%percentage:2%%"
+format-foreground = ${colors.fg}
+format-prefix = ""
+format-prefix-foreground = ${colors.prefix}
+label-padding = 2
+
 
 [module/memory]
 type = internal/memory
-interval = 3
-label = RAM %percentage_used%%
-label-padding = 2
+label = "%percentage_used:2%%"
+format-prefix = ""
+format-prefix-foreground = ${colors.prefix}
 format-foreground = ${colors.fg}
-
-[module/volume]
-type = internal/volume
-label-volume-padding = 2
-label-volume = VOL %percentage%%
-format-volume-foreground = ${colors.fg}
-label-muted-padding = 2
-label-muted = MUTED
-format-muted-foreground = ${colors.fg}
+label-padding = 2

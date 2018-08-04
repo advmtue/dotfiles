@@ -9,26 +9,24 @@ floating_modifier $mod
 #-------------------------------------------------------------------------------
 
 #   Monitor Names
-set $mon_left "HDMI-1"
-set $mon_right "DP-1"
+set $mon "eDP1"
 
 #   Assign Workspaces to Monitors
-workspace 1 output $mon_left
-workspace 2 output $mon_left
-workspace 3 output $mon_left
-workspace 4 output $mon_left
-workspace 5 output $mon_left
-
-workspace 6 output $mon_right
-workspace 7 output $mon_right
-workspace 8 output $mon_right
-workspace 9 output $mon_right
-workspace 10 output $mon_right
+workspace 1 output $mon
+workspace 2 output $mon
+workspace 3 output $mon
+workspace 4 output $mon
+workspace 5 output $mon
+workspace 6 output $mon
+workspace 7 output $mon
+workspace 8 output $mon
+workspace 9 output $mon
+workspace 10 output $mon
 
 #       Window Movement
 #-------------------------------------------------------------------------------
 
-#   Chaning Window Focus
+#   Changing Window Focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -165,9 +163,6 @@ focus_follows_mouse no
 #   Launcher: Rofi
 bindsym $mod+d exec "rofi -show run"
 
-#   Lock: i3lock
-bindsym $mod+p exec "~/.config/i3/lock.sh"
-
 #   Screenshot Desktop
 bindsym $mod+i exec snap
 
@@ -182,7 +177,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id compton
 
 #   Background: hsetroot (Solid Color)
-exec_always --no-startup-id hsetroot -solid "#3a3a3a"
+exec_always --no-startup-id hsetroot -solid "#000000"
 
 #   Dock: Plank
 #exec --no-startup-id plank
@@ -197,25 +192,17 @@ exec xrdb -merge ~/.Xresources
 assign [class="Thunderbird"] 8
 assign [class="Firefox"] 9
 
-#   Spotify wants to play ball
-assign [class="Spotify"] 6
-assign [instance="Spotify"] 6
-assign [title="Spotify"] 6
-for_window [class="Spotify"] move to workspace 6
-
 #   Start Apps
-exec --no-startup-id spotify
 exec --no-startup-id firefox
 exec --no-startup-id thunderbird
-exec --no-startup-id ~/.config/i3/load_layout.sh
 
 #       XF86 Input Configuration
 #-------------------------------------------------------------------------------
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
-bindsym XF86AudioMute exec --no-startup-id amixer sset Master togglemute
-bindsym XF86AudioPlay exec --no-startup-id mpc -q toggle
-bindsym XF86AudioNext exec --no-startup-id mpc -q next
-bindsym XF86AudioPrev exec --no-startup-id mpc -q prev
-
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down 10
+bindsym XF86KbdBrightnessUp exec --no-startup-id kbdlight up 10
