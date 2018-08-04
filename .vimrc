@@ -26,6 +26,7 @@ Plugin 'mhinz/vim-startify'              " Start Screen
 Plugin 'w0rp/ale'                        " Linting
 Plugin 'tmhedberg/SimpylFold'            " Function Folding
 Plugin 'godlygeek/tabular'               " Since Smart Tabs hates
+Plugin 'shmup/vim-sql-syntax'            " SQL Syntax
 
 " Things I really need to learn how to use
 Plugin 'scrooloose/nerdcommenter' " Commenting
@@ -54,24 +55,25 @@ set tabstop=4
 set shiftwidth=4
 "   Width of an indent (eg. using >>)
 autocmd Filetype html setlocal ts=2 sw=2
+autocmd Filetype markdown setlocal ts=2 sw=2
 
 " - Basic Settings
-set nobackup          " Meh #MadLAdZ
-set noswapfile        " Meh #MadLAdZ
-set nu                " Show line numbers
-set hidden            " Don't close hidden buffers
-set ignorecase        " Ignore the case when / searching
-set smartcase         " Ignore nocase if the search term has capitals in it
-set incsearch         " Highlight items in the search as you type
-set ruler             " Show the Line + Position of the cursor
-set showcmd           " Retains the last command in the bottom of screen
-set mouse=a           " Allow mouse use in all edit types
-set history=1000      " Heaps of history
-set undolevels=1000   " Heaps of undo-ability
-set nowrap            " Don't wrap text horizontall (Map to new line)
-set scrolloff=4       " 4 Lines of space above/below cursor
-set lazyredraw        " Don't redraw during automated tasks
-set t_Co=256          " 256 Colors
+set nobackup                   " Meh #MadLAdZ
+set noswapfile                 " Meh #MadLAdZ
+set nu                         " Show line numbers
+set hidden                     " Don't close hidden buffers
+set ignorecase                 " Ignore the case when / searching
+set smartcase                  " Ignore nocase if the search term has capitals in it
+set incsearch                  " Highlight items in the search as you type
+set ruler                      " Show the Line + Position of the cursor
+set showcmd                    " Retains the last command in the bottom of screen
+set mouse=a                    " Allow mouse use in all edit types
+set history=1000               " Heaps of history
+set undolevels=1000            " Heaps of undo-ability
+set nowrap                     " Don't wrap text horizontall (Map to new line)
+set scrolloff=4                " 4 Lines of space above/below cursor
+set lazyredraw                 " Don't redraw during automated tasks
+set t_Co=256                   " 256 Colors
 set foldmethod=indent
 set foldlevel=99
 set autoindent
@@ -95,7 +97,7 @@ let g:netrw_banner = 0
 "   Width = 25
 let g:netrw_winsize = 25
 "   Open in previous window
-let g:netrw_browse_split = 4
+let g:netrw_browse_split = 0
 "   Open in tree mode
 let g:netrw_liststyle = 3
 
