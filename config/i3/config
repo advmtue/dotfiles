@@ -193,8 +193,8 @@ assign [class="Thunderbird"] 8
 assign [class="Firefox"] 9
 
 #   Start Apps
-exec --no-startup-id firefox
-exec --no-startup-id thunderbird
+#exec --no-startup-id firefox
+#exec --no-startup-id thunderbird
 
 #       XF86 Input Configuration
 #-------------------------------------------------------------------------------
