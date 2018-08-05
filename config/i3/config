@@ -170,6 +170,9 @@ bindsym $mod+i exec snap
 bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
+#   Merge Xresources
+exec xrdb -merge ~/.Xresources
+
 #   Bar: Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
@@ -184,9 +187,6 @@ exec_always --no-startup-id hsetroot -solid "#000000"
 
 #   Notifications: dunst
 exec --no-startup-id dunst
-
-#   Merge Xresources
-exec xrdb -merge ~/.Xresources
 
 #   Startup Applications and Assignment
 assign [class="Thunderbird"] 8
