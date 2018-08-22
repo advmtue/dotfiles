@@ -113,7 +113,7 @@ label-padding = 2
 [module/vpn]
 type = custom/script
 exec = echo ""
-exec-if = systemctl is-active openvpn-client@expr-aus-syd.service
+exec-if = systemctl is-active openvpn-client@adam
 interval = 1
 format-foreground = ${colors.prefix}
 

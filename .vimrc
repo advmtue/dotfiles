@@ -55,7 +55,7 @@ set tabstop=4
 set shiftwidth=4
 "   Width of an indent (eg. using >>)
 autocmd Filetype html setlocal ts=2 sw=2
-autocmd Filetype markdown setlocal ts=2 sw=2
+autocmd Filetype markdown setlocal ts=2 sw=2 wrap
 
 " - Basic Settings
 set nobackup                   " Meh #MadLAdZ
@@ -78,6 +78,7 @@ set foldmethod=indent
 set foldlevel=99
 set autoindent
 set backspace=indent,eol,start " Make backspace work
+set linebreak                  " Nicely wrap
 
 " - Cemetery of past settings
 "set nofoldenable     " Don't fold functions (it looks ugly!)
