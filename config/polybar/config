@@ -13,11 +13,9 @@ i3_active_bg = ${xrdb:color1}
 i3_urgent_fg = ${xrdb:color1}
 i3_urgent_bg = ${xrdb:color3}
 
-
 [settings]
 gap = 0
 padding = 5
-
 
 [bar/laptop]
 monitor = eDP1
@@ -37,7 +35,7 @@ font-3 = "Font Awesome 5 Free:size=10:style=Solid;2"
 
 modules-left = cpu memory pulseaudio backlight battery
 modules-center = i3
-modules-right = vpn wanip date time
+modules-right = vpn ipstatus wanip date time
 
 ;TODO tray
 ;tray-position = right
@@ -49,7 +47,6 @@ border-top-size = ${settings.gap}
 border-left-size = ${settings.gap}
 border-right-size = ${settings.gap}
 border-bottom-size = ${settings.gap}
-
 
 [module/i3]
 type = internal/i3
@@ -89,7 +86,6 @@ label-urgent-padding = 3
 label-urgent-foreground = ${colors.i3_urgent_fg}
 label-urgent-background = ${colors.i3_urgent_bg}
 
-
 [module/date]
 type = internal/date
 interval = 5
@@ -97,8 +93,8 @@ date = "%d-%m-%Y"
 format-prefix = ""
 format-prefix-foreground = ${colors.prefix}
 format-foreground = ${colors.fg}
-label-padding = 2
-
+format-prefix-padding-right = 1
+format-padding = 1
 
 [module/time]
 type = internal/date
@@ -107,33 +103,17 @@ date = "%I:%M %p"
 format-prefix = ""
 format-prefix-foreground = ${colors.prefix}
 format-foreground = ${colors.fg}
-label-padding = 2
-
-
-[module/vpn]
-type = custom/script
-exec = echo ""
-exec-if = systemctl is-active openvpn-client@adam
-interval = 1
-format-foreground = ${colors.prefix}
-
-
-[module/wanip]
-type = custom/script
-exec = wanip
-interval = 3
-format-foreground = ${colors.fg}
-label-padding = 2
-
+format-prefix-padding-right = 1
+format-padding = 1
 
 [module/cpu]
 type = internal/cpu
 label = %percentage:2%%
-label-padding = 2
 format-prefix = ""
 format-prefix-foreground = ${colors.prefix}
 format-foreground = ${colors.fg}
-
+format-padding = 1
+format-prefix-padding-right = 1
 
 [module/battery]
 type = internal/battery
@@ -143,14 +123,22 @@ label-charging = "%percentage:2%%"
 format-charging-foreground = ${colors.fg}
 format-charging-prefix = ""
 format-charging-prefix-foreground = ${colors.prefix}
-label-charging-padding = 2
+format-charging-prefix-padding-right = 1
+format-charging-padding = 1
 
 label-discharging = "%percentage:2%%"
 format-discharging-foreground = ${colors.fg}
 format-discharging-prefix = ""
 format-discharging-prefix-foreground = ${colors.prefix}
-label-discharging-padding = 2
+format-discharging-prefix-padding-right = 1
+format-discharging-padding = 1
 
+label-full = "%percentage:2%%"
+format-full-foreground = ${colors.fg}
+format-full-prefix = ""
+format-full-prefix-foreground = ${colors.prefix}
+format-full-prefix-padding-right = 1
+format-full-padding = 1
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -159,15 +147,17 @@ use-ui-max = false
 
 format-volume-foreground = ${colors.fg}
 label-volume = "%percentage:2%%"
-label-volume-padding = 2
 format-volume-prefix = ""
 format-volume-prefix-foreground = ${colors.prefix}
+format-volume-padding = 1
+format-volume-prefix-padding-right = 1
 
-label-muted = MUTE
-label-muted-padding = 1
-label-muted-padding-right = 2
+label-muted = MUTED
+format-muted-prefix = ""
 format-muted-foreground = ${colors.i3_active_bg}
-
+format-muted-prefix-foreground = ${colors.i3_active_bg}
+format-muted-prefix-padding-right = 1
+format-muted-padding = 1
 
 [module/backlight]
 type = internal/xbacklight
@@ -177,8 +167,8 @@ label = "%percentage:2%%"
 format-foreground = ${colors.fg}
 format-prefix = ""
 format-prefix-foreground = ${colors.prefix}
-label-padding = 2
-
+format-padding = 1
+format-prefix-padding-right = 1
 
 [module/memory]
 type = internal/memory
@@ -186,4 +176,27 @@ label = "%percentage_used:2%%"
 format-prefix = ""
 format-prefix-foreground = ${colors.prefix}
 format-foreground = ${colors.fg}
-label-padding = 2
+format-padding = 1
+format-prefix-padding-right = 1
+
+[module/ipstatus]
+type = custom/script
+exec = ip_status check
+interval = 1
+label-padding-left = 1
+label-font = 4
+
+[module/vpn]
+type = custom/script
+exec = echo ""
+exec-if = systemctl is-active openvpn-client@adam
+interval = 1
+format-foreground = ${colors.prefix}
+label-padding-left = 1
+
+[module/wanip]
+type = custom/script
+exec = cat /tmp/ip_status.log | cut -d ":" -f 1
+interval = 1
+format-foreground = ${colors.fg}
+format-padding = 1

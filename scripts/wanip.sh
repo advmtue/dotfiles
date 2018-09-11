@@ -7,4 +7,4 @@
 #dig +short myip.opendns.com @resolver1.opendns.com
 
 #   Using CURL
-curl -s --connect-timeout 1 ip.adamtue.ch
+curl -s --max-time 1 ip.adamtue.ch
