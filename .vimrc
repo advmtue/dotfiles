@@ -56,6 +56,7 @@ set shiftwidth=4
 "   Width of an indent (eg. using >>)
 autocmd Filetype html setlocal ts=2 sw=2
 autocmd Filetype markdown setlocal ts=2 sw=2 wrap
+autocmd Filetype yaml setlocal ts=4 sw=4 sts=4 expandtab
 
 " - Basic Settings
 set nobackup                   " Meh #MadLAdZ
