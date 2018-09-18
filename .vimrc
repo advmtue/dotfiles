@@ -97,14 +97,16 @@ nnoremap <F2> :Vex<CR>
 "   Remove Banner
 let g:netrw_banner = 0
 "   Width = 25
-let g:netrw_winsize = 25
+let g:netrw_winsize = 18
 "   Open in previous window
-let g:netrw_browse_split = 0
+let g:netrw_browse_split = 2
 "   Open in tree mode
 let g:netrw_liststyle = 3
 
-" - F9 To Run Python Script
+" - F9 To Run Scripts
+"   Python
 autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+"   Javascript
 autocmd FileType javascript nnoremap <buffer> <F9> :exec '!node' shellescape(@%, 1)<cr>
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -170,11 +172,5 @@ highlight StartifyHeader ctermfg=10
 " - Ale
 let g:ale_sign_column_always = 1
 let g:ale_linters = {'javascript': ['xo']}
-nnoremap <F7> :ALENext<CR>
-nnoremap <F8> :ALEPrevious<CR>
-
-" - Tabularize
-nmap <leader>a :Tabularize /=<CR>
-vmap <leader>a :Tabularize /=<CR>
-nmap <leader>s :Tabularize /:\za<CR>
-vmap <leader>s :Tabularize /:\za<CR>
+nnoremap <F7> :ALEPrevious<CR>
+nnoremap <F8> :ALENext<CR>
