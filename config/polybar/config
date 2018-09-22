@@ -118,7 +118,7 @@ label-padding = 2
 [module/vpn]
 type = custom/script
 exec = echo ""
-exec-if = systemctl is-active openvpn-client@client.service
+exec-if = systemctl is-active openvpn-client@groundhog.service
 interval = 1
 format-foreground = ${colors.fg}
 ;format-background = ${xrdb:color10}

@@ -10,13 +10,13 @@ fi
 
 if [[ "$1" == "on" ]];
 then
-    systemctl start openvpn-client@client.service
+    systemctl start openvpn-client@groundhog.service
     ufw enable
     ##systemctl start transmission.service
 elif [[ "$1" == "off" ]];
 then
     ##systemctl stop transmission.service
-    systemctl stop openvpn-client@client.service
+    systemctl stop openvpn-client@groundhog.service
     ufw disable
 else
     echo "Invalid command entered, try 'vpn on' or 'vpn off'"
