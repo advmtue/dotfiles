@@ -9,7 +9,7 @@
 #   My filesystems
 #       Add more by editing the get_mount_cmd function
 #   bin     = bin.adamtue.ch        -> /mnt/bin
-#   moose   = 10.1.1.65             -> /mnt/moose
+#   hog   = 10.1.1.65             -> /mnt/hog
 #   vps     = adamtue.ch [private]  -> /mnt/vps
 #   deakin  = interactive.deakin... -> /mnt/deakin
 
@@ -29,15 +29,15 @@ done
 
 #   @func get_mount_point
 #   @desc Get the local mount point of a remote location
-#   @param $1 Name of remote location (eg. "moose")
+#   @param $1 Name of remote location (eg. "hog")
 #   @returns Location (local mount point)
 function get_mount_point {
     case "$1" in
         "bin")
             echo "/mnt/bin"
             ;;
-        "moose")
-            echo "/mnt/moose"
+        "hog")
+            echo "/mnt/hog"
             ;;
         "vps")
             echo "/mnt/vps"
@@ -52,15 +52,15 @@ function get_mount_point {
 
 #   @func get_mount_cmd
 #   @desc Returns the command used to mount a particular location
-#   @param $1 Name of remote location (eg. "moose")
+#   @param $1 Name of remote location (eg. "hog")
 #   @returns CMD to mount location
 function get_mount_cmd {
     case "$1" in
         "bin")
             echo "bin:src/dumpster/public/ /mnt/bin"
             ;;
-        "moose")
-            echo "moose:/ /mnt/moose"
+        "hog")
+            echo "hog:/ /mnt/hog"
             ;;
         "vps")
             echo "adam:private /mnt/vps"
