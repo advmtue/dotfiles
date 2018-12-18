@@ -54,6 +54,6 @@ rofi.bw: 0
 rofi.hide-scrollbar: True
 rofi.separator-style: none
 !   main window     bg          fg
-rofi.color-window:  #202020,    #797880
+rofi.color-window:  #101010,    #797880
 !   rows            bg          fg          bgalt       hlbg        hlfg
-rofi.color-normal:  #202020,    #444444,    #202020,    #a54242,    #101010
+rofi.color-normal:  #101010,    #444444,    #202020,    #a54242,    #101010
