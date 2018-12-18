@@ -127,10 +127,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'EXIT' 'i3-msg 
 #-------------------------------------------------------------------------------
 
 #   Window Type: No Title, Pixel Border
-new_window normal 1 px
-new_float normal 1 px
+new_window pixel 2 px
+new_float pixel 2 px
 
-hide_edge_borders both
+#hide_edge_borders both
 
 #   Font: Roboto Mono for Powerline
 font pango:Roboto Mono for Powerline Bold 2px
