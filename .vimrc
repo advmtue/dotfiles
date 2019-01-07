@@ -80,6 +80,7 @@ set foldlevel=99
 set autoindent
 set backspace=indent,eol,start " Make backspace work
 set linebreak                  " Nicely wrap
+set title                      " Set the title of the window
 
 " - Cemetery of past settings
 "set nofoldenable     " Don't fold functions (it looks ugly!)
@@ -172,5 +173,6 @@ highlight StartifyHeader ctermfg=10
 " - Ale
 let g:ale_sign_column_always = 1
 let g:ale_linters = {'javascript': ['xo']}
+let g:ale_linters = {'c': ['clang']}
 nnoremap <F7> :ALEPrevious<CR>
 nnoremap <F8> :ALENext<CR>
