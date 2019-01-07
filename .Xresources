@@ -29,7 +29,7 @@
 
 !   Terminal
 URxvt.scrollBar: false
-URxvt.font: xft:Hack:size=11:style=Regular
+URxvt.font: xft:Hack Nerd Font Mono:size=11:style=Regular
 URxvt.dynamicColors: true
 URxvt.internalBorder: 20
 URxvt.geometry: 91x24
