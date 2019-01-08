@@ -49,7 +49,7 @@ fi
 echo "$IP:$TYPE:$ATTEMPTS" > $STATUS_FILE
 
 # If an arg is passed, return polybar status info
-if [ -n $1 ]; then
+if [ "$#" -eq 1 ]; then
 	case $TYPE in
 		0)
 			echo "%{F#8c9440}%{F-}"
