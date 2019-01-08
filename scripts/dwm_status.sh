@@ -18,7 +18,7 @@ BL="盛 $BACKLIGHT%"
 
 
 # battery
-BATTERY=`acpi -b | cut -d " " -f 4`
+BATTERY=`acpi -b | grep -Po "([0-9]{1,3}%)"`
 BATTERY_PREFIX=" "
 if [[ `cat /sys/class/power_supply/BAT0/status` == "Charging" ]]; then
 	BATTERY_PREFIX=" "
@@ -27,7 +27,6 @@ BT="$BATTERY_PREFIX$BATTERY"
 
 
 # wanip
-ip_status
 WANIP=`cut -d ":" -f 1 /tmp/ip_status.log`
 W=" $WANIP"
 
