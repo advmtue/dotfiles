@@ -27,7 +27,8 @@ BT="$BATTERY_PREFIX$BATTERY"
 
 
 # wanip
-WANIP=`cut -d ":" -f 1 /tmp/ip_status.log`
+WANIP=`wanip`
+[ -z $WANIP ] && WANIP="- no ip -"
 W=" $WANIP"
 
 
