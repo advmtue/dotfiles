@@ -38,4 +38,9 @@ D=" $DATE"
 
 
 # Output
-echo -e " $BL  $V  $BT  $W  $D "
+O=" $BL  $V  $BT  $W  $D "
+echo -e "$O"
+
+if [[ $1 == "update" ]]; then
+	xsetroot -name "$O";
+fi
