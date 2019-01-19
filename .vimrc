@@ -1,20 +1,15 @@
-" Set editor root depending on the version of vim
-if has('nvim')
-    let s:editor_root=expand("~/.config/nvim")
-else
-    let s:editor_root=expand("~/.config/vim")
-endif
+" Editor root is the same regardless of the vim version/fork
+let s:editor_root=expand("~/.config/vim")
 
-" - V U N D L E
+" Vundle
 filetype off
-let &rtp = &rtp . ',' .  s:editor_root . '/bundle/Vundle.vim'
+let &rtp = &rtp.','.s:editor_root.'/bundle/Vundle.vim'
 call vundle#rc(s:editor_root . '/bundle/')
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'            " Package Management
 Plugin 'bronson/vim-trailing-whitespace' " Trailing whitespace helper
 Plugin 'ctrlpvim/ctrlp.vim'              " Ctrl-P
-Plugin 'danro/rename.vim'                " Rename active file
 Plugin 'digitaltoad/vim-pug'             " Pug (Jade) highlighting
 Plugin 'moll/vim-node'                   " Node highlighting
 Plugin 'mxw/vim-jsx'                     " JSX Syntax
@@ -27,36 +22,25 @@ Plugin 'w0rp/ale'                        " Linting
 Plugin 'tmhedberg/SimpylFold'            " Function Folding
 Plugin 'godlygeek/tabular'               " Since Smart Tabs hates
 Plugin 'shmup/vim-sql-syntax'            " SQL Syntax
-
-" Things I really need to learn how to use
-Plugin 'scrooloose/nerdcommenter' " Commenting
-Plugin 'tpope/vim-surround'       " Surround
-
 call vundle#end()
 
-" - Colour Scheme
-"   Uses apprentice as the base, but with a few mods.
-"
-"   Mainly removing the background color and replacing it
-"    with the default terminal background.
 syntax on
 filetype plugin indent on
+
+" Colour Scheme
 colorscheme apprentice
 hi Normal ctermbg=NONE
 hi LineNr ctermbg=NONE
 hi FoldColumn ctermbg=NONE ctermfg=242
 hi Visual ctermbg=NONE
 
-" - TAB/SPACE Settings I should NEVER MESS WITH AGAIN
-"   17-07-18 - I changed this shit again and fucked things lmao
-"   Most of this is taken care of by the Smart-Tabs plugin
-set tabstop=4
-"   How many spaces a tab appears to be
-set shiftwidth=4
-"   Width of an indent (eg. using >>)
+" Width of an indent (eg. using >>)
 autocmd Filetype html setlocal ts=2 sw=2
 autocmd Filetype markdown setlocal ts=2 sw=2 wrap
 autocmd Filetype yaml setlocal ts=4 sw=4 sts=4 expandtab
+
+" Markdown for .md files
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " - Basic Settings
 set nobackup                   " Meh #MadLAdZ
@@ -75,92 +59,71 @@ set nowrap                     " Don't wrap text horizontall (Map to new line)
 set scrolloff=4                " 4 Lines of space above/below cursor
 set lazyredraw                 " Don't redraw during automated tasks
 set t_Co=256                   " 256 Colors
-set foldmethod=indent
+set foldmethod=indent          " Fold based on indentation
 set foldlevel=99
-set autoindent
+set autoindent                 " Indentation
 set backspace=indent,eol,start " Make backspace work
 set linebreak                  " Nicely wrap
 set title                      " Set the title of the window
+set laststatus=2               " Enable Status Bar
+set noshowmode                 " Hide --INSERT--
 
-" - Cemetery of past settings
-"set nofoldenable     " Don't fold functions (it looks ugly!)
-"set colorcolumn=80   " Make it obvious where 80 chars is
-"set list
+" Cemetery of past settings
+" set colorcolumn=80 " Make it obvious where 80 chars is
+" set list           " Show hidden characters (tab,space,eol)
 
-" - Maps and Remaps
-" - Wrapping Toggle
+" Maps and Remaps
 nnoremap <F5> :set list!<CR>
 nnoremap <space> za
 
-" - NetRW Config
-"   Mapping
+" NetRW Config
 nnoremap <F2> :Vex<CR>
-"   Remove Banner
-let g:netrw_banner = 0
-"   Width = 25
-let g:netrw_winsize = 18
-"   Open in previous window
-let g:netrw_browse_split = 2
-"   Open in tree mode
-let g:netrw_liststyle = 3
+let g:netrw_banner = 0       " Remove Banner
+let g:netrw_winsize = 18     " Width
+let g:netrw_browse_split = 2 " Open in previous window
+let g:netrw_liststyle = 3    " Open in tree mode
 
-" - F9 To Run Scripts
-"   Python
+" F9 To Run Scripts
 autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
-"   Javascript
 autocmd FileType javascript nnoremap <buffer> <F9> :exec '!node' shellescape(@%, 1)<cr>
 
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" - Various Window Splitting Magic
+" Various Window Splitting Magic
 nnoremap \ <C-W>v
 nnoremap - <C-W>n
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-set splitbelow        " Split Down
-set splitright        " Split Right
+set splitbelow " Split Down
+set splitright " Split Right
 
-" - Leader maps
+" Leader maps
 let mapleader = ","             " Use comma as the leader
 noremap <Leader>j :bprev<cr>    " Leader-j previous buffer
 noremap <Leader>k :bnext<cr>    " Leader-k next buffer
 noremap <Leader>q :bw<cr>       " Leader-q close buffer
 noremap <Leader>w :w<cr>        " Leader-w saves buffer
 
-" - kj to Escape Insert Mode
-imap kj <Esc>
-imap kJ <Esc>
-imap Kj <Esc>
-imap KJ <Esc>
-
-" - Status Bar
-set laststatus=2 " Enable Status Bar
-
-" Hide the -- INSERT -- line since it's not needed
-set noshowmode
-
-" - Ctrl-P
+" Ctrl-P
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
             \ 'file': '\v\.(exe|so|dll)$'
             \ }
 
-" - Startify Nonsense
+" Startify Nonsense
 let g:startify_custom_header = [
-			\ '                               ___     ',
-			\ '      ___        ___          /__/\    ',
-			\ '     /__/\      /  /\        |  |::\   ',
-			\ '     \  \:\    /  /:/        |  |:|:\  ',
-			\ '      \  \:\  /__/::\      __|__|:|\:\ ',
-			\ '  ___  \__\:\ \__\/\:\__  /__/::::| \:\',
-			\ ' /__/\ |  |:|    \  \:\/\ \  \:\~~\__\/',
-			\ ' \  \:\|  |:|     \__\::/  \  \:\      ',
-			\ '  \  \:\__|:|     /__/:/    \  \:\     ',
-			\ '   \__\::::/      \__\/      \  \:\    ',
-			\ '       ~~~~                   \__\/',
-			\ ]
+	\ '                               ___     ',
+	\ '      ___        ___          /__/\    ',
+	\ '     /__/\      /  /\        |  |::\   ',
+	\ '     \  \:\    /  /:/        |  |:|:\  ',
+	\ '      \  \:\  /__/::\      __|__|:|\:\ ',
+	\ '  ___  \__\:\ \__\/\:\__  /__/::::| \:\',
+	\ ' /__/\ |  |:|    \  \:\/\ \  \:\~~\__\/',
+	\ ' \  \:\|  |:|     \__\::/  \  \:\      ',
+	\ '  \  \:\__|:|     /__/:/    \  \:\     ',
+	\ '   \__\::::/      \__\/      \  \:\    ',
+	\ '       ~~~~                   \__\/',
+	\ ]
 let g:startify_files_number=5
 highlight StartifyBracket ctermfg=7
 highlight StartifyNumber ctermfg=7
@@ -170,7 +133,7 @@ highlight StartifyFile ctermfg=15
 highlight StartifySection ctermfg=1
 highlight StartifyHeader ctermfg=10
 
-" - Ale
+" Ale
 let g:ale_sign_column_always = 1
 let g:ale_linters = {'javascript': ['xo']}
 let g:ale_linters = {'c': ['clang']}
