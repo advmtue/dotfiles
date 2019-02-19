@@ -38,7 +38,7 @@ D=" $DATE"
 
 
 # Output
-O=" $BL  $V  $BT  $W  $D "
+O=" $V  $W  $D "
 echo -e "$O"
 
 if [[ $1 == "update" ]]; then
