@@ -12,6 +12,7 @@ Plugin 'tmhedberg/SimpylFold'            " Function Folding
 Plugin 'godlygeek/tabular'               " Since Smart Tabs hates
 
 Plugin 'moll/vim-node'                   " Node highlighting
+Plugin 'leafgarland/typescript-vim'
 Plugin 'mxw/vim-jsx'                     " JSX Syntax
 Plugin 'shmup/vim-sql-syntax'            " SQL Syntax
 Plugin 'lervag/vimtex'                   " TeX support
@@ -33,6 +34,8 @@ hi StatusLineNC ctermbg=NONE
 autocmd Filetype html setlocal ts=2 sw=2
 autocmd Filetype markdown setlocal ts=2 sw=2 wrap
 autocmd Filetype yaml setlocal ts=4 sw=4 sts=4 expandtab
+autocmd Filetype typescript setlocal ts=4 sw=4 sts=4 expandtab
+autocmd Filetype json setlocal ts=4 sw=4 sts=4 expandtab
 
 " Markdown for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
