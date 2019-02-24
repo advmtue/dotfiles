@@ -151,8 +151,8 @@ label-font = 2
 # vpn - Incognito looking icon
 [module/vpn]
 type = custom/script
-exec = echo "VPN "
-exec-if = systemctl is-active openvpn-client@adam
+exec = echo ""
+exec-if = systemctl is-active openvpn-client@groundhog.service
 interval = 1
 
 # wanip - Current external ip address
