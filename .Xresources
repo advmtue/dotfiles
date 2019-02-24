@@ -40,7 +40,7 @@ Xcursor.size: 8
 *.dpi: 96
 dpi: 96
 Xft.dpi: 96
-Xft.autohint: 0
+Xft.autohint: 1
 Xft.hinting: 1
 Xft.antialias: 1
 
