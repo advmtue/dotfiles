@@ -1,9 +1,7 @@
-" Editor root is the same regardless of the vim version/fork
-let s:editor_root=expand("~/.config/vim")
-
 " Vundle
+set nocompatible
 filetype off
-set rtp+=~/.config/vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'            " Self-management
@@ -17,6 +15,7 @@ syntax on
 filetype plugin indent on
 
 " Colour Scheme
+set background=dark
 colorscheme delek
 hi Comment ctermfg=darkgray
 hi LineNr ctermbg=NONE ctermfg=darkgray
