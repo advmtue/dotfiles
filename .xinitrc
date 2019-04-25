@@ -8,6 +8,5 @@ while true; do
 	sleep 5;
 done &
 dunst &
-sudo netctl start home &
 
 exec dwm
