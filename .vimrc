@@ -11,8 +11,8 @@ Plugin 'pangloss/vim-javascript'         " Javascript highlighting
 Plugin 'lervag/vimtex'                   " TeX support
 call vundle#end()
 
-syntax on
 filetype plugin indent on
+syntax on
 
 " Colour Scheme
 set background=dark
@@ -28,11 +28,12 @@ hi StatusLineNC ctermbg=NONE
 autocmd Filetype html setlocal ts=2 sw=2
 autocmd Filetype markdown setlocal ts=2 sw=2 wrap
 autocmd Filetype yaml setlocal ts=4 sw=4 sts=4 expandtab
+autocmd Filetype tex setlocal wrap
 
 " Markdown for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" - Basic Settings
+" Basic Settings
 set noswapfile                 " Don't create a swap file
 set number                     " Show line numbers
 set hidden                     " Don't close hidden buffers
