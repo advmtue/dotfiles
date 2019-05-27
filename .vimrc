@@ -23,6 +23,8 @@ hi Folded ctermbg=NONE
 hi MatchParen ctermbg=darkblue ctermfg=darkgray cterm=bold
 hi StatusLine cterm=bold ctermfg=0 ctermbg=white
 hi StatusLineNC ctermbg=NONE
+hi VertSplit term=NONE cterm=NONE
+
 
 " Width of an indent (eg. using >>)
 autocmd Filetype html setlocal ts=2 sw=2
@@ -51,12 +53,14 @@ set statusline+=[%F]%r         " Status bar = [{filename}]{permissions}
 set conceallevel=2             " Conceal text formatting such as markdown
 set splitbelow                 " Split Down
 set splitright                 " Split Right
+set noea                       " Don't automatically resize windows
 
 " NetRW Config (:Vex)
 let g:netrw_banner = 0       " Remove Banner
-let g:netrw_winsize = 18     " Width
-let g:netrw_browse_split = 2 " Open in previous window
+let g:netrw_winsize = 30     " Width
+let g:netrw_browse_split = 4 " Open in previous window
 let g:netrw_liststyle = 3    " Open in tree mode
+noremap <leader>r :vertical resize 25<cr> " Resize to proper width
 
 " Window split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -69,7 +73,7 @@ let mapleader = ","             " Use comma as the leader
 noremap <Leader>j :bprev<cr>    " Leader-j previous buffer
 noremap <Leader>k :bnext<cr>    " Leader-k next buffer
 noremap <Leader>l :ls<cr>	" Leader-l shows buffer listing
-nnoremap <leader>h :nohl<cr>    " Clear highlights
+noremap <leader>h :nohl<cr>    " Clear highlights
 
 " Typesetting (latex@vimtex)
 let g:tex_flavor='latex'
