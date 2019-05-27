@@ -11,8 +11,8 @@ alias feh='feh -g 900x700'
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias musb="sudo mount -o gid=users,fmask=113,dmask=002"
 
-alias cdw_dummy='cdrecord -dummy -v -pad speed=1 dev=/dev/sr0 -dao -swab *.wav'
-alias cdw='cdrecord -v -pad speed=1 dev=/dev/sr0 -dao -swab *.wav'
+alias cdw_dummy='cdrecord -dummy -v speed=1 -dao -audio *.wav'
+alias cdw='cdrecord -v speed=1 -dao -audio *.wav'
 alias cdw_wav='for i in *.mp3; do lame --decode "$i" "$(basename "$i" .mp3)".wav; done'
 
 #   Check the window size after each command
