@@ -17,7 +17,7 @@ syntax on
 " Colour Scheme
 set background=dark
 colorscheme delek
-hi Comment ctermfg=darkgray
+hi Comment ctermfg=65
 hi LineNr ctermbg=NONE ctermfg=darkgray
 hi Folded ctermbg=NONE
 hi MatchParen ctermbg=darkblue ctermfg=darkgray cterm=bold
