@@ -38,9 +38,15 @@ D=" $DATE"
 
 
 # Output
-# macbook
-# O=" $BL  $V  $BT  $W  $D "
-O=" $V  $W  $D "
+O=" $V  $W  $D " # Default
+case `hostname` in
+	"hog")
+		O=" $V  $W  $D "
+		;;
+	"dingo")
+		O=" $BL  $V  $BT  $W  $D "
+		;;
+esac
 echo -e "$O"
 
 if [[ $1 == "update" ]]; then
