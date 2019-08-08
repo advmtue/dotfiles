@@ -38,6 +38,8 @@ D=" $DATE"
 
 
 # Output
+# macbook
+# O=" $BL  $V  $BT  $W  $D "
 O=" $V  $W  $D "
 echo -e "$O"
 
