@@ -1,5 +1,7 @@
 #exec i3
 xrdb -l ~/.Xresources
+xrdb -merge ~/.xrdb_extra
+
 compton -b
 hsetroot -solid "#000000"
 
