@@ -3,14 +3,10 @@
 
 #   Aliases
 alias ls='ls --color=auto --group-directories-first'
-alias ll='ls -l'
-alias lla='ls -la'
 alias mkt='cd $(mktemp -d)'
-alias music="ncmpcpp"
-alias feh='feh -g 900x700'
-alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias musb="sudo mount -o gid=users,fmask=113,dmask=002"
 
+#   CD Burning
 alias cdw_dummy='cdrecord -dummy -v speed=1 -dao -audio *.wav'
 alias cdw='cdrecord -v speed=1 -dao -audio *.wav'
 alias cdw_wav='for i in *.mp3; do lame --decode "$i" "$(basename "$i" .mp3)".wav; done'
@@ -18,35 +14,27 @@ alias cdw_wav='for i in *.mp3; do lame --decode "$i" "$(basename "$i" .mp3)".wav
 #   Check the window size after each command
 shopt -s checkwinsize
 
-#   Use nvim as editor
+#   Use vim as editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
-alias e="$EDITOR"
 
 #   Default File Permissions
-#   u=rwx,g=,o=
+#   u=rwx,g=r,o=r
 umask 0022
 
 #   No bash_history
 unset HISTFILE
 
-#   Colors
-#   0   = black
-#   1   = red
-#   2   = green
-#   3   = brown
-#   4   = blue
-#   5   = purple
-#   6   = cyan
-#   7   = gray
-#   8   = dark gray
-#   9   = light red
-#   10  = light green
-#   11  = light brown
-#   12  = light blue
-#   13  = light purple
-#   14  = light cyan
-#   15  = white
+#   Colour code reference
+#   NAME     DARK   LIGHT
+#   Black    0      8
+#   Red      1      9
+#   Green    2      10
+#   Brown    3      11
+#   Blue     4      12
+#   Purple   5      13
+#   Cyan     6      14
+#   Gray     7      15
 
 #   Return ANSI color (re: above)
 function saf {
@@ -77,6 +65,7 @@ esac
 #   Clear local functions
 unset -f saf
 unset -f res
+unset -f shost
 
 #   Execute any supplementary files
 if [ -f "$HOME/.bash_extras" ]; then
