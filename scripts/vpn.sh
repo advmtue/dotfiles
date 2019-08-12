@@ -8,14 +8,20 @@ then
 fi
 
 
-if [[ "$1" == "on" ]];
-then
+if [[ "$1" == "on" ]]; then
     ufw enable
     systemctl start wg-quick@wg0
-    systemctl start transmission.service
-elif [[ "$1" == "off" ]];
-then
-    systemctl stop transmission.service
+
+    # Enable transmission if we are the server
+    if [ `hostname` = "hog" ]; then
+        systemctl start transmission.service
+    fi
+elif [[ "$1" == "off" ]]; then
+    # Disable transmission if we are the server
+    if [ `hostname` = "hog" ]; then
+        systemctl stop transmission.service
+    fi
+
     systemctl stop wg-quick@wg0
     ufw disable
 else
