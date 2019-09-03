@@ -6,7 +6,7 @@
 VOLUME="`pamixer --get-volume`%"
 VOLUME_PREFIX=' '
 if [[ `pamixer --get-mute` == "true" ]]; then
-	VOLUME="MUTED"
+	VOLUME="MUTE"
 	VOLUME_PREFIX=""
 fi
 V="$VOLUME_PREFIX$VOLUME"
