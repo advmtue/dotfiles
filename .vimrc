@@ -17,14 +17,16 @@ syntax on
 " Colour Scheme
 set background=dark
 colorscheme delek
+" Make comments dark green
 hi Comment ctermfg=65
 hi LineNr ctermbg=NONE ctermfg=darkgray
 hi Folded ctermbg=NONE
-hi MatchParen ctermbg=darkblue ctermfg=darkgray cterm=bold
-hi StatusLine cterm=bold ctermfg=0 ctermbg=white
+hi MatchParen ctermbg=NONE ctermfg=red cterm=bold
+hi StatusLine cterm=bold ctermfg=232 ctermbg=white
 hi StatusLineNC ctermbg=NONE
 hi VertSplit term=NONE cterm=NONE
-
+" Remove underline from hybrid line number
+hi CursorLineNr cterm=NONE
 
 " Width of an indent (eg. using >>)
 autocmd Filetype html setlocal ts=2 sw=2
@@ -38,6 +40,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Basic Settings
 set noswapfile                 " Don't create a swap file
 set number                     " Show line numbers
+set relativenumber             " Set number as relative to cursor
 set hidden                     " Don't close hidden buffers
 set ignorecase                 " Ignore the case when / searching
 set incsearch                  " Highlight items in the search as you type
@@ -49,7 +52,7 @@ set autoindent                 " Autoindent
 set backspace=indent,eol,start " Make backspace work
 set linebreak                  " Wrap by word
 set laststatus=2               " Enable status bar
-set statusline+=[%F]%r         " Status bar = [{filename}]{permissions}
+set statusline=[%F]%r%=%l:%c%V " Status bar = [{filename}]{permissions}
 set conceallevel=2             " Conceal text formatting such as markdown
 set splitbelow                 " Split Down
 set splitright                 " Split Right
@@ -69,11 +72,11 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 
 " Leader utilities
-let mapleader = ","             " Use comma as the leader
-noremap <Leader>j :bprev<cr>    " Leader-j previous buffer
-noremap <Leader>k :bnext<cr>    " Leader-k next buffer
-noremap <Leader>l :ls<cr>	" Leader-l shows buffer listing
-noremap <leader>h :nohl<cr>    " Clear highlights
+let mapleader = ","          " Use comma as the leader
+noremap <Leader>j :bprev<cr> " Leader-j previous buffer
+noremap <Leader>k :bnext<cr> " Leader-k next buffer
+noremap <Leader>l :ls<cr>    " Leader-l shows buffer listing
+noremap <leader>h :nohl<cr>  " Clear highlights
 
 " Typesetting (latex@vimtex)
 let g:tex_flavor='latex'
