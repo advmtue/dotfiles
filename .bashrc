@@ -19,8 +19,8 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 #   Default File Permissions
-#   u=rwx,g=r,o=r
-umask 0022
+#   u=rwx,g=rwx,o=r
+umask 0002
 
 #   No bash_history
 unset HISTFILE
