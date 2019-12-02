@@ -39,6 +39,9 @@ function get_mount_point {
         "hog")
             echo "/mnt/hog"
             ;;
+        "hogvpn")
+            echo "/mnt/hog"
+            ;;
         "vps")
             echo "/mnt/vps"
             ;;
@@ -61,6 +64,9 @@ function get_mount_cmd {
             ;;
         "hog")
             echo "hog:/ /mnt/hog"
+            ;;
+        "hogvpn")
+            echo "hogvpn:/ /mnt/hog"
             ;;
         "vps")
             echo "adam:private /mnt/vps"
