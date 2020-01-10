@@ -3,8 +3,7 @@
 
 #   Aliases
 alias ls='ls --color=auto --group-directories-first'
-alias mkt='cd $(mktemp -d)'
-alias musb="sudo mount -o gid=users,fmask=113,dmask=002"
+alias musb="sudo mount -o uid=`whoami`,gid=`whoami`,fmask=113,dmask=002"
 
 #   CD Burning
 alias cdw_dummy='cdrecord -dummy -v speed=1 -dao -audio *.wav'
@@ -36,25 +35,30 @@ unset HISTFILE
 #   Cyan     6      14
 #   Gray     7      15
 
-#   Return ANSI color (re: above)
+#   Set the terminal color to a given value
 function saf {
     echo "\[$(tput setaf $1)\]"
 }
 
-#   Return ANSI Reset
+#   Reset the terminal color
 function res {
     echo "\[$(tput sgr0)\]"
 }
 
+#   Get a hostname string.
+#   Returns the hostname if the TTY is a SSH connection
 function shost {
-    if [ "$HOSTNAME" != "groundhog" ]; then
-        echo "$(saf 11)@$HOSTNAME"
+    if [ -z "$SSH_CONNECTION" ]; then
+        echo "";
+    else
+        echo "@\h"
     fi
 }
 
-#   Potential Exports
-p_c="$(saf 1)\u$(shost) $(saf 7)\w $(res)\\$ "
-p_nc="\u@\h \w \\$ "
+#   Coloured prompt
+p_c="$(saf 1)[\u]$(saf 8)$(shost) \w $(res)\\$ "
+#   Uncoloured prompt
+p_nc="[\u]$(shost) \w \\$ "
 
 #   Export depending on TERM
 case "$TERM" in
@@ -63,9 +67,7 @@ case "$TERM" in
 esac
 
 #   Clear local functions
-unset -f saf
-unset -f res
-unset -f shost
+unset -f saf res shost
 
 #   Execute any supplementary files
 if [ -f "$HOME/.bash_extras" ]; then
