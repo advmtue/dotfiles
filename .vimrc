@@ -19,6 +19,7 @@ set background=dark
 colorscheme paramount
 " Set background colour to terminal default
 hi Normal ctermbg=NONE
+hi Constant ctermfg=darkred
 
 " Width of an indent (eg. using >>)
 autocmd Filetype html setlocal ts=2 sw=2
