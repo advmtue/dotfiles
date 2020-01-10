@@ -7,26 +7,18 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'            " Self-management
 Plugin 'bronson/vim-trailing-whitespace' " Highlight trailing whitespace
 Plugin 'godlygeek/tabular'               " Tabularize
-Plugin 'pangloss/vim-javascript'         " Javascript highlighting
 Plugin 'lervag/vimtex'                   " TeX support
+Plugin 'owickstrom/vim-colors-paramount' " Paramount colorscheme
 call vundle#end()
 
 filetype plugin indent on
 syntax on
 
-" Colour Scheme
+" Colour Scheme = paramount
 set background=dark
-colorscheme delek
-" Make comments dark green
-hi Comment ctermfg=65
-hi LineNr ctermbg=NONE ctermfg=darkgray
-hi Folded ctermbg=NONE
-hi MatchParen ctermbg=NONE ctermfg=red cterm=bold
-hi StatusLine cterm=bold ctermfg=232 ctermbg=white
-hi StatusLineNC ctermbg=NONE
-hi VertSplit term=NONE cterm=NONE
-" Remove underline from hybrid line number
-hi CursorLineNr cterm=NONE
+colorscheme paramount
+" Set background colour to terminal default
+hi Normal ctermbg=NONE
 
 " Width of an indent (eg. using >>)
 autocmd Filetype html setlocal ts=2 sw=2
@@ -58,13 +50,6 @@ set splitbelow                 " Split Down
 set splitright                 " Split Right
 set noea                       " Don't automatically resize windows
 
-" NetRW Config (:Vex)
-let g:netrw_banner = 0       " Remove Banner
-let g:netrw_winsize = 30     " Width
-let g:netrw_browse_split = 4 " Open in previous window
-let g:netrw_liststyle = 3    " Open in tree mode
-noremap <leader>r :vertical resize 25<cr> " Resize to proper width
-
 " Window split navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-H> <C-W><C-H>
@@ -75,7 +60,6 @@ nnoremap <C-L> <C-W><C-L>
 let mapleader = ","          " Use comma as the leader
 noremap <Leader>j :bprev<cr> " Leader-j previous buffer
 noremap <Leader>k :bnext<cr> " Leader-k next buffer
-noremap <Leader>l :ls<cr>    " Leader-l shows buffer listing
 noremap <leader>h :nohl<cr>  " Clear highlights
 
 " Typesetting (latex@vimtex)
