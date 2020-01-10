@@ -2,7 +2,7 @@
 xrdb -l ~/.Xresources
 xrdb -merge ~/.xrdb_extra
 
-compton -b
+picom -b
 hsetroot -solid "#000000"
 
 while true; do
