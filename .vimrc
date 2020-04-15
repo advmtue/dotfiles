@@ -9,6 +9,7 @@ Plugin 'bronson/vim-trailing-whitespace' " Highlight trailing whitespace
 Plugin 'godlygeek/tabular'               " Tabularize
 Plugin 'lervag/vimtex'                   " TeX support
 Plugin 'owickstrom/vim-colors-paramount' " Paramount colorscheme
+Plugin 'kien/ctrlp.vim'                  " Fuzzy finding
 call vundle#end()
 
 filetype plugin indent on
@@ -68,3 +69,6 @@ let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg'
+
+" Ctrl P ignore
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
