@@ -10,6 +10,8 @@ Plugin 'godlygeek/tabular'               " Tabularize
 Plugin 'lervag/vimtex'                   " TeX support
 Plugin 'owickstrom/vim-colors-paramount' " Paramount colorscheme
 Plugin 'kien/ctrlp.vim'                  " Fuzzy finding
+Plugin 'prettier/vim-prettier'           " TypeScript/JavaScript linting
+Plugin 'dense-analysis/ale'              " Code Quality
 call vundle#end()
 
 filetype plugin indent on
