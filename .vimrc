@@ -74,3 +74,8 @@ let g:tex_conceal='abdmg'
 
 " Ctrl P ignore
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" Netrw config
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 24
