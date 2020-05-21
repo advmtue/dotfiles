@@ -10,8 +10,6 @@ Plugin 'godlygeek/tabular'               " Tabularize
 Plugin 'lervag/vimtex'                   " TeX support
 Plugin 'owickstrom/vim-colors-paramount' " Paramount colorscheme
 Plugin 'kien/ctrlp.vim'                  " Fuzzy finding
-Plugin 'prettier/vim-prettier'           " TypeScript/JavaScript linting
-Plugin 'dense-analysis/ale'              " Code Quality
 call vundle#end()
 
 filetype plugin indent on
@@ -79,3 +77,6 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 24
+
+" Python run file
+autocmd FileType python map <buffer> <F5> :w<CR>:exec '! clear; python3' shellescape(@%, 1)<CR>
