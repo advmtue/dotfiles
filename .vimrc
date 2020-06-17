@@ -1,31 +1,34 @@
 " Vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'            " Self-management
-Plugin 'bronson/vim-trailing-whitespace' " Highlight trailing whitespace
-Plugin 'godlygeek/tabular'               " Tabularize
-Plugin 'lervag/vimtex'                   " TeX support
-Plugin 'owickstrom/vim-colors-paramount' " Paramount colorscheme
-Plugin 'kien/ctrlp.vim'                  " Fuzzy finding
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'godlygeek/tabular'
+Plug 'lervag/vimtex'
+Plug 'kien/ctrlp.vim'
+Plug 'junegunn/vim-plug'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
+Plug 'morhetz/gruvbox'
+call plug#end()
 
 filetype plugin indent on
 syntax on
 
-" Colour Scheme = paramount
+" Colour Scheme = gruvbox
 set background=dark
-colorscheme paramount
-" Set background colour to terminal default
+colorscheme gruvbox
 hi Normal ctermbg=NONE
-hi Constant ctermfg=darkred
+hi todo ctermbg=NONE
+hi GruvboxRedSign ctermbg=NONE
+hi SignColumn ctermbg=NONE
 
 " Width of an indent (eg. using >>)
 autocmd Filetype html setlocal ts=2 sw=2
 autocmd Filetype markdown setlocal ts=2 sw=2 wrap
 autocmd Filetype yaml,sh setlocal ts=4 sw=4 sts=4 expandtab
+autocmd Filetype javascript,typescript setlocal ts=4 sw=4 sts=4 noexpandtab formatoptions+=ro
 autocmd Filetype tex setlocal wrap
 
 " Markdown for .md files
@@ -51,18 +54,22 @@ set conceallevel=2             " Conceal text formatting such as markdown
 set splitbelow                 " Split Down
 set splitright                 " Split Right
 set noea                       " Don't automatically resize windows
-
-" Window split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
+set updatetime=50
+set cmdheight=2
 
 " Leader utilities
-let mapleader = ","          " Use comma as the leader
-noremap <Leader>j :bprev<cr> " Leader-j previous buffer
-noremap <Leader>k :bnext<cr> " Leader-k next buffer
-noremap <leader>h :nohl<cr>  " Clear highlights
+let mapleader = " "          " Use comma as the leader
+noremap <leader>H :nohl<cr>  " Clear highlights
+" Coc
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>rr <Plug>(coc-rename)
+" Window navigation
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
 
 " Typesetting (latex@vimtex)
 let g:tex_flavor='latex'
@@ -76,7 +83,8 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 " Netrw config
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-let g:netrw_winsize = 24
+let g:netrw_winsize = 25
+let g:netrw_browse_split = 2
 
 " Python run file
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '! clear; python3' shellescape(@%, 1)<CR>
