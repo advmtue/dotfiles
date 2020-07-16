@@ -69,7 +69,7 @@ function get_mount_cmd {
             echo "hogvpn:/ /mnt/hog"
             ;;
         "vps")
-            echo "adam:private /mnt/vps"
+            echo "vps:private /mnt/vps"
             ;;
         "deakin")
             echo "deakin: /mnt/deakin"
