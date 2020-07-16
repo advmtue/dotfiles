@@ -1,0 +1,26 @@
+{
+	"layer": "top",
+	"modules-left": ["sway/workspaces", "sway/mode"],
+	"modules-center": [],
+	"modules-right": ["custom/wanip", "backlight", "battery", "clock"],
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": false
+	},
+	"battery": {
+		"format": "{icon} {capacity}%",
+		"format-icons": ["", "", "", "", ""],
+		"format-charging": " {capacity}%"
+	},
+	"clock": {
+		"format": "{:%d-%m-%y %I:%M %p}"
+	},
+	"custom/wanip": {
+		"exec": "wanip",
+		"format": " {}",
+		"interval": 5
+	},
+	"backlight": {
+		"format": "盛 {percent}%"
+	}
+}

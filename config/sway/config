@@ -1,0 +1,126 @@
+### Variables
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty
+
+# Dmenu
+set $menu rofi -show run | xargs swaymsg exec --
+
+### I/O Peripherals
+# Monitors
+output eDP-1 {
+	scale 2
+	scale_filter nearest
+	background #000000 solid_color
+	position 0,0
+}
+
+output HDMI-A-2 {
+	position 1280,0
+	background #000000 solid_color
+}
+
+# Proper scrolling on MacBook trackpad
+input "1452:627:bcm5974" {
+	natural_scroll enabled
+}
+
+### Key bindings
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec $menu
+# Click and drag config
+floating_modifier $mod normal
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Actually exit?' -b 'Abandon Ship' 'swaymsg exit'
+
+### Movement
+focus_follows_mouse no
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+## Workspaces
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+### Splitting, resizing and layouts
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# Resizing containers
+mode "resize" {
+    bindsym $left resize shrink width 40px
+    bindsym $down resize grow height 40px
+    bindsym $up resize shrink height 40px
+    bindsym $right resize grow width 40px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+### Status bar
+bar {
+    swaybar_command waybar
+}
+
+### Appearance
+gaps inner 10px
+smart_gaps on
+smart_borders on
+default_border pixel 2
+
+## Colours
+# client.class border background text [indicator child_border]
+client.focused #777777 #777777 #eeeeee #777777 #777777
+client.unfocused #2d2d2d #2d2d2d #999999 #2d2d2d #2d2d2d
+client.placeholder #2d2d2d #2d2d2d #999999 #2d2d2d #2d2d2d
+client.focused_inactive #222222 #222222 #eeeeee #222222 #222222
+
+### XF86 Keys
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec pamixer -t
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 -time 0
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -time 0
+bindsym XF86KbdBrightnessUp exec kbdlight up 10
+bindsym XF86KbdBrightnessDown exec kbdlight down 10
+
+### Window specific
+
+
+include /etc/sway/config.d/*
