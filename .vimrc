@@ -60,11 +60,15 @@ set cmdheight=2
 " Leader utilities
 let mapleader = " "          " Use comma as the leader
 noremap <leader>H :nohl<cr>  " Clear highlights
+
 " Coc
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>rr <Plug>(coc-rename)
+
+autocmd FileType java nmap <leader>gI :CocCommand java.action.organizeImports<CR>
+
 " Window navigation
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -84,7 +88,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
-let g:netrw_browse_split = 2
+let g:netrw_browse_split = 0
 
 " Python run file
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '! clear; python3' shellescape(@%, 1)<CR>
