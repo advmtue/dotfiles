@@ -7,7 +7,7 @@ set $right l
 set $term alacritty
 
 # Dmenu
-set $menu rofi -show run | xargs swaymsg exec --
+set $menu rofi -modi drun -show | xargs swaymsg exec --
 
 ### I/O Peripherals
 # Monitors
