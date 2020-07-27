@@ -24,7 +24,7 @@ window#waybar {
 	background: #444444;
 }
 
-#clock, #battery, #custom-wanip, #backlight {
+#pulseaudio, #clock, #battery, #custom-wanip, #backlight {
 	padding: 0 0.8em;
 	margin: 0 0.2em;
 	background: #333333;

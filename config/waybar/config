@@ -2,7 +2,7 @@
 	"layer": "top",
 	"modules-left": ["sway/workspaces", "sway/mode"],
 	"modules-center": [],
-	"modules-right": ["custom/wanip", "backlight", "battery", "clock"],
+	"modules-right": ["custom/wanip", "backlight", "battery", "pulseaudio", "clock"],
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": false
@@ -22,5 +22,8 @@
 	},
 	"backlight": {
 		"format": "盛 {percent}%"
+	},
+	"pulseaudio": {
+		"format": " {volume}%"
 	}
 }

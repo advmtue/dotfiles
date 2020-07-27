@@ -11,6 +11,14 @@ font:
         family: DejaVu Sans Mono
         style: Book
 
+    bold:
+        family: DejaVu Sans Mono
+        style: Bold
+
+    italic:
+        family: monospace
+        style: italic
+
     size: 10
 
 

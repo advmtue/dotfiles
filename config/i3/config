@@ -149,8 +149,8 @@ for_window [class=".*VirtualBox"] floating enable
 #for_window [class=".*"] floating enable
 
 #   Can't currently use gaps as non-floating is broken with titlebars
-gaps inner 10
-gaps outer 5
+gaps inner 20
+gaps outer 10
 smart_gaps on
 smart_borders on
 
@@ -167,17 +167,22 @@ bindsym $mod+d exec "rofi -show run"
 bindsym $mod+i exec snap
 
 #   Console: URxvt
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 #   Merge Xresources
 exec xrdb -merge ~/.Xresources
 
-#   Bar: Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+bar {
+	status_command i3status
+	position top
+	workspace_buttons yes
+
+	font xft:DejaVu Sans Mono:size=8:style=Regular,xft:Hack Nerd Font Mono:size=8:style=Regular
+}
 
 #   Compositor: Compton
-exec_always --no-startup-id compton
+exec_always --no-startup-id picom
 
 #   Background: hsetroot (Solid Color)
 exec_always --no-startup-id hsetroot -solid "#000000"
