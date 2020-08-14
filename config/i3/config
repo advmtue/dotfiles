@@ -10,6 +10,7 @@ floating_modifier $mod
 
 #   Monitor Names
 set $mon "eDP1"
+set $mon2 "HDMI2"
 
 #   Assign Workspaces to Monitors
 workspace 1 output $mon
@@ -17,11 +18,11 @@ workspace 2 output $mon
 workspace 3 output $mon
 workspace 4 output $mon
 workspace 5 output $mon
-workspace 6 output $mon
-workspace 7 output $mon
-workspace 8 output $mon
-workspace 9 output $mon
-workspace 10 output $mon
+workspace 6 output $mon2
+workspace 7 output $mon2
+workspace 8 output $mon2
+workspace 9 output $mon2
+workspace 10 output $mon2
 
 #       Window Movement
 #-------------------------------------------------------------------------------
@@ -149,7 +150,7 @@ for_window [class=".*VirtualBox"] floating enable
 #for_window [class=".*"] floating enable
 
 #   Can't currently use gaps as non-floating is broken with titlebars
-gaps inner 20
+gaps inner 10
 gaps outer 10
 smart_gaps on
 smart_borders on
@@ -169,9 +170,6 @@ bindsym $mod+i exec snap
 #   Console: URxvt
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
-
-#   Merge Xresources
-exec xrdb -merge ~/.Xresources
 
 bar {
 	status_command i3status
