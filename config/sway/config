@@ -6,6 +6,9 @@ set $up k
 set $right l
 set $term alacritty
 
+set $mon output eDP-1
+set $mon2 output HDMI-A-2
+
 # Dmenu
 # set $menu rofi -modi drun -show | xargs swaymsg exec --
 set $menu j4-dmenu-desktop --dmenu='bemenu -n -i ' --term='alacritty'
@@ -37,6 +40,7 @@ input "1386:828:Wacom_Intuos_PT_S_2_Pen" {
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
+bindsym $mod+s exec screenshot
 # Click and drag config
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
@@ -66,6 +70,18 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+## Assign to monitors
+workspace 1 output $mon
+workspace 2 output $mon
+workspace 3 output $mon
+workspace 4 output $mon
+workspace 5 output $mon
+workspace 6 output $mon2
+workspace 7 output $mon2
+workspace 8 output $mon2
+workspace 9 output $mon2
+workspace 10 output $mon2
+
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -78,6 +94,8 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 ### Splitting, resizing and layouts
+bindsym $mod+tab workspace back_and_forth
+
 bindsym $mod+b splith
 bindsym $mod+v splitv
 
@@ -126,6 +144,5 @@ bindsym XF86KbdBrightnessUp exec kbdlight up 10
 bindsym XF86KbdBrightnessDown exec kbdlight down 10
 
 ### Window specific
-
 
 include /etc/sway/config.d/*
