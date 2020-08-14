@@ -29,7 +29,7 @@ autocmd Filetype html setlocal ts=2 sw=2
 autocmd Filetype markdown setlocal ts=2 sw=2 wrap
 autocmd Filetype yaml,sh setlocal ts=4 sw=4 sts=4 expandtab
 autocmd Filetype javascript,typescript setlocal ts=4 sw=4 sts=4 noexpandtab formatoptions+=ro
-autocmd Filetype tex setlocal wrap
+autocmd Filetype tex setlocal wrap textwidth=80
 
 " Markdown for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -57,6 +57,7 @@ set noea                       " Don't automatically resize windows
 set updatetime=50
 set cmdheight=2
 set signcolumn=number
+set colorcolumn=80             " Column #80 highlighed
 
 " Leader utilities
 let mapleader = " "          " Use comma as the leader
