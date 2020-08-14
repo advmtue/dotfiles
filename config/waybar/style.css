@@ -24,7 +24,18 @@ window#waybar {
 	background: #444444;
 }
 
-#pulseaudio, #clock, #battery, #custom-wanip, #backlight {
+#custom-vpn.connected {
+	background: #a54242;
+	color: #c5c8c6;
+}
+
+#network,
+#custom-vpn,
+#pulseaudio,
+#clock,
+#battery,
+#custom-wanip,
+#backlight {
 	padding: 0 0.8em;
 	margin: 0 0.2em;
 	background: #333333;

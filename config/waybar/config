@@ -2,7 +2,7 @@
 	"layer": "top",
 	"modules-left": ["sway/workspaces", "sway/mode"],
 	"modules-center": [],
-	"modules-right": ["custom/wanip", "backlight", "battery", "pulseaudio", "clock"],
+	"modules-right": ["custom/vpn", "network", "backlight", "battery", "pulseaudio", "clock"],
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": false
@@ -25,5 +25,18 @@
 	},
 	"pulseaudio": {
 		"format": " {volume}%"
+	},
+	"network": {
+		"interval": 5,
+		"format": "{ifname} {ipaddr}",
+		"format-wifi": " {ipaddr}",
+		"format-disconnected": "",
+		"format-ethernet": "ETH {ipaddr}"
+	},
+	"custom/vpn": {
+		"format": "VPN {}",
+		"exec": "echo `wanip` && echo \"\" && echo \"connected\"",
+		"exec-if": "test -d /proc/sys/net/ipv4/conf/wg0",
+		"interval": 5
 	}
 }
