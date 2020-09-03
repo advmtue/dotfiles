@@ -11,7 +11,7 @@ padding = 0 # Internal padding on sides of the bar
 i3_padding = 2 # Padding on the i3 workspace blocks
 
 [bar/laptop]
-monitor = eDP1
+# monitor = eDP1
 height = 40
 dpi = ${xrdb:dpi}
 foreground = #FF999999
