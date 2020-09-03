@@ -11,6 +11,8 @@ Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'morhetz/gruvbox'
+Plug 'preservim/nerdtree'
+Plug 'digitaltoad/vim-pug'
 call plug#end()
 
 filetype plugin indent on
@@ -30,6 +32,7 @@ autocmd Filetype markdown setlocal ts=2 sw=2 wrap
 autocmd Filetype yaml,sh setlocal ts=4 sw=4 sts=4 expandtab
 autocmd Filetype javascript,typescript setlocal ts=4 sw=4 sts=4 noexpandtab formatoptions+=ro
 autocmd Filetype tex setlocal wrap textwidth=80
+autocmd Filetype pug setlocal ts=2 sts=-1 sw=2
 
 " Markdown for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -68,6 +71,8 @@ nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>dh <Plug>(coc-diagnostic-prev)
+nmap <leader>dl <Plug>(coc-diagnostic-next)
 
 autocmd FileType java nmap <leader>gI :CocCommand java.action.organizeImports<CR>
 
@@ -77,6 +82,10 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
+" File Tree
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>T :NERDTreeFocus<CR>
+
 " Typesetting (latex@vimtex)
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -84,7 +93,10 @@ let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg'
 
 " Ctrl P ignore
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  'node_modules\|DS_Store\|git',
+  \ 'file': '\v\.(exe|so|dll|class)$',
+  \ }
 
 " Netrw config
 let g:netrw_banner = 0
