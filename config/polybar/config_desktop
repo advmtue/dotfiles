@@ -1,0 +1,122 @@
+# Colours
+[c]
+prefix = #FF808080
+i3_active_fg = ${xrdb:color15}
+i3_active_bg = #a54242
+tile_bg = #333333
+
+# Settings
+[s]
+gap = 0 # Gap between sides of the screen
+padding = 0 # Internal padding on sides of the bar
+i3_padding = 1 # Padding on the i3 workspace blocks
+
+[section/base]
+height = 25
+dpi = ${xrdb:dpi}
+foreground = #aaaaaa
+background = #222222
+module-margin = 1
+tray-position = right
+
+# Spacing and padding
+padding-left = ${s.padding}
+padding-right = ${s.padding}
+border-top-size = ${s.gap}
+border-left-size = ${s.gap}
+border-right-size = ${s.gap}
+border-bottom-size = ${s.gap}
+
+# Font 0 for Text | Font 1 for Glyphs
+font-0 = "Hack Nerd Font Mono:style=regular:size=10;2"
+font-1 = "Hack Nerd Font Mono:style=regular:size=14;3"
+modules-left = i3
+
+[bar/left]
+# Module placements
+monitor = DP-0
+inherit = section/base
+modules-right = pulseaudio network date
+
+[bar/right]
+# Module placements
+monitor = HDMI-0
+inherit = section/base
+modules-right = pulseaudio network date
+
+# i3wm
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+enable-scroll = false
+format = <label-state> <label-mode>
+
+#mode (Such as resize)
+label-mode = %mode%
+label-mode-padding = ${s.i3_padding}
+label-mode-foreground = ${c.i3_active_fg}
+label-mode-background = ${c.i3_active_bg}
+
+#unfocused workspace
+label-unfocused = "%index%"
+label-unfocused-padding = ${s.i3_padding}
+
+#visible workspace
+label-visible = "%index%"
+label-visible-foreground = #000000
+label-visible-background = #989898
+label-visible-padding = ${s.i3_padding}
+
+#focused workspace
+label-focused = "%index%"
+label-focused-foreground = ${c.i3_active_fg}
+label-focused-background = ${c.i3_active_bg}
+label-focused-padding = ${s.i3_padding}
+
+#urgent workspace
+label-urgent = "%index%"
+label-urgent-padding = ${s.i3_padding}
+label-urgent-foreground = ${xrdb:color1}
+label-urgent-background = ${xrdb:color3}
+
+# date - date and time
+[module/date]
+type = internal/date
+interval = 5
+date = "%d-%m-%Y  %I:%M %p"
+format-prefix = ""
+format-prefix-foreground = ${c.prefix}
+format-prefix-font = 2
+format-prefix-padding-right = 1
+format-padding = 1
+format-background = ${c.tile_bg}
+
+# pulseaudio - Mixer volume
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = false
+
+label-volume = "%percentage:2%%"
+format-volume-prefix = ""
+format-volume-prefix-font = 2
+format-volume-prefix-foreground = ${c.prefix}
+format-volume-padding = 1
+format-volume-background = ${c.tile_bg}
+format-volume-prefix-padding-right = 1
+
+label-muted = MUTED
+format-muted-prefix = ""
+format-muted-prefix-font = 2
+format-muted-foreground = ${c.i3_active_bg}
+format-muted-prefix-foreground = ${c.i3_active_bg}
+format-muted-prefix-padding-right = 1
+format-muted-background = ${c.tile_bg}
+format-muted-padding = 1
+
+[module/network]
+type=internal/network
+interface = enp4s0
+format-connected-background = ${c.tile_bg}
+format-connected-padding = 1
+label-connected = ETH %local_ip%
