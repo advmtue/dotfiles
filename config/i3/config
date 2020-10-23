@@ -9,8 +9,8 @@ floating_modifier $mod
 #-------------------------------------------------------------------------------
 
 #   Monitor Names
-set $mon "eDP1"
-set $mon2 "HDMI2"
+set $mon "DP-0"
+set $mon2 "HDMI-0"
 
 #   Assign Workspaces to Monitors
 workspace 1 output $mon
@@ -88,6 +88,9 @@ mode "resize" {
 #       Workspace Navigation
 #-------------------------------------------------------------------------------
 
+# Switch back and forth between workspaces
+bindsym $mod+n workspace back_and_forth
+
 #   Move to Workspace x: Mod + x
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -112,7 +115,6 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-bindsym $mod+tab workspace back_and_forth
 
 #       Reload + Restart + Close
 #-------------------------------------------------------------------------------
@@ -133,8 +135,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'EXIT' 'i3-msg 
 new_window pixel 2 px
 new_float pixel 2 px
 
-#hide_edge_borders both
-
 #   Font: Roboto Mono for Powerline
 font pango:Roboto Mono for Powerline Bold 2px
 
@@ -150,6 +150,7 @@ for_window [class=".*VirtualBox"] floating enable
 
 #   All Windows Float
 #for_window [class=".*"] floating enable
+for_window [class="Steam"] floating enable
 
 #   Can't currently use gaps as non-floating is broken with titlebars
 gaps inner 10
@@ -166,6 +167,9 @@ focus_follows_mouse no
 #   Launcher: Rofi
 bindsym $mod+d exec "rofi -show run"
 
+#   Take a screenshot, move it to docs, copy it to clipboard
+bindsym --release $mod+s exec "scrot -sf -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/doc/screenshots/'"
+
 #   Screenshot Desktop
 bindsym $mod+i exec snap
 
@@ -173,37 +177,15 @@ bindsym $mod+i exec snap
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
-bar {
-	status_command i3status
-	position top
-	workspace_buttons yes
-
-	font xft:DejaVu Sans Mono:size=8:style=Regular,xft:Hack Nerd Font Mono:size=8:style=Regular
-}
-
-#   Compositor: Compton
-exec_always --no-startup-id picom
-
-#   Background: hsetroot (Solid Color)
-exec_always --no-startup-id hsetroot -solid "#000000"
-
-#   Dock: Plank
-#exec --no-startup-id plank
-
-#   Notifications: dunst
-exec --no-startup-id dunst
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 #   Startup Applications and Assignment
 assign [class="Thunderbird"] 8
 assign [class="Firefox"] 9
 
-#   Start Apps
-#exec --no-startup-id firefox
-#exec --no-startup-id thunderbird
 
 #       XF86 Input Configuration
 #-------------------------------------------------------------------------------
-
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
 bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
 bindsym XF86AudioMute exec --no-startup-id pamixer -t
@@ -211,3 +193,6 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down 10
 bindsym XF86KbdBrightnessUp exec --no-startup-id kbdlight up 10
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle
+bindsym XF86AudioNext exec --no-startup-id mpc next
+bindsym XF86AudioPrev exec --no-startup-id mpc prev
