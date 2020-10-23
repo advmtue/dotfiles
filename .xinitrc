@@ -4,11 +4,9 @@ xrdb -merge ~/.xrdb_extra
 
 picom -b
 hsetroot -solid "#000000"
-
-while true; do
-	dwm_status update
-	sleep 5;
-done &
 dunst &
 
-exec dwm
+export LIBVA_DRIVER_NAME=vdpau
+export VDPAU_DRIVER=nvidia
+
+exec i3
