@@ -106,3 +106,5 @@ let g:netrw_browse_split = 4
 
 " Python run file
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '! clear; python3' shellescape(@%, 1)<CR>
+" Nodejs run file
+autocmd FileType javascript map <buffer> <F5> :w<CR>:exec '! clear; node' shellescape(@%, 1)<CR>
