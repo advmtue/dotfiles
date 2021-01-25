@@ -60,7 +60,7 @@ function get_mount_point {
 function get_mount_cmd {
     case "$1" in
         "bin")
-            echo "bin:src/dumpster/public/ /mnt/bin"
+            echo "bin:dump/ /mnt/bin"
             ;;
         "hog")
             echo "hog:/ /mnt/hog"
