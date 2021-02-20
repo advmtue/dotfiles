@@ -4,6 +4,7 @@
 #   Aliases
 alias ls='ls --color=auto --group-directories-first'
 alias musb="sudo mount -o uid=`whoami`,gid=`whoami`,fmask=113,dmask=002"
+alias tasks='git grep -EIn "TODO|FIXME"'
 
 #   CD Burning
 alias cdw_dummy='cdrecord -dummy -v speed=1 -dao -audio *.wav'
