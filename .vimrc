@@ -13,6 +13,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'digitaltoad/vim-pug'
+Plug 'dense-analysis/ale'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 filetype plugin indent on
@@ -21,18 +23,32 @@ syntax on
 " Colour Scheme = gruvbox
 set background=dark
 colorscheme gruvbox
+" Remove background colour and use the terminal default.
 hi Normal ctermbg=NONE
+" Remove high-contrast background on TODO keyword.
 hi todo ctermbg=NONE
+" Remove the background on the red sign in the gutter.
 hi GruvboxRedSign ctermbg=NONE
+" Remove the background of the signcolumn gutter.
 hi SignColumn ctermbg=NONE
 
 " Width of an indent (eg. using >>)
-autocmd Filetype html setlocal ts=2 sw=2
+" HTML
+autocmd Filetype html setlocal ts=2 sw=0 sts=2
+" Markdown
 autocmd Filetype markdown setlocal ts=2 sw=2 wrap
+" Yaml, Bash Scripts
 autocmd Filetype yaml,sh setlocal ts=4 sw=4 sts=4 expandtab
-autocmd Filetype javascript,typescript setlocal ts=4 sw=4 sts=4 noexpandtab formatoptions+=ro
+" JavaScript, TypeScript
+autocmd Filetype javascript,typescript setlocal ts=2 sw=2 sts=2 noexpandtab formatoptions+=ro
+" LaTex/Tex
 autocmd Filetype tex setlocal wrap textwidth=80
+" Pug
 autocmd Filetype pug setlocal ts=2 sts=-1 sw=2
+" CSharp
+autocmd Filetype cs setlocal ts=4 sw=0 sts=4 expandtab
+" SCSS, CSS
+autocmd Filetype scss,css setlocal ts=2 sw=0 sts=2 expandtab
 
 " Markdown for .md files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -60,7 +76,7 @@ set noea                       " Don't automatically resize windows
 set updatetime=50
 set cmdheight=2
 set signcolumn=number
-set colorcolumn=80             " Column #80 highlighed
+set colorcolumn=110             " Column #110 highlighed
 
 " Leader utilities
 let mapleader = " "          " Use comma as the leader
@@ -74,6 +90,18 @@ nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>dh <Plug>(coc-diagnostic-prev)
 nmap <leader>dl <Plug>(coc-diagnostic-next)
 
+" Coc Extensions
+let g:coc_global_extensions = [
+	\ 'coc-angular',
+	\ 'coc-css',
+	\ 'coc-omnisharp',
+	\ 'coc-tsserver',
+	\ 'coc-prettier',
+	\ 'coc-json',
+	\ ]
+
+" Coc-Prettier
+
 autocmd FileType java nmap <leader>gI :CocCommand java.action.organizeImports<CR>
 
 " Window navigation
@@ -85,6 +113,27 @@ nnoremap <leader>l :wincmd l<CR>
 " File Tree
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>T :NERDTreeFocus<CR>
+
+" NERDTREE Git status
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+
+" Linting (ALE)
+let g:ale_linters = {
+	\ 'javascript': ['prettier'],
+	\ 'typescript': ['prettier'],
+	\ 'cs': ['OmniSharp'],
+	\}
 
 " Typesetting (latex@vimtex)
 let g:tex_flavor='latex'
