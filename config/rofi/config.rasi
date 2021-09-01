@@ -1,0 +1,52 @@
+configuration {
+	modi: "run";
+	font: "hack 11";
+}
+
+/* Variables */
+* {
+	c-prompt: #A54242;
+	c-bg: rgb(21,21,21);
+	c-lines-normal: rgb(150, 150, 150);
+	c-lines-selected: rgb(255,255,255);
+}
+
+#window {
+	background-color: @c-bg;
+	border: 0px;
+	padding: 20px;
+	width: 500px;
+}
+
+/* Prompt and Text Entry */
+#prompt { text-color: @c-prompt; }
+#entry { text-color: @c-lines-normal; }
+
+#listview {
+	lines: 10;
+	scrollbar: false;
+	background-color: @c-bg;
+	border-color: @c-lines-normal;
+	border: 1px solid 0 solid 0 solid 0 solid;
+}
+
+#element {
+	padding: 3 0 3 0;
+	background-color: @c-bg;
+}
+
+#element.selected.normal {
+	text-color: @c-lines-selected;
+	background-color: @c-bg;
+	highlight: bold #FFFFFF;
+}
+
+#element.normal.normal {
+	text-color: @c-lines-normal;
+	background-color: @c-bg;
+}
+
+#element.alternate.normal {
+	text-color: @c-lines-normal;
+	background-color: @c-bg;
+}
