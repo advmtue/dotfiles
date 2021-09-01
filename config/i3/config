@@ -9,8 +9,8 @@ floating_modifier $mod
 #-------------------------------------------------------------------------------
 
 #   Monitor Names
-set $mon "DP-0"
-set $mon2 "HDMI-0"
+set $mon "DP-2"
+set $mon2 "HDMI-1"
 
 #   Assign Workspaces to Monitors
 workspace 1 output $mon
@@ -177,7 +177,7 @@ bindsym $mod+i exec snap
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch
 
 #   Startup Applications and Assignment
 assign [class="Thunderbird"] 8

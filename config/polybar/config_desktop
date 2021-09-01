@@ -34,13 +34,13 @@ modules-left = i3
 
 [bar/left]
 # Module placements
-monitor = DP-0
+monitor = DP-2
 inherit = section/base
 modules-right = pulseaudio network date
 
 [bar/right]
 # Module placements
-monitor = HDMI-0
+monitor = DP-0
 inherit = section/base
 modules-right = pulseaudio network date
 
@@ -116,7 +116,7 @@ format-muted-padding = 1
 
 [module/network]
 type=internal/network
-interface = enp4s0
+interface = enp42s0
 format-connected-background = ${c.tile_bg}
 format-connected-padding = 1
 label-connected = ETH %local_ip%
