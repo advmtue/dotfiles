@@ -52,17 +52,3 @@ Xft.dpi: 96
 Xft.autohint: 1
 Xft.hinting: 1
 Xft.antialias: 1
-
-!   Rofi
-rofi.font: Hack 10
-rofi.location: 0
-rofi.lines: 10
-rofi.width: 20
-rofi.padding: 15
-rofi.bw: 0
-rofi.hide-scrollbar: True
-rofi.separator-style: none
-!   main window     bg          fg
-rofi.color-window:  #151515,    #797880
-!   rows            bg          fg          bgalt       hlbg        hlfg
-rofi.color-normal:  #151515,    #444444,    #151515,    #a54242,    #999999
