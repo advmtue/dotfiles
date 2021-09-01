@@ -7,6 +7,7 @@ configuration {
 * {
 	c-prompt: #A54242;
 	c-bg: rgb(21,21,21);
+	c-bg-light: rgb(40, 40, 40);
 	c-lines-normal: rgb(150, 150, 150);
 	c-lines-selected: rgb(255,255,255);
 }
@@ -14,7 +15,7 @@ configuration {
 #window {
 	background-color: @c-bg;
 	border: 0px;
-	padding: 20px;
+	padding: 10;
 	width: 500px;
 }
 
@@ -31,13 +32,13 @@ configuration {
 }
 
 #element {
-	padding: 3 0 3 0;
+	padding: 3 5 3 5;
 	background-color: @c-bg;
 }
 
 #element.selected.normal {
 	text-color: @c-lines-selected;
-	background-color: @c-bg;
+	background-color: @c-bg-light;
 	highlight: bold #FFFFFF;
 }
 
