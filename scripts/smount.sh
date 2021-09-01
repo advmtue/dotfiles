@@ -6,13 +6,6 @@
 #   Usage:
 #       smount NAME [unmount]
 
-#   My filesystems
-#       Add more by editing the get_mount_cmd function
-#   bin     = bin.adamtue.ch        -> /mnt/bin
-#   hog   = 10.1.1.65             -> /mnt/hog
-#   vps     = adamtue.ch [private]  -> /mnt/vps
-#   deakin  = interactive.deakin... -> /mnt/deakin
-
 #   Script assumes these directories already exist
 #   TODO: Create and delete directories as needed
 
@@ -45,9 +38,6 @@ function get_mount_point {
         "vps")
             echo "/mnt/vps"
             ;;
-        "deakin")
-            echo "/mnt/deakin"
-            ;;
         *)
             echo "ERROR"
     esac
@@ -70,9 +60,6 @@ function get_mount_cmd {
             ;;
         "vps")
             echo "vps:private /mnt/vps"
-            ;;
-        "deakin")
-            echo "deakin: /mnt/deakin"
             ;;
         *)
             echo "ERROR"
