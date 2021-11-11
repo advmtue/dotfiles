@@ -71,6 +71,6 @@ esac
 unset -f saf res shost
 
 #   Execute any supplementary files
-if [ -f "$HOME/.bash_extras" ]; then
-    source "$HOME/.bash_extras"
+if [ -f "$HOME/.shell_extras" ]; then
+    source "$HOME/.shell_extras"
 fi
