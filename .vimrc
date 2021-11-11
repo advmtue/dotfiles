@@ -1,4 +1,3 @@
-" Vundle
 set nocompatible
 filetype off
 
@@ -13,8 +12,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'digitaltoad/vim-pug'
-Plug 'dense-analysis/ale'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-python/python-syntax'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-eunuch'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 filetype plugin indent on
@@ -29,6 +32,8 @@ hi Normal ctermbg=NONE
 hi todo ctermbg=NONE
 " Remove the background on the red sign in the gutter.
 hi GruvboxRedSign ctermbg=NONE
+hi GruvboxGreenSign ctermbg=NONE
+hi GruvboxAquaSign ctermbg=NONE
 " Remove the background of the signcolumn gutter.
 hi SignColumn ctermbg=NONE
 
@@ -36,7 +41,7 @@ hi SignColumn ctermbg=NONE
 " HTML
 autocmd Filetype html setlocal ts=2 sw=0 sts=2
 " Markdown
-autocmd Filetype markdown setlocal ts=2 sw=2 wrap
+autocmd Filetype markdown setlocal ts=2 sw=2
 " Yaml, Bash Scripts
 autocmd Filetype yaml,sh setlocal ts=4 sw=4 sts=4 expandtab
 " JavaScript, TypeScript
@@ -75,12 +80,12 @@ set splitright                 " Split Right
 set noea                       " Don't automatically resize windows
 set updatetime=50
 set cmdheight=2
-set signcolumn=number
-set colorcolumn=110             " Column #110 highlighed
+set signcolumn=yes
+set colorcolumn=110            " Column #110 highlighed
 
 " Leader utilities
-let mapleader = " "          " Use comma as the leader
-noremap <leader>H :nohl<cr>  " Clear highlights
+let mapleader = " "            " Use space as the leader
+noremap <leader>H :nohl<cr>    " Clear highlights
 
 " Coc
 nmap <leader>gd <Plug>(coc-definition)
@@ -98,6 +103,7 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver',
 	\ 'coc-prettier',
 	\ 'coc-json',
+	\ 'coc-pyright'
 	\ ]
 
 " Coc-Prettier
@@ -114,6 +120,8 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>T :NERDTreeFocus<CR>
 
+let g:python_highlight_all = 1
+
 " NERDTREE Git status
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
@@ -127,13 +135,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
-
-" Linting (ALE)
-let g:ale_linters = {
-	\ 'javascript': ['prettier'],
-	\ 'typescript': ['prettier'],
-	\ 'cs': ['OmniSharp'],
-	\}
 
 " Typesetting (latex@vimtex)
 let g:tex_flavor='latex'
@@ -153,7 +154,8 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
 let g:netrw_browse_split = 4
 
-" Python run file
-autocmd FileType python map <buffer> <F5> :w<CR>:exec '! clear; python3' shellescape(@%, 1)<CR>
-" Nodejs run file
-autocmd FileType javascript map <buffer> <F5> :w<CR>:exec '! clear; node' shellescape(@%, 1)<CR>
+" Terraform auto formatting
+autocmd FileType tf,terraform autocmd BufWritePre <buffer> :TerraformFmt
+
+" Close vim if NERDTree is the last and only buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
