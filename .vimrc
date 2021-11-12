@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'lervag/vimtex'
-Plug 'kien/ctrlp.vim'
 Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
@@ -18,6 +17,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-eunuch'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'hashivim/vim-terraform'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -36,6 +38,9 @@ hi GruvboxGreenSign ctermbg=NONE
 hi GruvboxAquaSign ctermbg=NONE
 " Remove the background of the signcolumn gutter.
 hi SignColumn ctermbg=NONE
+hi ColorColumn ctermbg=234
+hi VertSplit ctermbg=234
+hi NonText ctermfg=233
 
 " Width of an indent (eg. using >>)
 " HTML
@@ -81,7 +86,9 @@ set noea                       " Don't automatically resize windows
 set updatetime=50
 set cmdheight=2
 set signcolumn=yes
-set colorcolumn=110            " Column #110 highlighed
+set colorcolumn=0              " Column #110 highlighed
+set fillchars+=vert:\  
+set mouse=a
 
 " Leader utilities
 let mapleader = " "            " Use space as the leader
@@ -106,10 +113,6 @@ let g:coc_global_extensions = [
 	\ 'coc-pyright'
 	\ ]
 
-" Coc-Prettier
-
-autocmd FileType java nmap <leader>gI :CocCommand java.action.organizeImports<CR>
-
 " Window navigation
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -119,6 +122,10 @@ nnoremap <leader>l :wincmd l<CR>
 " File Tree
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>T :NERDTreeFocus<CR>
+
+" Ripgrep
+nnoremap <C-p> :Files<CR>
+nnoremap <C-f> :Rg! 
 
 let g:python_highlight_all = 1
 
