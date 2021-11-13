@@ -15,7 +15,7 @@ alias cdw_wav='for i in *.mp3; do lame --decode "$i" "$(basename "$i" .mp3)".wav
 shopt -s checkwinsize
 
 # FZF use hidden files
-export FZF_DEFAULT_COMMAND="rg --files -L"
+export FZF_DEFAULT_COMMAND="rg --files -L --hidden"
 
 #   Use vim as editor
 export VISUAL=vim
