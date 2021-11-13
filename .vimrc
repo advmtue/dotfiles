@@ -2,24 +2,24 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'godlygeek/tabular'
-Plug 'lervag/vimtex'
 Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-fugitive'
 Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-fugitive'
+Plug 'bronson/vim-trailing-whitespace'
 Plug 'preservim/nerdtree'
-Plug 'digitaltoad/vim-pug'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'vim-python/python-syntax'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-eunuch'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'hashivim/vim-terraform'
-
+Plug 'tpope/vim-eunuch'
+Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" Langs
+Plug 'lervag/vimtex'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-python/python-syntax'
 call plug#end()
 
 filetype plugin indent on
@@ -28,19 +28,15 @@ syntax on
 " Colour Scheme = gruvbox
 set background=dark
 colorscheme gruvbox
-" Remove background colour and use the terminal default.
-hi Normal ctermbg=NONE
-" Remove high-contrast background on TODO keyword.
-hi todo ctermbg=NONE
-" Remove the background on the red sign in the gutter.
-hi GruvboxRedSign ctermbg=NONE
-hi GruvboxGreenSign ctermbg=NONE
-hi GruvboxAquaSign ctermbg=NONE
-" Remove the background of the signcolumn gutter.
-hi SignColumn ctermbg=NONE
-hi ColorColumn ctermbg=234
-hi VertSplit ctermbg=234
-hi NonText ctermfg=233
+hi Normal ctermbg=NONE           " Remove background colour and use the terminal default.
+hi todo ctermbg=NONE             " Remove high-contrast background on TODO keyword.
+hi GruvboxRedSign ctermbg=NONE   " Remove the background on the red sign in the gutter.
+hi GruvboxGreenSign ctermbg=NONE " Remove the background on the red sign in the gutter.
+hi GruvboxAquaSign ctermbg=NONE  " Remove the background on the red sign in the gutter.
+hi SignColumn ctermbg=NONE       " Remove the background of the signcolumn gutter.
+hi ColorColumn ctermbg=234       "
+hi VertSplit ctermbg=234         " Colour of vertical split columns
+hi NonText ctermfg=233           " Colour of '~' text on non-file lines
 
 " Width of an indent (eg. using >>)
 " HTML
@@ -84,11 +80,12 @@ set splitbelow                 " Split Down
 set splitright                 " Split Right
 set noea                       " Don't automatically resize windows
 set updatetime=50
-set cmdheight=2
-set signcolumn=yes
-set colorcolumn=0              " Column #110 highlighed
-set fillchars+=vert:\  
-set mouse=a
+set cmdheight=2                " Extra space for cmd output
+set signcolumn=yes             " Distinct sign column
+" set colorcolumn=110          " Column #110 highlighed
+set fillchars+=vert:\          " No character in vert column spacers
+set mouse=a                    " Enable mouse
+set ttymouse=xterm2            " Fix for laggy mouse highlighting
 
 " Leader utilities
 let mapleader = " "            " Use space as the leader
