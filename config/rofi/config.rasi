@@ -1,6 +1,6 @@
 configuration {
 	modi: "run";
-	font: "hack 11";
+	font: "JetbrainsMono Nerd Font Mono Medium 12";
 }
 
 /* Variables */

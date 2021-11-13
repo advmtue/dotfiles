@@ -8,18 +8,18 @@ window:
 
 font:
     normal:
-        family: DejaVu Sans Mono
-        style: Book
+        family: JetbrainsMono Nerd Font Mono
+        style: Medium
 
     bold:
-        family: DejaVu Sans Mono
+        family: JetbrainsMono Nerd Font Mono
         style: Bold
 
     italic:
         family: monospace
         style: italic
 
-    size: 12
+    size: 13
 
 
 schemes:
