@@ -15,6 +15,8 @@ Plug 'tpope/vim-eunuch'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Langs
 Plug 'lervag/vimtex'
@@ -74,7 +76,7 @@ set autoindent                 " Autoindent
 set backspace=indent,eol,start " Make backspace work
 set linebreak                  " Wrap by word
 set laststatus=2               " Enable status bar
-set statusline=[%F]%r%=%l:%c%V " Status bar = [{filename}]{permissions}
+" set statusline=[%F]%r%=%l:%c%V " Status bar = [{filename}]{permissions}
 set conceallevel=2             " Conceal text formatting such as markdown
 set splitbelow                 " Split Down
 set splitright                 " Split Right
@@ -124,6 +126,7 @@ nnoremap <leader>T :NERDTreeFocus<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-f> :Rg! 
 
+" Python syntax highlighting
 let g:python_highlight_all = 1
 
 " NERDTREE Git status
@@ -146,17 +149,11 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg'
 
-" Ctrl P ignore
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  'node_modules\|DS_Store\|git',
-  \ 'file': '\v\.(exe|so|dll|class)$',
-  \ }
+" Airline
+let g:airline_symbols_ascii = 1
 
-" Netrw config
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 25
-let g:netrw_browse_split = 4
+" GitGutter
+let g:gitgutter_map_keys = 0
 
 " Terraform auto formatting
 autocmd FileType tf,terraform autocmd BufWritePre <buffer> :TerraformFmt
