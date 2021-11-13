@@ -28,7 +28,7 @@ border-right-size = ${s.gap}
 border-bottom-size = ${s.gap}
 
 # Font 0 for Text | Font 1 for Glyphs
-font-0 = "JetBrainsMono Nerd Font Mono:style=Medium:size=12;2"
+font-0 = "JetBrainsMono Nerd Font Mono:style=Bold:size=10;2"
 font-1 = "JetBrainsMono Nerd Font Mono:style=regular:size=14;3"
 
 # Module placement
