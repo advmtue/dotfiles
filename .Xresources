@@ -36,13 +36,7 @@
 *.color7:       #c5c8c6
 *.color15:      #ffffff
 
-!   Terminal
-URxvt.scrollBar: false
-URxvt.font: xft:DejaVu Sans Mono:size=9:style=Regular,xft:Hack Nerd Font Mono:size=9:style=Regular
-URxvt.dynamicColors: true
-URxvt.internalBorder: 20
-URxvt.geometry: 91x24
-URxvt.perl-ext-common: selection-to-clipboard
+! X11
 Xcursor.size: 8
 
 !	DPI Things
