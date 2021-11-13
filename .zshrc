@@ -14,6 +14,9 @@ alias cdw_wav='for i in *.mp3; do lame --decode "$i" "$(basename "$i" .mp3)".wav
 #   Check the window size after each command
 #shopt -s checkwinsize
 
+# FZF use hidden files
+export FZF_DEFAULT_COMMAND="find . -type f"
+
 #   Use vim as editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -37,7 +40,7 @@ unset HISTFILE
 #   Gray     7      15
 
 #   Set the terminal color to a given value
-function saf {
+function setcolor {
     echo "$(tput setaf $1)"
 }
 
@@ -57,7 +60,7 @@ function shost {
 }
 
 #   Coloured prompt
-p_c="%{$(saf 1)%}[%n]%{$(saf 8)%}$(shost) %~ %{$(res)%}%# "
+p_c="%{$(setcolor 1)%}[%n]%{$(setcolor 8)%}$(shost) %~ %{$(res)%}%# "
 #   Uncoloured prompt
 p_nc="[%n]$(shost) %~ %# "
 
@@ -68,7 +71,7 @@ case "$TERM" in
 esac
 
 #   Clear local functions
-unset -f saf res shost
+unset -f setcolor res shost
 
 #   Execute any supplementary files
 if [ -f "$HOME/.shell_extras" ]; then
