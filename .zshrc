@@ -26,7 +26,11 @@ export EDITOR="$VISUAL"
 umask 0002
 
 #   No bash_history
-unset HISTFILE
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+#bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 #   Colour code reference
 #   NAME     DARK   LIGHT
