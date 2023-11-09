@@ -1,6 +1,13 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-	ensure_installed = { 'lua_ls', 'eslint', 'tsserver' }
+	ensure_installed = {
+		'lua_ls',
+		'eslint',
+		'tsserver',
+		'terraformls',
+		'tflint',
+		'ruby_ls'
+	}
 })
 
 local cmp = require('cmp')
@@ -30,9 +37,10 @@ require('lspconfig').lua_ls.setup({
 	capabilities = capabilities
 })
 
-require('lspconfig').eslint.setup({
-	capabilities = capabilities
-})
+require('lspconfig').eslint.setup({ capabilities = capabilities })
+require('lspconfig').ruby_ls.setup({ capabilities = capabilities })
+require('lspconfig').terraformls.setup({})
+require('lspconfig').tflint.setup({})
 
 require('typescript').setup({});
 

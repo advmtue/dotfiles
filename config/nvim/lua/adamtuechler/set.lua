@@ -11,6 +11,8 @@ vim.o.scrolloff = 10
 vim.o.fillchars = "vert: ,eob: "
 vim.o.guicursor = ""
 vim.o.updatetime = 100
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = { '*.tsx', '*.ts', '*.jsx', '*.js', '*.mjs' },

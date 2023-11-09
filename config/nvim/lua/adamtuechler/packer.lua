@@ -5,6 +5,7 @@ require('packer').startup(function(use)
 	use "ellisonleao/gruvbox.nvim"
 	use 'airblade/vim-gitgutter'
 	use 'jose-elias-alvarez/typescript.nvim'
+	use 'terrastruct/d2-vim'
 
 	use({
 		"kylechui/nvim-surround",
@@ -17,7 +18,7 @@ require('packer').startup(function(use)
 	})
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+		'nvim-telescope/telescope.nvim', tag = '0.1.3',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
