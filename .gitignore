@@ -1,4 +1,1 @@
-# .gitignore
-
-# Secrets
-.secret_*
+config/nvim/plugin/packer_compiled.lua
