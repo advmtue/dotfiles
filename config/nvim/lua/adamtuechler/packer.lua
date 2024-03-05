@@ -6,6 +6,7 @@ require('packer').startup(function(use)
 	use 'airblade/vim-gitgutter'
 	use 'jose-elias-alvarez/typescript.nvim'
 	use 'terrastruct/d2-vim'
+	use 'digitaltoad/vim-pug'
 
 	use({
 		"kylechui/nvim-surround",
