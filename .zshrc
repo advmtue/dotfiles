@@ -64,7 +64,7 @@ function shost {
 }
 
 #   Coloured prompt
-p_c="%{$(setcolor 1)%}[%n]%{$(setcolor 8)%}$(shost) %~ %{$(res)%}%# "
+p_c="%{$(setcolor 0)%}[%n]$(shost) %~ %{$(res)%}%# "
 #   Uncoloured prompt
 p_nc="[%n]$(shost) %~ %# "
 
