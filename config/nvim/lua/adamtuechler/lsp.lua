@@ -1,33 +1,12 @@
+-- Language server management
 require('mason').setup()
 require('mason-lspconfig').setup({
 	ensure_installed = {
 		'lua_ls',
-		'eslint',
-		'tsserver',
 		'terraformls',
 		'tflint',
-		'ruby_ls'
+		"gopls",
 	}
-})
-
-local cmp = require('cmp')
-require('cmp').setup({
-	snippet = {
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
-      end,
-    },
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'path' },
-		{ name = 'buffer', keyword_length = 3 },
-		{ name = 'nvim_lsp_signature_help' },
-		{ name = 'vsnip' }
-	}),
-	mapping = cmp.mapping.preset.insert({
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
-	}),
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -37,12 +16,9 @@ require('lspconfig').lua_ls.setup({
 	capabilities = capabilities
 })
 
-require('lspconfig').eslint.setup({ capabilities = capabilities })
-require('lspconfig').ruby_ls.setup({ capabilities = capabilities })
-require('lspconfig').terraformls.setup({})
-require('lspconfig').tflint.setup({})
-
-require('typescript').setup({});
+require('lspconfig').terraformls.setup({ capabilities = capabilities })
+require('lspconfig').tflint.setup({ capabilities = capabilities })
+require('lspconfig').gopls.setup({ capabilities = capabilities })
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -52,30 +28,45 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		local opts = { buffer = ev.buf }
 
+		-- Hover highlight
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+
 		-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 
+		-- Go to definition
 		vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
+
+		-- Go to implementation
 		vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)
+
+		-- Find references
 		vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
+
+		-- Rename
 		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+
+		-- Code actions
 		vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
 
-		vim.keymap.set('n', '<space>f', function()
-			vim.lsp.buf.format { async = true }
-		end, opts)
+		-- Format
+		vim.keymap.set('n', '<leader>fm', function() vim.lsp.buf.format { async = true } end, opts)
 
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
 		if client.server_capabilities.documentHighlightProvider then
 			vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+
 			vim.api.nvim_clear_autocmds { buffer = ev.bufnr, group = "lsp_document_highlight" }
+
+			-- Highlight when cursor holds on a position
 			vim.api.nvim_create_autocmd("CursorHold", {
 				callback = vim.lsp.buf.document_highlight,
 				buffer = ev.bufnr,
 				group = "lsp_document_highlight",
-				desc = "Document Highlight",
+				desc = "Highlight in document",
 			})
+
+			-- Clear LSP highlights when cursor moves
 			vim.api.nvim_create_autocmd("CursorMoved", {
 				callback = vim.lsp.buf.clear_references,
 				buffer = ev.bufnr,

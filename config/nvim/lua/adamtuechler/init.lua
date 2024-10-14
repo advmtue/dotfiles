@@ -1,5 +1,6 @@
-require("adamtuechler.packer")
 require("adamtuechler.set")
+require("adamtuechler.lazy")
+require("adamtuechler.completion")
 require("adamtuechler.lsp")
 require("adamtuechler.colours")
 require("adamtuechler.telescope")
