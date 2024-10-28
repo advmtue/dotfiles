@@ -20,13 +20,17 @@ require('telescope').setup({
 	}
 })
 
+local function is_git_repo()
+	vim.fn.system("git rev-parse --is-inside-work-tree")
+
+	return vim.v.shell_error == 0
+end
+
+
 local function select_project_files(limit_to_cwd)
 	limit_to_cwd = limit_to_cwd or false
 
-	vim.fn.system("git rev-parse --is-inside-work-tree")
-	local is_inside_work_tree = vim.v.shell_error == 0
-
-	if is_inside_work_tree then
+	if is_git_repo() then
 		require("telescope.builtin").git_files({ use_git_root = not limit_to_cwd })
 	else
 		require("telescope.builtin").find_files({ hidden = true })
