@@ -16,7 +16,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
+			{ out,                            "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 
@@ -53,14 +53,14 @@ require("lazy").setup({
 		{
 			'nvim-telescope/telescope.nvim',
 			tag = '0.1.8',
-			dependencies = { {'nvim-lua/plenary.nvim'} }
+			dependencies = { { 'nvim-lua/plenary.nvim' } }
 		},
 
 		-- Syntax highlighting
 		{
 			"nvim-treesitter/nvim-treesitter",
 			build = ":TSUpdate",
-			config = function ()
+			config = function()
 				local configs = require("nvim-treesitter.configs")
 
 				configs.setup({
@@ -111,7 +111,7 @@ require("lazy").setup({
 		'hrsh7th/cmp-path',
 		-- ... source: from snippets (vsnip)
 		'hrsh7th/cmp-vsnip',
-		-- ... helper: highlight current parameter in function signature 
+		-- ... helper: highlight current parameter in function signature
 		'hrsh7th/cmp-nvim-lsp-signature-help',
 
 		-- Code snippets (like vscode)
@@ -123,5 +123,5 @@ require("lazy").setup({
 	install = { colorscheme = { "habamax" } },
 
 	-- automatically check for plugin updates
-	checker = { enabled = true },
+	checker = { enabled = false },
 })

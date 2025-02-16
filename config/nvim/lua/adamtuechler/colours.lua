@@ -1,4 +1,4 @@
-vim.o.background = "light"
+vim.o.background = "dark"
 
 -- vim.cmd("colorscheme catppuccin")
 -- vim.cmd("colorscheme gruvbox")
@@ -6,6 +6,7 @@ vim.cmd("colorscheme onedark")
 
 -- Remove background colour and use the terminal default.
 vim.api.nvim_set_hl(0, "Normal", { ctermbg = "none" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { ctermbg = "none" })
 
 -- Remove high-contrast background on TODO keyword.
 vim.api.nvim_set_hl(0, "todo", { ctermbg = "none" })

@@ -6,6 +6,7 @@ require('mason-lspconfig').setup({
 		'terraformls',
 		'tflint',
 		"gopls",
+		"eslint"
 	}
 })
 
@@ -19,6 +20,15 @@ require('lspconfig').lua_ls.setup({
 require('lspconfig').terraformls.setup({ capabilities = capabilities })
 require('lspconfig').tflint.setup({ capabilities = capabilities })
 require('lspconfig').gopls.setup({ capabilities = capabilities })
+require('lspconfig').eslint.setup({
+	capabilities = capabilities,
+	on_attach = function(_, bufnr)
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			buffer = bufnr,
+			command = "EslintFixAll"
+		})
+	end,
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
