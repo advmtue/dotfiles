@@ -68,11 +68,12 @@ function shost {
 p_c="%{$(setcolor 0)%}[%n]$(shost) %~ %{$(res)%}%# "
 #   Uncoloured prompt
 p_nc="[%n]$(shost) %~ %# "
+p_basic="%~ %# "
 
 #   Export depending on TERM
 case "$TERM" in
-    *-256color) export PS1=$p_c;;
-    *) export PS1=$p_nc;;
+    *-256color) export PS1=$p_basic;;
+    *) export PS1=$p_basic;;
 esac
 
 #   Clear local functions
