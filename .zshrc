@@ -18,6 +18,7 @@ alias cdw_wav='for i in *.mp3; do lame --decode "$i" "$(basename "$i" .mp3)".wav
 export FZF_DEFAULT_COMMAND="rg --files -L --hidden"
 
 #   Use vim as editor
+alias vim='nvim'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
