@@ -19,7 +19,7 @@ export FZF_DEFAULT_COMMAND="rg --files -L --hidden"
 
 #   Use vim as editor
 alias vim='nvim'
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 #   Default File Permissions
