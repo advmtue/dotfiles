@@ -23,8 +23,8 @@ vim.api.nvim_set_hl(0, "GruvboxAquaSign", { ctermbg = "none" })
 -- Remove the background of the signcolumn gutter.
 vim.api.nvim_set_hl(0, "SignColumn", { ctermbg = "none" })
 
---
-vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg = 234 })
+-- Line width bar
+vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg = 234, bg = "#212530" })
 
 -- Colour of vertical split columns
 vim.api.nvim_set_hl(0, "VertSplit", { ctermbg = 234 })
