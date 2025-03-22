@@ -1,4 +1,4 @@
-vim.o.background = "dark"
+vim.o.background = "light"
 
 -- vim.cmd("colorscheme catppuccin")
 -- vim.cmd("colorscheme gruvbox")
@@ -24,7 +24,8 @@ vim.api.nvim_set_hl(0, "GruvboxAquaSign", { ctermbg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { ctermbg = "none" })
 
 -- Line width bar
-vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg = 234, bg = "#212530" })
+-- vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg = 234, bg = "#212530" }) -- dark
+vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg = 234, bg = "#DFDFDF" }) -- light
 
 -- Colour of vertical split columns
 vim.api.nvim_set_hl(0, "VertSplit", { ctermbg = 234 })
