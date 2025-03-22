@@ -2,9 +2,10 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
 	ensure_installed = {
-		'lua_ls',
-		'terraformls',
-		'tflint',
+		"bashls",
+		"lua_ls",
+		"terraformls",
+		"tflint",
 		"gopls",
 		"eslint"
 	}
@@ -17,6 +18,7 @@ require('lspconfig').lua_ls.setup({
 	capabilities = capabilities
 })
 
+require('lspconfig').bashls.setup({ capabilities = capabilities })
 require('lspconfig').terraformls.setup({ capabilities = capabilities })
 require('lspconfig').tflint.setup({ capabilities = capabilities })
 require('lspconfig').gopls.setup({ capabilities = capabilities })

@@ -65,7 +65,7 @@ require("lazy").setup({
 
 				configs.setup({
 					ensure_installed = {
-						"c", "c_sharp", "lua",
+						"c", "c_sharp", "bash", "lua",
 						"html", "javascript",
 						"go", "gomod", "gosum",
 						"json", "query",
